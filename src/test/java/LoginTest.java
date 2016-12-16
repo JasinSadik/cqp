@@ -1,8 +1,8 @@
-import org.testng.annotations.Test;
+import org.junit.Test;
 import pageObjects.mainPages.LoginPage;
 import pageObjects.mainPages.LsuDashboard;
 
-import static org.testng.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by PLJAHAS on 2016-12-16.
