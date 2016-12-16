@@ -16,17 +16,17 @@ public abstract class BaseScenario {
     }
 
 
-    @Before
-    public void before() throws Exception {
-        driver = new CommonMethods(driver).browserSetup();
-        driver.get(new CommonMethods(driver).getPropertyFromConfigurationFile("environment_url"));
-    }
-
-    @After
-    public void after(){
-        driver.close();
-        driver.quit();
-    }
+//    @Before
+//    public void before() throws Exception {
+//        driver = new CommonMethods(driver).browserSetup();
+//        driver.get(new CommonMethods(driver).getPropertyFromConfigurationFile("environment_url"));
+//    }
+//
+//    @After
+//    public void after(){
+//        driver.close();
+//        driver.quit();
+//    }
 
 
 
