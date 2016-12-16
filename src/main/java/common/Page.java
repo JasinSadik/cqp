@@ -1,20 +1,22 @@
 package common;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.io.File;
+import java.sql.Timestamp;
+
 /**
  * Created by PLJAHAS on 2016-12-15.
  */
-public class Page {
+public abstract class Page{
 
-    protected WebDriver;
-
+    protected WebDriver driver;
     public Page(WebDriver driver){
         this.driver = driver;
     }
-
-
-
-
-
 
 
 }
