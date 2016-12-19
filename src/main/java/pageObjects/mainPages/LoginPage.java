@@ -1,6 +1,7 @@
 package pageObjects.mainPages;
 
 import common.CommonMethods;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,44 +13,43 @@ public class LoginPage extends CommonMethods {
 
     public LoginPage(WebDriver driver) {
         super(driver);
+        waitForPageLoad(driver);
     }
 
-    @FindBy(css = "input[name='UserName']")
-    private WebElement usernameField;
-
-    @FindBy(id = "Password")
-    private WebElement passwordField;
-
-    @FindBy(css = "p.submit >input")
-    private WebElement loginButton;
+    private By usernameField = By.name("UserName");
+    private By passwordField = By.name("Password");
+    private By loginButton = By.cssSelector("p.submit >input");
 
     public LoginPage insertUsername(String username) {
-        waitOnElementToBeVisible(usernameField);
-        usernameField.clear();
-        usernameField.sendKeys(username);
+        waitOnPresenceOfElement(usernameField);
+        clear(usernameField);
+        sendKeys(usernameField, username);
         return this;
     }
 
     public LoginPage insertPassword(String password) {
-        waitOnElementToBeVisible(usernameField);
-        passwordField.clear();
-        passwordField.sendKeys(password);
+        waitOnPresenceOfElement(passwordField);
+        clear(passwordField);
+        sendKeys(passwordField, password);
         return this;
     }
 
     public LoginPage pressSubmitButton() {
-        waitOnElementToBeVisible(loginButton);
-        loginButton.click();
+        click(loginButton);
         return this;
     }
 
     public UnauthorizedAccessPage invalidLogInToCqp(String username, String password) {
-
+        insertUsername(username);
+        insertPassword(password);
+        pressSubmitButton();
         return new UnauthorizedAccessPage(driver);
     }
 
     public LsuDashboard logInToCqp(String username, String password) {
-
+        insertUsername(username);
+        insertPassword(password);
+        pressSubmitButton();
         return new LsuDashboard(driver);
     }
 }

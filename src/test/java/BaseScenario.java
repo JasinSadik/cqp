@@ -1,7 +1,10 @@
 import common.CommonMethods;
-import org.junit.After;
-import org.junit.Before;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 
 /**
  * Created by PLJAHAS on 2016-12-15.
@@ -16,17 +19,9 @@ public abstract class BaseScenario {
     }
 
 
-//    @Before
-//    public void before() throws Exception {
-//        driver = new CommonMethods(driver).browserSetup();
-//        driver.get(new CommonMethods(driver).getPropertyFromConfigurationFile("environment_url"));
-//    }
-//
-//    @After
-//    public void after(){
-//        driver.close();
-//        driver.quit();
-//    }
+
+
+
 
 
 

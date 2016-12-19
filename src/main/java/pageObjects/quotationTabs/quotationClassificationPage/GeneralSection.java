@@ -1,5 +1,6 @@
 package pageObjects.quotationTabs.quotationClassificationPage;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,58 +16,37 @@ public class GeneralSection extends QuotationNavigationBar {
 
     }
 
-
-    @FindBy(css ="#generalEditSection i.icon-search")
-    private WebElement endUserProjectSearchButton;
-
-    @FindBy(css ="#isRfqOriginal")
-    private WebElement projectNameField;
-
-    @FindBy(css ="#isRfqOriginal")
-    private WebElement endUserProjectField;
-
-    @FindBy(css ="#generalEditSection i.icon-search")
-    private WebElement endUserProjectSecondaryNameField;
-
-    @FindBy(xpath ="//div[id='quotationOwner']//button[contains(text(), 'Binding')]")
-    private WebElement bindingButton;
-
-    @FindBy(xpath ="//div[id='quotationOwner']//button[contains(text(), 'Non-binding')]")
-    private WebElement nonBindingButton;
-
-    @FindBy(css ="#generalEditSection i.icon-search")
-    private WebElement isNegotiationCheckbox;
-
-    @FindBy(css ="#generalEditSection i.icon-search")
-    private WebElement replyEmailAddressField;
-
-    @FindBy(css ="#generalEditSection i.icon-search")
-    private WebElement replyPhoneNumberButton;
-
-    @FindBy(css ="#generalEditSection i.icon-search")
-    private WebElement saveAndCollapseButton;
-
-    @FindBy(id ="comboQuotationType")
-    private WebElement quotationTypeCombobox;
+    private By endUserProjectSearchButton = By.cssSelector("#generalEditSection i.icon-search");
+    private By projectNameField = By.cssSelector("#isRfqOriginal");
+    private By bindingButton= By.xpath("//div[@id='quotationOwner']//button[contains(text(), 'Binding')]");
+    private By saveAndCollapseButton= By.xpath("//div[@id='quotationOwner']//button[contains(text(), 'Save and collapse')]");
+    private String quotationTypeComboboxId = "comboQuotationType";
 
 
 
-    public GeneralSection pressEndUserProjectSearchButton (){
-        endUserProjectSearchButton.click();
+    public GeneralSection insertProjectName (String projectName){
+        waitOnPresenceOfElement(projectNameField);
+        clear(projectNameField);
+        sendKeys(projectNameField, projectName);
         return this;
     }
 
-
-    public GeneralSection expandQuotationTypeCombobox (){
-        quotationTypeCombobox.click();
+    public GeneralSection setQuotationType(String quotationType) {
+        selectElementFromDropdownList(quotationTypeComboboxId, quotationType);
         return this;
     }
-
+    public AdditionalDataSection pressSaveAndCollapseButton() {
+        waitOnButton(saveAndCollapseButton);
+        click(saveAndCollapseButton);
+        return new AdditionalDataSection(driver);
+    }
 
     public <T extends QuotationNavigationBar> T pressSaveAndCollapseButton(Class<T> clazz) {
         waitOnButton(saveAndCollapseButton);
-        saveAndCollapseButton.click();
+        click(saveAndCollapseButton);
         return PageFactory.initElements(driver, clazz);
     }
+
+
 }
 

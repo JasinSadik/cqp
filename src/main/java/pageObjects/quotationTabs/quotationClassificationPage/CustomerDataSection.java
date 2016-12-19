@@ -1,9 +1,11 @@
 package pageObjects.quotationTabs.quotationClassificationPage;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import pageObjects.popUpWindows.selectCustomerPopUp.SelectCustomerPopUp;
 import pageObjects.quotationTabs.QuotationNavigationBar;
 
 /**
@@ -13,78 +15,82 @@ public class CustomerDataSection extends QuotationNavigationBar {
 
     public CustomerDataSection(WebDriver driver) {
         super(driver);
+        waitForPageLoad(driver);
     }
 
-    @FindBy(css ="#quotationCustomer button.searchCustomerButton")
-    private WebElement customerSearchButton;
+    private int index = 0;    //used for iteration in lists
+    private void index(int index){
+        this.index = index;
+    }
+    private String industryUsageComboBoxOneId =  "comboIndustryUsageLevelOne";
+    private String industryUsageComboBoxTwoId =  "comboIndustryUsageLevelTwo";
+    private By customerSearchButton = By.id("btnSearchCustomer");
+    private By favoriteCustomerButton= By.cssSelector("#quotationCustomer i.icon-star");
+    private By mostUsedCustomerButton = By.cssSelector("#quotationCustomer i.icon-fire");
+    private By endCustomerSearchButton = By.id("btnSearchEndCustomer");
+    private By channelCombobox = By.id("comboChannels");
+    private By businessLineCombobox = By.id("comboBusinessLine");
+    private By cancelButton = By.xpath("//*[@id='quotationCustomer']//button[contains(text(), 'Cancel')]");
+    private By saveAndCollapseButton = By.cssSelector("#quotationCustomer button.primaryButton");
+    private By rfqReceivedDateField = By.id("pickerRfqTimestamp");
+    private By rfqReceivedDateCalendarButton = By.xpath("//input[@id='pickerRfqTimestamp']/..//span[@role='button']");
+    private By openCustomerDataSectionButton = By.xpath("//*[@id='quotationCustomer']//button[contains(text(), 'Open')]");
 
-    @FindBy(css ="#quotationCustomer i.icon-star")
-    private WebElement favoriteCustomerButton;
 
-    @FindBy(css ="#quotationCustomer i.icon-fire")
-    private WebElement mostUsedCustomerButton;
 
-    @FindBy(css ="#editingCustomer  div:nth-child(5) i.icon-search")     //do poprawy
-    private WebElement endCustomerSearchButton;
-
-    @FindBy(css ="#editingCustomer > div:nth-child(11) > div:nth-child(1) > span.k-widget.k-combobox.k-header > span > input")     //do poprawy
-    private WebElement industryUsageDropdownList;
-
-    @FindBy(xpath = "//*[@id='quotationCustomer']//button[contains(text(), 'Cancel')]")
-    private WebElement cancelButton;
-
-    @FindBy(css = "#quotationCustomer button.primaryButton")
-    private WebElement saveAndCollapseButton;
-
-    @FindBy(id = "rfQtimestamp")
-    private WebElement rfqReceivedDateField;
-
-    public CustomerDataSection setRfqReceivedDate (String date){
-        rfqReceivedDateField.clear();
-        rfqReceivedDateField.sendKeys(date);
+    public CustomerDataSection insertRfqReceivedDate (String date){
+        waitOnButton(rfqReceivedDateCalendarButton);
+        clear(rfqReceivedDateField);
+        sendKeys(rfqReceivedDateField, date);
         return this;
     }
 
-    public CustomerDataSection pressSaveAndCollapseButton (){
-        saveAndCollapseButton.click();
+
+    public CustomerDataSection setIndustryUsageLevelOne (String industryUsage){
+        selectElementFromDropdownList(industryUsageComboBoxOneId, industryUsage);
         return this;
     }
 
-    public CustomerDataSection setIndustryUsage (String industryUsage){
-        industryUsageDropdownList.clear();
-        industryUsageDropdownList.sendKeys(industryUsage);
-        return this;
-    }
-
-    public CustomerDataSection pressCustomerSearchButton (){
-        customerSearchButton.click();
-        return this;
-    }
-
-    public CustomerDataSection pressEndCustomerSearchButton (){
-        endCustomerSearchButton.click();
-        return this;
-    }
-
-    public CustomerDataSection pressFavoriteCustomerButton (){
-        favoriteCustomerButton.click();
+    public CustomerDataSection setIndustryUsageLevelTwo (String industryUsage){
+        selectElementFromDropdownList(industryUsageComboBoxTwoId, industryUsage);
         return this;
     }
 
     public CustomerDataSection pressCancelButton(){
-        cancelButton.click();
+        waitOnButton(cancelButton);
+        click(cancelButton);
         return this;
     }
 
-    public CustomerDataSection pressMostUsedCustomerButton (){
-        mostUsedCustomerButton.click();
+    public CustomerDataSection pressOpenCustomerDataSectionButton(){
+        click(openCustomerDataSectionButton);
         return this;
     }
 
-    public <T extends QuotationNavigationBar> T pressCustomerSearchButton(Class<T> clazz) {
-        customerSearchButton.click();
+    public CustomerDataSection selectCustomerFromSearch(String customer){
+        SelectCustomerPopUp selectCustomerPopUp = pressCustomerSearchButton();
+        selectCustomerPopUp.insertCustomerSearchFieldSearchValue(customer);
+        selectCustomerPopUp.pressSearchButton();
+        selectCustomerPopUp.pressSelectButtonForFirstSearchResult();
+        return this;
+    }
+
+    public GeneralSection pressSaveAndCollapseButton() {
+        waitOnButton(saveAndCollapseButton);
+        click(saveAndCollapseButton);
+        return new GeneralSection(driver);
+    }
+
+    public SelectCustomerPopUp pressCustomerSearchButton() {
+        waitOnButton(customerSearchButton);
+        click(customerSearchButton);
+        return new SelectCustomerPopUp(driver);
+    }
+
+    public <T extends QuotationNavigationBar> T pressSaveAndCollapseButton(Class<T> clazz) {
+        waitOnButton(saveAndCollapseButton);
+        click(saveAndCollapseButton);
         return PageFactory.initElements(driver, clazz);
     }
-
 
 }

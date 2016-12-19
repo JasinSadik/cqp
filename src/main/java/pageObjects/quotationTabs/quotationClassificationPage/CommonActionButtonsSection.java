@@ -1,5 +1,6 @@
 package pageObjects.quotationTabs.quotationClassificationPage;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,11 +15,12 @@ public class CommonActionButtonsSection extends QuotationNavigationBar {
         super(driver);
 
     }
-    @FindBy(css =" #newQuotation button.primaryButton")
-    private WebElement createQuotationButton;
+
+    private By createQuotationButton = By.id("btnCreateQuotation");
 
     public CommonActionButtonsSection pressCreateQuotationButton (){
-        createQuotationButton.click();
+        waitOnButton(createQuotationButton);
+        click(createQuotationButton);
         return this;
     }
 

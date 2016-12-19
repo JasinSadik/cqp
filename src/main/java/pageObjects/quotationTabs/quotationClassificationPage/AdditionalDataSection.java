@@ -1,8 +1,10 @@
 package pageObjects.quotationTabs.quotationClassificationPage;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pageObjects.popUpWindows.confirmationPopUp.ConfirmationModal;
 import pageObjects.quotationTabs.QuotationNavigationBar;
 
 /**
@@ -14,12 +16,13 @@ public class AdditionalDataSection extends QuotationNavigationBar {
 
     }
 
-    @FindBy(css = "#quotationGeneral > div.editingPart.isEditing > div:nth-child(3) > div:nth-child(15) > div > span:nth-child(2) > button")
-    private WebElement saveAndCollapseButton;
+    private String quotationLanguageComboBoxId = "comboQuotationLanguage";
 
-    public AdditionalDataSection clickSaveAndCollapseButton() {
-        saveAndCollapseButton.click();
-        return this;
+    public ConfirmationModal setQuotationLanguage(String language) {
+        scrollToElement(By.id(quotationLanguageComboBoxId));
+        selectElementFromDropdownList(quotationLanguageComboBoxId, language);
+        return new ConfirmationModal(driver);
     }
+
 
 }

@@ -1,10 +1,13 @@
 package pageObjects.popUpWindows.selectCustomerPopUp;
 
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import pageObjects.mainPages.TopMenu;
+import pageObjects.quotationTabs.QuotationNavigationBar;
 import pageObjects.quotationTabs.quotationClassificationPage.CustomerDataSection;
 
 /**
@@ -14,35 +17,37 @@ public class SelectCustomerPopUp extends TopMenu {
 
     public SelectCustomerPopUp(WebDriver driver) {
         super(driver);
-
-
     }
 
-    @FindBy(id = "searchCustomerByName")
-    private WebElement customerSearchField;
+    private By customerSearchField = By.id("searchCustomerByName");
+    private By searchButton = By.cssSelector("#customerCamSearch button[class='primaryButton searchButton']");
+    private By selectButtonFirstSearchResult = By.cssSelector("#customerCamSearch table tr:nth-child(1)  button");
 
-    @FindBy(css = "#customerCamSearch button[class='primaryButton searchButton']")
-    private WebElement searchButton;
-
-
-    @FindBy(css = "#customerCamSearch table tr:nth-child(1)  button")
-    private WebElement selectButtonFirstSearchResult;
-
-    public SelectCustomerPopUp setCustomerSearchFieldSearchValue(String searchValue) {
-        customerSearchField.clear();
-        customerSearchField.sendKeys(searchValue);
+    public SelectCustomerPopUp insertCustomerSearchFieldSearchValue(String searchValue) {
+        waitOnElementToBeVisible(customerSearchField);
+        clear(customerSearchField);
+        sendKeys(customerSearchField, searchValue);
         return this;
     }
 
     public SelectCustomerPopUp pressSearchButton() {
-        searchButton.click();
+        waitOnButton(searchButton);
+        click(searchButton);
         return this;
     }
 
     public CustomerDataSection pressSelectButtonForFirstSearchResult() {
-        selectButtonFirstSearchResult.click();
+        waitOnButton(selectButtonFirstSearchResult);
+        click(selectButtonFirstSearchResult);;
         return new CustomerDataSection(driver);
     }
+
+    public <T extends QuotationNavigationBar> T pressSaveAndCollapseButton(Class<T> clazz) {
+        waitOnButton(selectButtonFirstSearchResult);
+        click(selectButtonFirstSearchResult);;
+        return PageFactory.initElements(driver, clazz);
+    }
+
 
 
 }

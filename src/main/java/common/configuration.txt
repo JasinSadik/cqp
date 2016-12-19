@@ -1,6 +1,6 @@
-browser: IE
-environment: CQP_SANDBOX
-environment_url: https://de-s-0214371.de.abb.com/CQP_SANDBOX/en-US/Login/Login
+browser: CHROME
+environment: CQP_TEST
+environment_url: https://de-s-0214371.de.abb.com/CQP_TEST/en-US/Login/Login
 snapshot_path: C:/Users/pljahas/Desktop/Testy Auto tematyczne/Screenshots/
 timeout: 60 
 user: urban.boken@se.abb.com

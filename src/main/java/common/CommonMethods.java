@@ -4,6 +4,7 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -26,133 +27,121 @@ public class CommonMethods extends Page {
     }
 
 
-
     //..........................Waiters......................
-    public  void waitOnButton(WebElement element){
+    protected void waitOnButton(WebElement element) {
         waitOnElementToBeVisible(element);
         waitOnElementToBeClickable(element);
     }
 
-    public  void waitOnButton(By by){
+    protected void waitOnButton(By by) {
         waitOnElementToBeVisible(by);
         waitOnElementToBeClickable(by);
     }
 
-    public  void waitOnPresenceOfElement(By by){
-        try{
+    protected void waitOnPresenceOfElement(By by) {
+        try {
             new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(by));
-        }catch(TimeoutException e){
+        } catch (TimeoutException e) {
             System.out.print("Timeout - Element not found");
         }
     }
 
-    public  void waitOnElementToBeVisible(WebElement element){
-        try{
+    protected void waitOnElementToBeVisible(WebElement element) {
+        try {
             new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(element));
-        }catch(TimeoutException e){
+        } catch (TimeoutException e) {
             System.out.print("Timeout - Element not found");
         }
     }
 
-    public  void waitOnElementToBeVisible(By by){
-        try{
+    protected void waitOnElementToBeVisible(By by) {
+        try {
             new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(by));
-        }catch(TimeoutException e){
+        } catch (TimeoutException e) {
             System.out.print("Timeout - Element not found");
         }
     }
 
-    public  void waitOnElementToBeClickable(WebElement element){
-        try{
+    protected void waitOnElementToBeClickable(WebElement element) {
+        try {
             new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(element));
-        }catch(TimeoutException e){
+        } catch (TimeoutException e) {
             System.out.print("Timeout - Element not found");
         }
     }
 
-    public  void waitOnElementToBeClickable(By by){
-        try{
+    protected void waitOnElementToBeClickable(By by) {
+        try {
             new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(by));
-        }catch(TimeoutException e){
+        } catch (TimeoutException e) {
             System.out.print("Timeout - Element not found");
         }
     }
 
-
+    protected void waitForPageLoad(WebDriver driver) {
+        ExpectedCondition<Boolean> pageLoadCondition = new
+                ExpectedCondition<Boolean>() {
+                    public Boolean apply(WebDriver driver) {
+                        return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
+                    }
+                };
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(pageLoadCondition);
+    }
 
     //..........................SeleniumMethods......................
-    public  WebElement findElement(WebElement element) {
-        waitOnElementToBeVisible(element);
-        return  element;
+    protected WebElement findElement(By by) {
+        waitOnElementToBeVisible(by);
+        element = driver.findElement(by);
+        return element;
     }
 
-    public  void sendKeys(WebDriver driver, WebElement element, String key) {
-        sendKeys(driver, element, key, true);
+    protected void sendKeys(By by, String text) {
+        driver.findElement(by).sendKeys(text);
     }
 
-    public  void sendKeys(WebDriver driver, WebElement element, String key, boolean clearTextbox){
+    protected void setAttribute(WebDriver driver, WebElement element, String attributeName, String key) {
         boolean elementStatus = true;
-        while(elementStatus == true){
-            try{
-                if (clearTextbox == true) {
-                    element.clear();
-                }
-                element.sendKeys(key);
-                elementStatus = false;
-            }catch(WebDriverException e){
-                elementStatus = true;
-            }
-        }
-        System.out.print(timestamp()+" --> ");
-        element = null;
-    }
-
-    public  void setAttribute(WebDriver driver, WebElement element, String attributeName, String key){
-        boolean elementStatus = true;
-        while(elementStatus == true){
-            try{
+        while (elementStatus == true) {
+            try {
                 JavascriptExecutor js = (JavascriptExecutor) driver;
-                js.executeScript("arguments[0].setAttribute('+'attributeName'+', '"+key+"')",element);
+                js.executeScript("arguments[0].setAttribute('+'attributeName'+', '" + key + "')", element);
                 elementStatus = false;
-            }catch(WebDriverException e){
+            } catch (WebDriverException e) {
                 elementStatus = true;
             }
         }
-        System.out.print(timestamp()+" --> ");
+        System.out.print(timestamp() + " --> ");
         element = null;
     }
 
-    public  void click(WebDriver driver, WebElement element){
+    protected void click(By by) {
         boolean elementStatus = true;
-        while(elementStatus == true){
-            try{
-                new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(element));
-                JavascriptExecutor executor = (JavascriptExecutor)driver;
-                executor.executeScript("arguments[0].click();", element);
+        while (elementStatus) {
+            try {
+                new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(driver.findElement(by)));
+                JavascriptExecutor executor = (JavascriptExecutor) driver;
+                executor.executeScript("arguments[0].click();", driver.findElement(by));
                 elementStatus = false;
-            }catch(WebDriverException e){
-                System.out.println("Waiting on clickable element...");
+
+            } catch (WebDriverException e) {
+                System.out.println("Timeout - element not found");
             }
         }
-        System.out.print(timestamp()+" --> ");
-        element = null;
     }
 
-    public  void clear(WebDriver driver, WebElement element){
-        new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(element));
-        element.clear();
-        element = null;
+    protected void clear(By by) {
+        driver.findElement(by).clear();
     }
 
-    public  String getText(WebElement element){
-        String text = element.getText();
-        element = null;
-        return text;
+    protected String getText(By by) {
+        return driver.findElement(by).getText();
     }
+
     //..........................ConfigParser......................
     public String getPropertyFromConfigurationFile(String key) throws Exception {
         boolean check = false;
-        BufferedReader configFile = new BufferedReader(new FileReader(new File(System.getProperty("user.dir") + "\\src\\main\\java\\common\\configuration")));
+        BufferedReader configFile = new BufferedReader(new FileReader(new File(System.getProperty("user.dir") + "\\src\\main\\java\\common\\configuration.txt")));
         while (!check) {
             String[] line = configFile.readLine().split(":");
             if (line[0].contains(key)) {
@@ -169,7 +158,7 @@ public class CommonMethods extends Page {
 
     //.........................SqlMethods.......................
 
-    public Statement initDB () throws Exception {
+    protected Statement initDB() throws Exception {
         Class.forName(getPropertyFromConfigurationFile("class_db"));
         Connection conn;
         conn = DriverManager.getConnection(getPropertyFromConfigurationFile("db_url"), "", "");
@@ -177,26 +166,26 @@ public class CommonMethods extends Page {
         return stmt;
     }
 
-    public  void updateDB(String table, String columnNameLocation, String valueLocation, String columnName, String value, String position) throws Exception {
+    protected void updateDB(String table, String columnNameLocation, String valueLocation, String columnName, String value, String position) throws Exception {
         Statement stmt = initDB();
         String environment = getPropertyFromConfigurationFile("environment");
-        stmt.executeUpdate("UPDATE ["+environment+"].[dbo].["+table+"] SET "+columnName+"=NULL WHERE "+columnNameLocation+"='"+valueLocation+"' AND Position = "+"'"+position+"'" );
+        stmt.executeUpdate("UPDATE [" + environment + "].[dbo].[" + table + "] SET " + columnName + "=NULL WHERE " + columnNameLocation + "='" + valueLocation + "' AND Position = " + "'" + position + "'");
 
     }
 
-    public ResultSet readDB(String table, String columnNameLocation, String valueLocation, String columnName, String position) throws Exception {
+    protected ResultSet readDB(String table, String columnNameLocation, String valueLocation, String columnName, String position) throws Exception {
         ResultSet rs;
         Statement stmt = initDB();
         String environment = getPropertyFromConfigurationFile("environment");
-        rs = stmt.executeQuery("SELECT ["+columnName+"] FROM ["+environment+"].[dbo].["+table+"] WHERE "+columnNameLocation+"='"+valueLocation+"'" );
+        rs = stmt.executeQuery("SELECT [" + columnName + "] FROM [" + environment + "].[dbo].[" + table + "] WHERE " + columnNameLocation + "='" + valueLocation + "'");
         return rs;
     }
 
     //..........................BrowserSetup....................
-    public WebDriver browserSetup() throws Exception{
-        String browser= getPropertyFromConfigurationFile("browser");
-        int timeout= Integer.parseInt(getPropertyFromConfigurationFile("timeout"));
-        switch (browser){
+    public WebDriver browserSetup() throws Exception {
+        String browser = getPropertyFromConfigurationFile("browser");
+        int timeout = Integer.parseInt(getPropertyFromConfigurationFile("timeout"));
+        switch (browser) {
             case "IE":
                 driver = new InternetExplorerDriver();
                 driver.manage().timeouts().implicitlyWait(timeout, TimeUnit.SECONDS);
@@ -211,23 +200,48 @@ public class CommonMethods extends Page {
         return driver;
     }
 
-    public void setTimout(WebDriver driver, int timeout){
+    public void setTimout(WebDriver driver, int timeout) {
         driver.manage().timeouts().implicitlyWait(timeout, TimeUnit.SECONDS);
     }
 
     //..........................Others......................
-    public  void snapshot(WebDriver driver, String testName) throws Exception{
-        File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        String newFileSrc = testName+"_"+timestamp()+".jpg";
+    protected void snapshot(WebDriver driver, String testName) throws Exception {
+        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        String newFileSrc = testName + "_" + timestamp() + ".jpg";
 
-        FileUtils.copyFile(screenshot,new File(getPropertyFromConfigurationFile("snapshot_path") + newFileSrc));
+        FileUtils.copyFile(screenshot, new File(getPropertyFromConfigurationFile("snapshot_path") + newFileSrc));
         System.out.println("New screenshot was saved: " + newFileSrc);
     }
 
-    public  String timestamp(){
-        java.util.Date date= new java.util.Date();
+    protected String timestamp() {
+        java.util.Date date = new java.util.Date();
         String timestamp = (new Timestamp(date.getTime())).toString().substring(0, 19);
         return timestamp;
+    }
+
+    protected void selectElementFromDropdownList(String comboBoxId, String value) {
+        int index = 1;
+        By comboBoxButton = By.xpath("//input[contains(@id , '" + comboBoxId + "')]/..//span[contains(text(), 'select')]");
+        By comboBoxList = By.xpath("//ul[contains(@id , '" + comboBoxId + "_listbox')]/li");
+        By comboBoxElement = By.xpath("//ul[contains(@id , '" + comboBoxId + "_listbox')]/li[" + index + "]");
+        waitOnButton(comboBoxButton);
+        click(comboBoxButton);
+        while (driver.findElements(comboBoxList).size() > index - 1) {
+            waitOnElementToBeClickable(driver.findElement(comboBoxElement));
+            if (driver.findElement(comboBoxElement).getText().toLowerCase().contains(value.toLowerCase())) {
+                click(comboBoxElement);
+                break;
+            } else {
+                index++;
+                comboBoxElement = By.xpath("//ul[contains(@id , '" + comboBoxId + "_listbox')]/li[" + index + "]");
+            }
+        }
+    }
+
+    protected void scrollToElement(By by) {
+        element = driver.findElement(by);
+        Actions action = new Actions(driver);
+        action.moveToElement(element).build().perform();
     }
 
 }
