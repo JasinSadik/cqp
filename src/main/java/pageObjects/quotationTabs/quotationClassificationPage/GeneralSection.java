@@ -32,16 +32,19 @@ public class GeneralSection extends QuotationNavigationBar {
     }
 
     public GeneralSection setQuotationType(String quotationType) {
+        scrollToElement(By.id(quotationTypeComboboxId));
         selectElementFromDropdownList(quotationTypeComboboxId, quotationType);
         return this;
     }
     public AdditionalDataSection pressSaveAndCollapseButton() {
+        scrollToElement(saveAndCollapseButton);
         waitOnButton(saveAndCollapseButton);
         click(saveAndCollapseButton);
         return new AdditionalDataSection(driver);
     }
 
     public <T extends QuotationNavigationBar> T pressSaveAndCollapseButton(Class<T> clazz) {
+        scrollToElement(saveAndCollapseButton);
         waitOnButton(saveAndCollapseButton);
         click(saveAndCollapseButton);
         return PageFactory.initElements(driver, clazz);

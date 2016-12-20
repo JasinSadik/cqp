@@ -1,33 +1,32 @@
 package pageObjects.quotationTabs.productsAndPricesPage;
 
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pageObjects.quotationTabs.QuotationNavigationBar;
 
-public class CommonActionButtons extends QuotationNavigationBar {
+public class ProductsAndPricesCommonActionButtons extends QuotationNavigationBar {
 
-    public CommonActionButtons(WebDriver driver) {
+    public ProductsAndPricesCommonActionButtons(WebDriver driver) {
         super(driver);
     }
 
 
+    private By addToQuotationButton = By.cssSelector("#divActionMenu > div:nth-child(2) > button.primaryButton");
+    private By quickSearchField = By.id("ProductAutoComplete");
 
-    @FindBy(css ="#divActionMenu > div:nth-child(2) > button.primaryButton")
-    private WebElement addToQuotationButton;
-
-    @FindBy(id ="ProductAutoComplete")
-    private WebElement quickSearchField;
-
-    public CommonActionButtons setProductToSearchInQuickSearchField (String productForSearch){
-        quickSearchField.clear();
-        quickSearchField.sendKeys(productForSearch);
+    public ProductsAndPricesCommonActionButtons setProductToSearchInQuickSearchField (String productForSearch){
+        waitOnPresenceOfElement(quickSearchField);
+        clear(quickSearchField);
+        sendKeys(quickSearchField,productForSearch);
         return this;
     }
 
-    public CommonActionButtons pressAddToQuotationButton (){
-         addToQuotationButton.click();
+    public ProductsAndPricesCommonActionButtons pressAddToQuotationButton (){
+        waitOnButton(addToQuotationButton);
+         click(addToQuotationButton);
         return this;
     }
 

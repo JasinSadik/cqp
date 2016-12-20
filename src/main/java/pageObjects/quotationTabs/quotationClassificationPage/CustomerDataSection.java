@@ -35,7 +35,7 @@ public class CustomerDataSection extends QuotationNavigationBar {
     private By rfqReceivedDateField = By.id("pickerRfqTimestamp");
     private By rfqReceivedDateCalendarButton = By.xpath("//input[@id='pickerRfqTimestamp']/..//span[@role='button']");
     private By openCustomerDataSectionButton = By.xpath("//*[@id='quotationCustomer']//button[contains(text(), 'Open')]");
-
+    private By todayRqfButton = By.xpath("//*[@id='quotationCustomer']//span[contains(text(), 'Today')]");
 
 
     public CustomerDataSection insertRfqReceivedDate (String date){
@@ -59,6 +59,12 @@ public class CustomerDataSection extends QuotationNavigationBar {
     public CustomerDataSection pressCancelButton(){
         waitOnButton(cancelButton);
         click(cancelButton);
+        return this;
+    }
+
+    public CustomerDataSection pressTodayRfqButton(){
+        waitOnButton(todayRqfButton);
+        click(todayRqfButton);
         return this;
     }
 

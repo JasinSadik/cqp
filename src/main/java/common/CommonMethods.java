@@ -35,6 +35,7 @@ public class CommonMethods extends Page {
 
     protected void waitOnButton(By by) {
         waitOnElementToBeVisible(by);
+        waitOnPresenceOfElement(by);
         waitOnElementToBeClickable(by);
     }
 
@@ -213,7 +214,7 @@ public class CommonMethods extends Page {
         System.out.println("New screenshot was saved: " + newFileSrc);
     }
 
-    protected String timestamp() {
+    public String timestamp() {
         java.util.Date date = new java.util.Date();
         String timestamp = (new Timestamp(date.getTime())).toString().substring(0, 19);
         return timestamp;
@@ -225,6 +226,9 @@ public class CommonMethods extends Page {
         By comboBoxList = By.xpath("//ul[contains(@id , '" + comboBoxId + "_listbox')]/li");
         By comboBoxElement = By.xpath("//ul[contains(@id , '" + comboBoxId + "_listbox')]/li[" + index + "]");
         waitOnButton(comboBoxButton);
+        while(driver.findElements(comboBoxList).size() == 0){
+            // to fill up
+        }
         click(comboBoxButton);
         while (driver.findElements(comboBoxList).size() > index - 1) {
             waitOnElementToBeClickable(driver.findElement(comboBoxElement));
