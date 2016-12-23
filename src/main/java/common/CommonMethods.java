@@ -43,7 +43,7 @@ public class CommonMethods extends Page {
         try {
             new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(by));
         } catch (TimeoutException e) {
-            System.out.print("Timeout - Element not found");
+            System.out.println("Timeout - Element not found");
         }
     }
 
@@ -75,7 +75,7 @@ public class CommonMethods extends Page {
         try {
             new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(by));
         } catch (TimeoutException e) {
-            System.out.print("Timeout - Element not found");
+            System.out.println("Timeout - Element not found");
         }
     }
 
@@ -101,19 +101,17 @@ public class CommonMethods extends Page {
         driver.findElement(by).sendKeys(text);
     }
 
-    protected void setAttribute(WebDriver driver, WebElement element, String attributeName, String key) {
+    protected void setAttribute(By by, String attributeName, String key) {
         boolean elementStatus = true;
         while (elementStatus == true) {
             try {
                 JavascriptExecutor js = (JavascriptExecutor) driver;
-                js.executeScript("arguments[0].setAttribute('+'attributeName'+', '" + key + "')", element);
+                js.executeScript("arguments[0].setAttribute('"+attributeName+"', '" + key + "')", findElement(by));
                 elementStatus = false;
             } catch (WebDriverException e) {
-                elementStatus = true;
+                //
             }
         }
-        System.out.print(timestamp() + " --> ");
-        element = null;
     }
 
     protected void click(By by) {
@@ -158,28 +156,29 @@ public class CommonMethods extends Page {
     }
 
     //.........................SqlMethods.......................
+    public class SqlMethods{
+        protected Statement initDB() throws Exception {
+            Class.forName(getPropertyFromConfigurationFile("class_db"));
+            Connection conn;
+            conn = DriverManager.getConnection(getPropertyFromConfigurationFile("db_url"), "", "");
+            Statement stmt = conn.createStatement();
+            return stmt;
+        }
 
-    protected Statement initDB() throws Exception {
-        Class.forName(getPropertyFromConfigurationFile("class_db"));
-        Connection conn;
-        conn = DriverManager.getConnection(getPropertyFromConfigurationFile("db_url"), "", "");
-        Statement stmt = conn.createStatement();
-        return stmt;
-    }
+        protected void updateDB(String table, String columnNameLocation, String valueLocation, String columnName, String value, String position) throws Exception {
+            Statement stmt = initDB();
+            String environment = getPropertyFromConfigurationFile("environment");
+            stmt.executeUpdate("UPDATE [" + environment + "].[dbo].[" + table + "] SET " + columnName + "=NULL WHERE " + columnNameLocation + "='" + valueLocation + "' AND Position = " + "'" + position + "'");
 
-    protected void updateDB(String table, String columnNameLocation, String valueLocation, String columnName, String value, String position) throws Exception {
-        Statement stmt = initDB();
-        String environment = getPropertyFromConfigurationFile("environment");
-        stmt.executeUpdate("UPDATE [" + environment + "].[dbo].[" + table + "] SET " + columnName + "=NULL WHERE " + columnNameLocation + "='" + valueLocation + "' AND Position = " + "'" + position + "'");
+        }
 
-    }
-
-    protected ResultSet readDB(String table, String columnNameLocation, String valueLocation, String columnName, String position) throws Exception {
-        ResultSet rs;
-        Statement stmt = initDB();
-        String environment = getPropertyFromConfigurationFile("environment");
-        rs = stmt.executeQuery("SELECT [" + columnName + "] FROM [" + environment + "].[dbo].[" + table + "] WHERE " + columnNameLocation + "='" + valueLocation + "'");
-        return rs;
+        protected ResultSet readDB(String table, String columnNameLocation, String valueLocation, String columnName, String position) throws Exception {
+            ResultSet rs;
+            Statement stmt = initDB();
+            String environment = getPropertyFromConfigurationFile("environment");
+            rs = stmt.executeQuery("SELECT [" + columnName + "] FROM [" + environment + "].[dbo].[" + table + "] WHERE " + columnNameLocation + "='" + valueLocation + "'");
+            return rs;
+        }
     }
 
     //..........................BrowserSetup....................
@@ -201,7 +200,7 @@ public class CommonMethods extends Page {
         return driver;
     }
 
-    public void setTimout(WebDriver driver, int timeout) {
+    public void setTimeout(WebDriver driver, int timeout) {
         driver.manage().timeouts().implicitlyWait(timeout, TimeUnit.SECONDS);
     }
 
@@ -240,6 +239,21 @@ public class CommonMethods extends Page {
                 comboBoxElement = By.xpath("//ul[contains(@id , '" + comboBoxId + "_listbox')]/li[" + index + "]");
             }
         }
+    }
+
+    protected void selectElementFromDropdownListSimple(String value){
+        selectElementFromDropdownListSimple(value, false);
+    }
+
+    protected void selectElementFromDropdownListSimple(String value, boolean isLink){
+        By by;
+        if(!isLink) {
+            by = By.xpath("//li[contains(text(), '" + value + "')]");
+        }else {
+            by = By.xpath("//a[contains(text(), '" + value + "')]");
+        }
+        waitOnPresenceOfElement(by);
+        click(by);
     }
 
     protected void scrollToElement(By by) {

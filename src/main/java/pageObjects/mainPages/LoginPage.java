@@ -1,6 +1,7 @@
 package pageObjects.mainPages;
 
 import common.CommonMethods;
+import org.apache.commons.logging.Log;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,6 +20,14 @@ public class LoginPage extends CommonMethods {
     private By usernameField = By.name("UserName");
     private By passwordField = By.name("Password");
     private By loginButton = By.cssSelector("p.submit >input");
+    private By creNewQuoteButton = By.xpath("//*[@id='buttonDiv'']/div[1]/a");
+
+
+    public LoginPage pressNewQuoteButton(){
+        click(creNewQuoteButton);
+
+        return this;
+    }
 
     public LoginPage insertUsername(String username) {
         waitOnPresenceOfElement(usernameField);

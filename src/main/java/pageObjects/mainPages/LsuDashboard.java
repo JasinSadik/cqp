@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import org.openqa.selenium.support.FindBy;
+import pageObjects.popUpWindows.SearchQuotationsPopUp;
+import pageObjects.popUpWindows.selectCustomerPopUp.SelectCustomerPopUp;
 import pageObjects.quotationTabs.QuotationNavigationBar;
 import pageObjects.quotationTabs.quotationClassificationPage.CustomerDataSection;
 
@@ -18,7 +20,8 @@ public class LsuDashboard extends TopMenu {
 
     private By newQuotationButton = By.cssSelector("a[class='button newQuotation']");
     private By currentlyLoggedUser = By.cssSelector("#topMenu_C019 > span");
-
+    private By searchQuotationField = By.cssSelector("#firstClonePanelGroup input");
+    private By searchAllQuotationsButton = By.xpath("//*[@id = 'firstClonePanelGroup']//input/../a");
 
     public CustomerDataSection pressNewQuotationButton() {
         waitOnButton(newQuotationButton);
@@ -31,6 +34,24 @@ public class LsuDashboard extends TopMenu {
         return getText(currentlyLoggedUser);
     }
 
+    public SearchQuotationsPopUp pressSearchAllQuotationsButton(){
+        waitOnButton(searchAllQuotationsButton);
+        click(searchAllQuotationsButton);
+        return new SearchQuotationsPopUp(driver);
+    }
 
+    public LsuDashboard insertQuotationNumberToSearchField(String quoteNumber){
+        waitOnPresenceOfElement(searchQuotationField);
+        clear(searchQuotationField);
+        sendKeys(searchQuotationField, quoteNumber);
+        return this;
+    }
 
+    public QuotationNavigationBar openQuotationFromQuickSearch(String quoteNumber) {
+        waitOnPresenceOfElement(searchQuotationField);
+        insertQuotationNumberToSearchField(quoteNumber);
+        SearchQuotationsPopUp searchQuotationsPopUp = pressSearchAllQuotationsButton();
+        searchQuotationsPopUp.openQuotation();
+        return new QuotationNavigationBar(driver);
+    }
 }

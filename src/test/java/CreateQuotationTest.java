@@ -5,6 +5,8 @@ import org.testng.annotations.Test;
 import pageObjects.mainPages.LoginPage;
 import pageObjects.mainPages.LsuDashboard;
 import pageObjects.popUpWindows.confirmationPopUp.SfdcSyncConfirmationModal;
+import pageObjects.quotationTabs.QuotationNavigationBar;
+import pageObjects.quotationTabs.productsAndPricesPage.ProductLine;
 import pageObjects.quotationTabs.productsAndPricesPage.ProductsAndPricesCommonActionButtons;
 import pageObjects.quotationTabs.quotationClassificationPage.QuotationClassificationCommonActionButtonsSection;
 import pageObjects.quotationTabs.quotationClassificationPage.CustomerDataSection;
@@ -39,30 +41,39 @@ public class CreateQuotationTest extends BaseScenario {
     }
 
     @Test(priority = 2)
-    public void shouldCreateQuotation() {
+    public void shouldOpenQuotationFromSearch() {
         LsuDashboard lsuDashboard = new LsuDashboard(driver);
-        CustomerDataSection customerDataSection = lsuDashboard.pressNewQuotationButton();
-        customerDataSection.selectCustomerFromSearch(CUSTOMER);
-        customerDataSection.pressTodayRfqButton();
-        customerDataSection.setIndustryUsageLevelOne(INUDSTRY_USAGE_LEVEL1);
-        customerDataSection.setIndustryUsageLevelTwo(INUDSTRY_USAGE_LEVEL2);
-        GeneralSection generalSection = customerDataSection.pressSaveAndCollapseButton();
-        generalSection.insertProjectName(PROJECT_NAME);
-        generalSection.setQuotationType(QUOTATION_TYPE);
-        QuotationClassificationCommonActionButtonsSection quotationClassificationCommonActionButtonsSection = generalSection.pressSaveAndCollapseButton(QuotationClassificationCommonActionButtonsSection.class);
-        SfdcSyncConfirmationModal sfdcSyncConfirmationModal = quotationClassificationCommonActionButtonsSection.pressCreateQuotationButton();
-        sfdcSyncConfirmationModal.pressConfirmButton();
-
+        QuotationNavigationBar quotationNavigationBar = lsuDashboard.openQuotationFromQuickSearch("CQ189504");
     }
 
     @Test(priority = 3)
-    public void shouldAddProduct() throws InterruptedException {
-        ProductsAndPricesCommonActionButtons productsAndPricesCommonActionButtons = new ProductsAndPricesCommonActionButtons(driver);
-        productsAndPricesCommonActionButtons.setProductToSearchInQuickSearchField("lv drive/ACS800-01-0120-3+E202+K454");
-        productsAndPricesCommonActionButtons.pressAddToQuotationButton();
-        Thread.sleep(10000);
+    public void shouldAddProductFromMotconf() throws InterruptedException {
+        QuotationNavigationBar quotationNavigationBar = new QuotationNavigationBar(driver);
+        Thread.sleep(15000); // taby do poprawy
+        ProductsAndPricesCommonActionButtons productsAndPricesCommonActionButtons = quotationNavigationBar.goToProductAndPriceTab(ProductsAndPricesCommonActionButtons.class);
+        productsAndPricesCommonActionButtons.addProductFromLvDrive("ACS800-01-0120-3+E202+K454");
+        productsAndPricesCommonActionButtons.addProductFromMotConf("3GKP182410-AEH+066+069");
+        Thread.sleep(1000);
+
 
     }
+//    @Test(priority = 2)
+//    public void shouldCreateQuotation() {
+//        LsuDashboard lsuDashboard = new LsuDashboard(driver);
+//        CustomerDataSection customerDataSection = lsuDashboard.pressNewQuotationButton();
+//        customerDataSection.selectCustomerFromSearch(CUSTOMER);
+//        customerDataSection.pressTodayRfqButton();
+//        customerDataSection.setIndustryUsageLevelOne(INUDSTRY_USAGE_LEVEL1);
+//        customerDataSection.setIndustryUsageLevelTwo(INUDSTRY_USAGE_LEVEL2);
+//        GeneralSection generalSection = customerDataSection.pressSaveAndCollapseButton();
+//        generalSection.insertProjectName(PROJECT_NAME);
+//        generalSection.setQuotationType(QUOTATION_TYPE);
+//        QuotationClassificationCommonActionButtonsSection quotationClassificationCommonActionButtonsSection = generalSection.pressSaveAndCollapseButton(QuotationClassificationCommonActionButtonsSection.class);
+//        SfdcSyncConfirmationModal sfdcSyncConfirmationModal = quotationClassificationCommonActionButtonsSection.pressCreateQuotationButton();
+//        sfdcSyncConfirmationModal.pressConfirmButton();
+//
+//    }
+
 
     @AfterTest
     public void after() {

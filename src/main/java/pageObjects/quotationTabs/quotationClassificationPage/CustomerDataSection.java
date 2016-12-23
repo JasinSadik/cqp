@@ -94,8 +94,7 @@ public class CustomerDataSection extends QuotationNavigationBar {
     }
 
     public <T extends QuotationNavigationBar> T pressSaveAndCollapseButton(Class<T> clazz) {
-        waitOnButton(saveAndCollapseButton);
-        click(saveAndCollapseButton);
+        pressSaveAndCollapseButton();
         return PageFactory.initElements(driver, clazz);
     }
 
