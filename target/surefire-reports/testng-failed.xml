@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite verbose="0" name="Failed suite [Command line suite]">
+  <test name="Command line test(failed)">
+    <classes>
+      <class name="OrderToOmsTest">
+        <methods>
+          <include name="shouldGenerateAndIssueDocument"/>
+          <include name="before"/>
+          <include name="shouldLogIntoToCqp"/>
+          <include name="shouldAddProducts"/>
+          <include name="shouldCreateQuotation"/>
+        </methods>
+      </class> <!-- OrderToOmsTest -->
+      <class name="CreateSupportTest">
+        <methods>
+          <include name="shouldReplyToRequest"/>
+          <include name="shouldCreateQuotation"/>
+          <include name="shouldLogIntoToCqp"/>
+          <include name="shouldOpenRequest"/>
+          <include name="before"/>
+          <include name="shouldAddProducts"/>
+          <include name="shouldStartSupportRequest"/>
+        </methods>
+      </class> <!-- CreateSupportTest -->
+      <class name="LoginTest">
+        <methods>
+          <include name="shouldShowUnauthorizedMessageLogInWithWrongUsername"/>
+          <include name="shouldLogInToCqp"/>
+          <include name="shouldShowUnauthorizedMessageLogInWithEmptyFields"/>
+          <include name="shouldShowUnauthorizedMessageLogInWithWrongPassword"/>
+        </methods>
+      </class> <!-- LoginTest -->
+      <class name="PositiveApprovalForNewQuotationTest">
+        <methods>
+          <include name="shouldLogIntoToCqp"/>
+          <include name="shouldAddProducts"/>
+          <include name="shouldCreateQuotation"/>
+          <include name="shouldStartApproval"/>
+        </methods>
+      </class> <!-- PositiveApprovalForNewQuotationTest -->
+    </classes>
+  </test> <!-- Command line test(failed) -->
+</suite> <!-- Failed suite [Command line suite] -->
