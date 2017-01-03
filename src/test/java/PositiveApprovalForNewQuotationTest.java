@@ -1,6 +1,8 @@
 import baseScenarios.BaseScenario;
+import com.microsoft.sqlserver.jdbc.SQLServerMetaData;
 import common.CommonMethods;
 import common.SqlMethods;
+import org.apache.xalan.lib.sql.SQLDocument;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -37,6 +39,7 @@ public class PositiveApprovalForNewQuotationTest extends BaseScenario {
         driver.get(new CommonMethods(driver).getPropertyFromConfigurationFile("environment_url"));
         new SqlMethods(driver).BindingGeneralApprovalSetBlocking(LSU);
         new SqlMethods(driver).NonBindingGeneralApprovalSetBlocking(LSU);
+        System.out.println(new SqlMethods(driver).getUsersEmail("Aleksander Muller"));
     }
 
     @Test(priority = 1)

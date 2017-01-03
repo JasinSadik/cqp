@@ -93,6 +93,10 @@ public class SqlMethods extends Page {
         updateDB("ApprovalBehavior", "SET QualificationTestNoBinding = 2 WHERE LsuID = '" + Lsu+"'");
     }
 
+    public String getUsersEmail(String user) throws Exception {
+        String useremail = user.toLowerCase().trim().split(" ")[0] +"."+ user.toLowerCase().trim().split(" ")[1];
+        return readDB("UserPreferences", "Username ","WHERE Username LIKE '" + useremail+"'").toString();
+    }
 
     protected Statement initDB() throws Exception {
         Class.forName(new CommonMethods(driver).getPropertyFromConfigurationFile("class_db"));
@@ -109,11 +113,11 @@ public class SqlMethods extends Page {
 
     }
 
-    protected ResultSet readDB(String table, String columnNameLocation, String valueLocation, String columnName, String position) throws Exception {
+    protected ResultSet readDB(String table, String columnName, String readStatement) throws Exception {
         ResultSet rs;
         Statement stmt = initDB();
         String environment = new CommonMethods(driver).getPropertyFromConfigurationFile("environment");
-        rs = stmt.executeQuery("SELECT [" + columnName + "] FROM [" + environment + "].[dbo].[" + table + "] WHERE " + columnNameLocation + "='" + valueLocation + "'");
+        rs = stmt.executeQuery("SELECT [" + columnName + "] FROM [" + environment + "].[dbo].[" + table + "]"+readStatement );
         return rs;
     }
 
