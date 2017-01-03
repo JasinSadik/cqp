@@ -2,7 +2,6 @@ package pageObjects.quotationTabs.fullCostAndFinalizationPage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import pageObjects.popUpWindows.confirmationPopUp.DocumentGenerationModal;
 import pageObjects.quotationTabs.ApprovalRequestPage;
 import pageObjects.quotationTabs.QuotationNavigationBar;
 
@@ -30,7 +29,6 @@ public class DocumentGenerationSection extends QuotationNavigationBar{
     public void generateAndIssueDocumentManually(){
         pressOpenSectionButton();
         pressCreateNewRevisionButton();
-        new DocumentGenerationModal(driver).pressConfirmButton();
         issueDocumentManually();
     }
 

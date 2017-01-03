@@ -2,11 +2,8 @@ package pageObjects.mainPages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-import org.openqa.selenium.support.FindBy;
 import pageObjects.popUpWindows.SearchQuotationsPopUp;
-import pageObjects.popUpWindows.selectCustomerPopUp.SelectCustomerPopUp;
 import pageObjects.quotationTabs.QuotationNavigationBar;
 import pageObjects.quotationTabs.quotationClassificationPage.CustomerDataSection;
 

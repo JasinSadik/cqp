@@ -45,7 +45,8 @@ public class LvDrivePage extends TopMenu {
     }
 
     private LvDrivePage insertProductIdToUncode(String productId) {
-
+        waitForPageLoad(driver);
+        waitOnPresenceOfElement(uncodeProductField);
         sendKeys(uncodeProductField, productId);
         return this;
     }

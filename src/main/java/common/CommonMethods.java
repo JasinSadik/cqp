@@ -1,10 +1,10 @@
 package common;
 
+import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 public class CommonMethods extends Page {
 
     protected WebElement element;
-
+    protected int loopGoThroughCounter = 0;
     public CommonMethods(WebDriver driver) {
         super(driver);
     }
@@ -34,48 +34,77 @@ public class CommonMethods extends Page {
     }
 
     protected void waitOnButton(By by) {
-        waitOnElementToBeVisible(by);
-        waitOnPresenceOfElement(by);
         waitOnElementToBeClickable(by);
     }
 
     protected void waitOnPresenceOfElement(By by) {
-        try {
-            new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(by));
-        } catch (TimeoutException e) {
-            System.out.println("Timeout - Element not found");
+        boolean elementStatus = true;
+        while (elementStatus && loopGoThroughCounter < 30) {
+            try {
+                new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(by));
+                elementStatus = false;
+                loopGoThroughCounter = 0;
+            } catch (TimeoutException e) {
+                System.out.println("Timeout - Element not found " + by.toString());
+                loopGoThroughCounter++;
+            }
         }
     }
 
     protected void waitOnElementToBeVisible(WebElement element) {
-        try {
-            new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(element));
-        } catch (TimeoutException e) {
-            System.out.print("Timeout - Element not found");
+        boolean elementStatus = true;
+        while (elementStatus && loopGoThroughCounter < 30) {
+            try {
+                new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(element));
+                elementStatus = false;
+                loopGoThroughCounter = 0;
+            } catch (TimeoutException e) {
+                System.out.println("Timeout - Element not found");
+                loopGoThroughCounter++;
+            }
         }
     }
 
     protected void waitOnElementToBeVisible(By by) {
-        try {
-            new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(by));
-        } catch (TimeoutException e) {
-            System.out.print("Timeout - Element not found");
+        boolean elementStatus = true;
+        while (elementStatus && loopGoThroughCounter < 30) {
+            try {
+                new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(by));
+                elementStatus = false;
+                loopGoThroughCounter = 0;
+            } catch (TimeoutException e) {
+                System.out.println("Timeout - Element not found " + by.toString());
+                loopGoThroughCounter++;
+
+            }
         }
     }
 
     protected void waitOnElementToBeClickable(WebElement element) {
-        try {
-            new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(element));
-        } catch (TimeoutException e) {
-            System.out.print("Timeout - Element not found");
+        boolean elementStatus = true;
+        while (elementStatus && loopGoThroughCounter < 30) {
+            try {
+                new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(element));
+                elementStatus = false;
+                loopGoThroughCounter = 0;
+            } catch (TimeoutException e) {
+                System.out.println("Timeout - Element not found");
+                loopGoThroughCounter++;
+            }
         }
     }
 
     protected void waitOnElementToBeClickable(By by) {
-        try {
-            new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(by));
-        } catch (TimeoutException e) {
-            System.out.println("Timeout - Element not found");
+        boolean elementStatus = true;
+        while (elementStatus && loopGoThroughCounter < 30) {
+            try {
+                new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(by));
+                elementStatus = false;
+                loopGoThroughCounter = 0;
+            } catch (TimeoutException e) {
+                System.out.println("Timeout - Element not found " + by.toString());
+                loopGoThroughCounter++;
+            }
         }
     }
 
@@ -92,39 +121,50 @@ public class CommonMethods extends Page {
 
     //..........................SeleniumMethods......................
     protected WebElement findElement(By by) {
-        waitOnElementToBeVisible(by);
-        element = driver.findElement(by);
+        boolean elementStatus = true;
+        while (elementStatus && loopGoThroughCounter < 6) {
+            try {
+                element = driver.findElement(by);
+                elementStatus = false;
+            } catch (ElementNotFoundException e) {
+                System.out.println("Timeout - Element not found " + by.toString());
+                loopGoThroughCounter++;
+                scrollToElement(by);
+            }
+        }
         return element;
     }
 
     protected void sendKeys(By by, String text) {
-        driver.findElement(by).sendKeys(text);
+        findElement(by).sendKeys(text);
     }
 
     protected void setAttribute(By by, String attributeName, String key) {
         boolean elementStatus = true;
-        while (elementStatus == true) {
+        int i = 0;
+        while (elementStatus && i < 3) {
             try {
                 JavascriptExecutor js = (JavascriptExecutor) driver;
-                js.executeScript("arguments[0].setAttribute('"+attributeName+"', '" + key + "')", findElement(by));
+                js.executeScript("arguments[0].setAttribute('" + attributeName + "', '" + key + "')", findElement(by));
                 elementStatus = false;
             } catch (WebDriverException e) {
-                //
+                System.out.println("Timeout - element not found: " + by.toString());
+                i++;
             }
         }
     }
 
     protected void click(By by) {
         boolean elementStatus = true;
-        while (elementStatus) {
+        int i = 0;
+        while (elementStatus && i < 3) {
             try {
-                new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(driver.findElement(by)));
                 JavascriptExecutor executor = (JavascriptExecutor) driver;
-                executor.executeScript("arguments[0].click();", driver.findElement(by));
+                executor.executeScript("arguments[0].click();", findElement(by));
                 elementStatus = false;
-
             } catch (WebDriverException e) {
-                System.out.println("Timeout - element not found");
+                System.out.println("Timeout - element not found: " + by.toString());
+                i++;
             }
         }
     }
@@ -155,31 +195,8 @@ public class CommonMethods extends Page {
         return key;
     }
 
-    //.........................SqlMethods.......................
-    public class SqlMethods{
-        protected Statement initDB() throws Exception {
-            Class.forName(getPropertyFromConfigurationFile("class_db"));
-            Connection conn;
-            conn = DriverManager.getConnection(getPropertyFromConfigurationFile("db_url"), "", "");
-            Statement stmt = conn.createStatement();
-            return stmt;
-        }
 
-        protected void updateDB(String table, String columnNameLocation, String valueLocation, String columnName, String value, String position) throws Exception {
-            Statement stmt = initDB();
-            String environment = getPropertyFromConfigurationFile("environment");
-            stmt.executeUpdate("UPDATE [" + environment + "].[dbo].[" + table + "] SET " + columnName + "=NULL WHERE " + columnNameLocation + "='" + valueLocation + "' AND Position = " + "'" + position + "'");
 
-        }
-
-        protected ResultSet readDB(String table, String columnNameLocation, String valueLocation, String columnName, String position) throws Exception {
-            ResultSet rs;
-            Statement stmt = initDB();
-            String environment = getPropertyFromConfigurationFile("environment");
-            rs = stmt.executeQuery("SELECT [" + columnName + "] FROM [" + environment + "].[dbo].[" + table + "] WHERE " + columnNameLocation + "='" + valueLocation + "'");
-            return rs;
-        }
-    }
 
     //..........................BrowserSetup....................
     public WebDriver browserSetup() throws Exception {
@@ -225,7 +242,7 @@ public class CommonMethods extends Page {
         By comboBoxList = By.xpath("//ul[contains(@id , '" + comboBoxId + "_listbox')]/li");
         By comboBoxElement = By.xpath("//ul[contains(@id , '" + comboBoxId + "_listbox')]/li[" + index + "]");
         waitOnButton(comboBoxButton);
-        while(driver.findElements(comboBoxList).size() == 0){
+        while (driver.findElements(comboBoxList).size() == 0) {
             // to fill up
         }
         click(comboBoxButton);
@@ -241,25 +258,26 @@ public class CommonMethods extends Page {
         }
     }
 
-    protected void selectElementFromDropdownListSimple(String value){
-        selectElementFromDropdownListSimple(value, false);
+    protected void selectElementFromDropdownListByHtmlElement(String value) {
+        selectElementFromDropdownListByHtmlElement(value, "li");
     }
 
-    protected void selectElementFromDropdownListSimple(String value, boolean isLink){
+    protected void selectElementFromDropdownListByHtmlElement(String value, String htmlElementType) {
         By by;
-        if(!isLink) {
-            by = By.xpath("//li[contains(text(), '" + value + "')]");
-        }else {
-            by = By.xpath("//a[contains(text(), '" + value + "')]");
-        }
+        by = By.xpath("//" + htmlElementType + "[text() = '" + value + "']");
         waitOnPresenceOfElement(by);
         click(by);
     }
 
+
     protected void scrollToElement(By by) {
-        element = driver.findElement(by);
-        Actions action = new Actions(driver);
-        action.moveToElement(element).build().perform();
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", findElement(by));
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
+
 
 }

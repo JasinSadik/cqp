@@ -1,6 +1,7 @@
 package pageObjects.mainPages;
 
 import common.CommonMethods;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -11,6 +12,13 @@ public class TopMenu extends CommonMethods {
         super(driver);
     }
 
+    private By logoutHyperlink = By.xpath("//a[text()='Logout']");
+
+    public LoginPage pressLogoutHyperlink(){
+        waitOnElementToBeClickable(logoutHyperlink);
+        click(logoutHyperlink);
+        return new LoginPage(driver);
+    }
 
 
 }
