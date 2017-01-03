@@ -24,17 +24,15 @@ public class GeneralSection extends QuotationNavigationBar {
 
 
 
-    public GeneralSection insertProjectName (String projectName){
+    public void insertProjectName (String projectName){
         waitOnPresenceOfElement(projectNameField);
         clear(projectNameField);
         sendKeys(projectNameField, projectName);
-        return this;
     }
 
-    public GeneralSection setQuotationType(String quotationType) {
+    public void setQuotationType(String quotationType) {
         scrollToElement(By.id(quotationTypeComboboxId));
         selectElementFromDropdownList(quotationTypeComboboxId, quotationType);
-        return this;
     }
     public AdditionalDataSection pressSaveAndCollapseButton() {
         scrollToElement(saveAndCollapseButton);

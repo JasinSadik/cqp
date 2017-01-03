@@ -38,50 +38,44 @@ public class CustomerDataSection extends QuotationNavigationBar {
     private By todayRqfButton = By.xpath("//*[@id='quotationCustomer']//span[contains(text(), 'Today')]");
 
 
-    public CustomerDataSection insertRfqReceivedDate (String date){
+    public void insertRfqReceivedDate (String date){
         waitOnButton(rfqReceivedDateCalendarButton);
         clear(rfqReceivedDateField);
         sendKeys(rfqReceivedDateField, date);
-        return this;
     }
 
 
-    public CustomerDataSection setIndustryUsageLevelOne (String industryUsage){
+    public void setIndustryUsageLevelOne (String industryUsage){
         selectElementFromDropdownList(industryUsageComboBoxOneId, industryUsage);
-        return this;
     }
 
-    public CustomerDataSection setIndustryUsageLevelTwo (String industryUsage){
+    public void setIndustryUsageLevelTwo (String industryUsage){
         selectElementFromDropdownList(industryUsageComboBoxTwoId, industryUsage);
-        return this;
     }
 
-    public CustomerDataSection pressCancelButton(){
+    public void pressCancelButton(){
         waitOnButton(cancelButton);
         click(cancelButton);
-        return this;
     }
 
-    public CustomerDataSection pressTodayRfqButton(){
+    public void pressTodayRfqButton(){
         waitOnButton(todayRqfButton);
         click(todayRqfButton);
-        return this;
     }
 
-    public CustomerDataSection pressOpenCustomerDataSectionButton(){
+    public void pressOpenCustomerDataSectionButton(){
         click(openCustomerDataSectionButton);
-        return this;
     }
 
-    public CustomerDataSection selectCustomerFromSearch(String customer){
+    public void selectCustomerFromSearch(String customer){
         SelectCustomerPopUp selectCustomerPopUp = pressCustomerSearchButton();
         selectCustomerPopUp.insertCustomerSearchFieldSearchValue(customer);
         selectCustomerPopUp.pressSearchButton();
         selectCustomerPopUp.pressSelectButtonForFirstSearchResult();
-        return this;
     }
 
     public GeneralSection pressSaveAndCollapseButton() {
+        scrollToElement(saveAndCollapseButton);
         waitOnButton(saveAndCollapseButton);
         click(saveAndCollapseButton);
         return new GeneralSection(driver);

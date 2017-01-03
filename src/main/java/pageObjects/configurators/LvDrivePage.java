@@ -23,6 +23,7 @@ public class LvDrivePage extends TopMenu {
     private final String FRAME_ID = "innerframe";
 
     public ProductsAndPricesCommonActionButtons addProductFromLvDrive(String productId) {
+        waitForPageLoad(driver);
         initLvDrive();
         insertProductIdToUncode(productId);
         pressUncodeButton();
@@ -44,7 +45,7 @@ public class LvDrivePage extends TopMenu {
     }
 
     private LvDrivePage insertProductIdToUncode(String productId) {
-        waitOnPresenceOfElement(uncodeProductField);
+
         sendKeys(uncodeProductField, productId);
         return this;
     }

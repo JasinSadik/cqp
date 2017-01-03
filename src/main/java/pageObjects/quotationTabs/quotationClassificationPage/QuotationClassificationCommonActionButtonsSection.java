@@ -18,7 +18,6 @@ public class QuotationClassificationCommonActionButtonsSection extends Quotation
     private By createQuotationButton = By.id("btnCreateQuotation");
 
     public SfdcSyncConfirmationModal pressCreateQuotationButton (){
-        scrollToElement(createQuotationButton);
         waitOnButton(createQuotationButton);
         click(createQuotationButton);
         return new SfdcSyncConfirmationModal(driver);

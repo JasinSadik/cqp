@@ -59,7 +59,7 @@ public class ProductsAndPricesCommonActionButtons extends QuotationNavigationBar
     public LvDrivePage addProductFromLvDrive(String productId) {
         pressAddProductButton();
         actions.moveToElement(findElement(By.xpath("//a[contains(text(),'Add product from configurator')]"))).build().perform();
-        selectElementFromDropdownListSimple("LV DRIVE", true);
+        selectElementFromDropdownListByHtmlElement("LV DRIVE", "a");
         new LvDrivePage(driver).addProductFromLvDrive(productId);
         return new LvDrivePage(driver);
     }
@@ -67,14 +67,14 @@ public class ProductsAndPricesCommonActionButtons extends QuotationNavigationBar
     public ProductsAndPricesCommonActionButtons addProductFromMotConf(String productId) {
         pressAddProductButton();
         actions.moveToElement(findElement(By.xpath("//a[contains(text(),'Add product from configurator')]"))).build().perform();
-        selectElementFromDropdownListSimple("Search MotConf product", true);
+        selectElementFromDropdownListByHtmlElement("Search MotConf product", "a");
         new MotConfPage(driver).addProductFromMotConf(productId);
         return this;
     }
 
     public ProductsAndPricesCommonActionButtons addLocalProduct(String productId) {
         pressAddProductButton();
-        selectElementFromDropdownListSimple("Add local product", true);
+        selectElementFromDropdownListByHtmlElement("Add local product", "a");
         return this;
     }
 

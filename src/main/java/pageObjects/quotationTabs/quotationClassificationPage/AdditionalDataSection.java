@@ -21,6 +21,7 @@ public class AdditionalDataSection extends QuotationNavigationBar {
     public ConfirmationModal setQuotationLanguage(String language) {
         scrollToElement(By.id(quotationLanguageComboBoxId));
         selectElementFromDropdownList(quotationLanguageComboBoxId, language);
+        new ConfirmationModal(driver).pressYesButton();
         return new ConfirmationModal(driver);
     }
 

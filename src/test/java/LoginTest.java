@@ -1,3 +1,4 @@
+import baseScenarios.BaseScenario;
 import common.CommonMethods;
 import org.testng.annotations.*;
 import pageObjects.mainPages.LoginPage;
