@@ -12,6 +12,8 @@ import static org.junit.Assert.assertTrue;
  */
 public class LoginTest extends BaseScenario {
 
+    private final String EMPTY_USERNAME = "";
+    private final String EMPTY_PASSWORD = "";
 
     protected LoginTest() throws Exception {
     }
@@ -34,21 +36,21 @@ public class LoginTest extends BaseScenario {
     @Test(priority = 2)
     public void shouldShowUnauthorizedMessageLogInWithEmptyFields() {
         LoginPage loginPage = new LoginPage(driver);
-        UnauthorizedAccessPage unauthorizedAccessPage = loginPage.invalidLogInToCqp("", "");
+        UnauthorizedAccessPage unauthorizedAccessPage = loginPage.invalidLogInToCqp(EMPTY_USERNAME, EMPTY_PASSWORD);
         assertTrue(unauthorizedAccessPage.checkUnauthorizedAccessMessageShown());
     }
 
     @Test(priority = 3)
     public void shouldShowUnauthorizedMessageLogInWithWrongPassword() {
         LoginPage loginPage = new LoginPage(driver);
-        UnauthorizedAccessPage unauthorizedAccessPage = loginPage.invalidLogInToCqp("urban.boken@se.abb.com", "");
+        UnauthorizedAccessPage unauthorizedAccessPage = loginPage.invalidLogInToCqp(USERNAME, EMPTY_PASSWORD);
         assertTrue(unauthorizedAccessPage.checkUnauthorizedAccessMessageShown());
     }
 
     @Test(priority = 4)
     public void shouldShowUnauthorizedMessageLogInWithWrongUsername() {
         LoginPage loginPage = new LoginPage(driver);
-        UnauthorizedAccessPage unauthorizedAccessPage = loginPage.invalidLogInToCqp("", "a");
+        UnauthorizedAccessPage unauthorizedAccessPage = loginPage.invalidLogInToCqp(EMPTY_USERNAME, PASSWORD);
         assertTrue(unauthorizedAccessPage.checkUnauthorizedAccessMessageShown());
     }
 

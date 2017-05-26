@@ -2,6 +2,10 @@ package pageObjects.quotationTabs;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by PLJAHAS on 2016-12-23.
@@ -55,10 +59,9 @@ public class ApprovalRequestPage extends QuotationNavigationBar {
     }
 
 
-    public ApprovalRequestPage startApprovalForDefaultUsers(){
+    public void startApprovalForDefaultUsers(){
         pressNextButton();
         pressSubmitForApprovalButton();
-        return this;
     }
 
     public ApprovalRequestPage approveQuotation(String message){
@@ -67,5 +70,7 @@ public class ApprovalRequestPage extends QuotationNavigationBar {
         pressSendButton();
         return this;
     }
+
+
 
 }
