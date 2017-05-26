@@ -1,6 +1,8 @@
 import baseScenarios.BaseScenario;
+import com.microsoft.sqlserver.jdbc.SQLServerMetaData;
 import common.CommonMethods;
 import common.SqlMethods;
+import org.apache.xalan.lib.sql.SQLDocument;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -18,6 +20,8 @@ import pageObjects.quotationTabs.quotationClassificationPage.CustomerDataSection
 import pageObjects.quotationTabs.quotationClassificationPage.GeneralSection;
 import pageObjects.quotationTabs.quotationClassificationPage.QuotationClassificationCommonActionButtonsSection;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -28,8 +32,10 @@ public class PositiveApprovalForNewQuotationTest extends BaseScenario {
     }
 
     private final String PROJECT_NAME = getClass().getName();
+    private final String APPROVER_1 = "Robert Larsson";
+    private final String APPROVER_2 = "Adrian Wasielewski";
     private String quotationNumber = "";
-
+    private final String APPROVAL_MESSAGE = "OK";
 
     @BeforeTest
     public void before() throws Exception {
@@ -50,7 +56,7 @@ public class PositiveApprovalForNewQuotationTest extends BaseScenario {
 
 
     @Test(priority = 2)
-    public void shouldCreateQuotation() throws InterruptedException {
+    public void shouldCreateQuotation() {
         LsuDashboard lsuDashboard = new LsuDashboard(driver);
         CustomerDataSection customerDataSection = lsuDashboard.pressNewQuotationButton();
         customerDataSection.selectCustomerFromSearch(CUSTOMER);
@@ -86,16 +92,16 @@ public class PositiveApprovalForNewQuotationTest extends BaseScenario {
 
 
         LoginPage loginPage = approvalRequestPage.pressLogoutHyperlink();
-        LsuDashboard lsuDashboard= loginPage.logInToCqp("robert.larsson@se.abb.com", "a");
+        LsuDashboard lsuDashboard= loginPage.logInToCqp(APPROVER_1, PASSWORD);
         quotationNavigationBar =  lsuDashboard.openQuotationFromQuickSearch(quotationNumber);
         approvalRequestPage = quotationNavigationBar.goToApprovalTab();
-        approvalRequestPage.approveQuotation("bedzie ok");
+        approvalRequestPage.approveQuotation(APPROVAL_MESSAGE);
 
         approvalRequestPage.pressLogoutHyperlink();
-        lsuDashboard= loginPage.logInToCqp("adrian.wasielewski@pl.abb.com", "a");
+        lsuDashboard= loginPage.logInToCqp(APPROVER_2, PASSWORD);
         quotationNavigationBar =  lsuDashboard.openQuotationFromQuickSearch(quotationNumber);
         approvalRequestPage = quotationNavigationBar.goToApprovalTab();
-        approvalRequestPage.approveQuotation("bedzie ok 2");
+        approvalRequestPage.approveQuotation(APPROVAL_MESSAGE);
 
 
         Thread.sleep(10000);

@@ -21,11 +21,11 @@ public class LoginPage extends CommonMethods {
     private By usernameField = By.name("UserName");
     private By passwordField = By.name("Password");
     private By loginButton = By.cssSelector("p.submit >input");
-    private By creNewQuoteButton = By.xpath("//*[@id='buttonDiv'']/div[1]/a");
+    private By createNewQuoteButton = By.xpath("//*[@id='buttonDiv'']/div[1]/a");
 
 
     public LoginPage pressNewQuoteButton() {
-        click(creNewQuoteButton);
+        click(createNewQuoteButton);
         return this;
     }
 

@@ -13,6 +13,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.sql.*;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -21,7 +22,9 @@ import java.util.concurrent.TimeUnit;
 public class CommonMethods extends Page {
 
     protected WebElement element;
+    protected List<WebElement> elements;
     protected int loopGoThroughCounter = 0;
+
     public CommonMethods(WebDriver driver) {
         super(driver);
     }
@@ -134,6 +137,23 @@ public class CommonMethods extends Page {
         }
         return element;
     }
+
+    protected List<WebElement> findElements(By by) {
+        boolean elementStatus = true;
+        while (elementStatus && loopGoThroughCounter < 6) {
+            try {
+                element = driver.findElement(by);
+                elements = driver.findElements(by);
+                elementStatus = false;
+            } catch (ElementNotFoundException e) {
+                System.out.println("Timeout - Element not found " + by.toString());
+                loopGoThroughCounter++;
+                scrollToElement(by);
+            }
+        }
+        return elements;
+    }
+
 
     protected void sendKeys(By by, String text) {
         findElement(by).sendKeys(text);

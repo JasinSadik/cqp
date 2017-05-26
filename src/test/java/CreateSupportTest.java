@@ -49,6 +49,7 @@ public class CreateSupportTest extends BaseScenario {
         new TopMenu(driver).pressLogoutHyperlink();
         loginPage.logInToCqp(USERNAME, PASSWORD);
         assertTrue(true);
+
     }
 
 
@@ -86,8 +87,7 @@ public class CreateSupportTest extends BaseScenario {
         supportRequestStartPage.createSupportRequestForSpecificUser("Asko Hokkanen", "First Auto Support", "Special discount");
         quotationNumber = supportRequestStartPage.getQuotationNumber();
 
-    }
-
+    }/*
     @Test(priority = 5)
     public void shouldOpenRequest() throws InterruptedException {
         TopMenu topMenu = new TopMenu(driver);
@@ -109,7 +109,7 @@ public class CreateSupportTest extends BaseScenario {
         supportRequestPuViewPage.replyAndCloseRequest("dupa dupa");
         assertEquals("Answered", supportRequestPuViewPage.getCurrentStatus());
     }
-
+*/
     @AfterTest
     public void after() {
         driver.close();

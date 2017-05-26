@@ -1,6 +1,8 @@
 package pageObjects.quotationTabs;
 
+import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import pageObjects.quotationTabs.fullCostAndFinalizationPage.DocumentGenerationSection;
@@ -26,30 +28,18 @@ public class QuotationNavigationBar extends TopMenu {
     private By quotationNumberLabel = By.xpath("//div[@id='pageHeaderInfo']//span[contains(text(),'CQ')]");
 
     public QuotationClassificationCommonActionButtonsSection goToQuotationClassificationTab() {
-        waitForPageLoad(driver);
-        waitOnElementToBeClickable(quotationClassificationTab);
-        while (!findElement(quotationClassificationTab).getAttribute("class").contains("hover")) {
-            click(quotationClassificationTab);
-        }
+        openTab(quotationClassificationTab);
         return new QuotationClassificationCommonActionButtonsSection(driver);
     }
 
 
     public <T extends ProductsAndPricesCommonActionButtons> T goToProductAndPriceTab(Class<T> clazz) {
-        waitForPageLoad(driver);
-        waitOnElementToBeClickable(productAndPricesTab);
-        while (!findElement(productAndPricesTab).getAttribute("class").contains("hover")) {
-            click(productAndPricesTab);
-        }
+        openTab(productAndPricesTab);
         return PageFactory.initElements(driver, clazz);
     }
 
     public DocumentGenerationSection goToFullCostAndFinalizationTab() {
-        waitForPageLoad(driver);
-        waitOnElementToBeClickable(fullCostAndFinalizationTab);
-        while (!findElement(fullCostAndFinalizationTab).getAttribute("class").contains("hover")) {
-            click(fullCostAndFinalizationTab);
-        }
+        openTab(fullCostAndFinalizationTab);
         return new DocumentGenerationSection(driver);
     }
 
@@ -58,20 +48,35 @@ public class QuotationNavigationBar extends TopMenu {
     }
 
     public ApprovalRequestPage goToApprovalTab() {
-        waitForPageLoad(driver);
-        waitOnElementToBeClickable(approvalRequestsTab);
-        while (!findElement(approvalRequestsTab).getAttribute("class").contains("hover")) {
-            click(approvalRequestsTab);
-        }
+        openTab(approvalRequestsTab);
         return new ApprovalRequestPage(driver);
     }
 
     public CloseQuotationPage goToCloseQuotationTab() {
-        waitForPageLoad(driver);
-        waitOnElementToBeClickable(closeQuotationTab);
-        while (!findElement(closeQuotationTab).getAttribute("class").contains("hover")) {
-            click(closeQuotationTab);
-        }
+        openTab(closeQuotationTab);
         return new CloseQuotationPage(driver);
+    }
+
+
+    private void openTab(By by) {
+        waitForPageLoad(driver);
+        waitOnElementToBeClickable(by);
+        int attempt = 0;
+        boolean isElelemetDisplayed = false;
+        while (!isElelemetDisplayed && attempt < 30) {
+            try {
+                while (!findElement(by).getAttribute("class").contains("hover")) {
+                    click(by);
+                    isElelemetDisplayed = true;
+                }
+            } catch (StaleElementReferenceException | ElementNotFoundException e) {
+                attempt++;
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
     }
 }
