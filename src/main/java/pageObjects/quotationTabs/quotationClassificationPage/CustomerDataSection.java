@@ -11,7 +11,7 @@ import pageObjects.quotationTabs.QuotationNavigationBar;
 /**
  * Created by PLJAHAS on 2016-12-06.
  */
-public class CustomerDataSection extends QuotationNavigationBar {
+public class CustomerDataSection extends QuotationClassificationPage {
 
     public CustomerDataSection(WebDriver driver) {
         super(driver);

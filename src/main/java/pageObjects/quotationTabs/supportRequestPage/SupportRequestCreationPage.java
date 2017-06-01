@@ -2,13 +2,12 @@ package pageObjects.quotationTabs.supportRequestPage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import pageObjects.quotationTabs.QuotationNavigationBar;
 
 /**
  * Created by PLJAHAS on 2016-12-27.
  */
-public class SupportRequestStartPage extends QuotationNavigationBar {
-    public SupportRequestStartPage(WebDriver driver) {
+public class SupportRequestCreationPage extends SupportRequestPage {
+    public SupportRequestCreationPage(WebDriver driver) {
         super(driver);
     }
 
@@ -18,40 +17,40 @@ public class SupportRequestStartPage extends QuotationNavigationBar {
     private By selectUserDropdownListExpandButton = By.xpath("//span[text()='Select user (*):']/..//span[text()='select']");
     private By selectSpecifyUserCheckbox = By.xpath("//span[text()='Select specific user:']/..//input");
 
-    public SupportRequestStartPage insertRequestMessage(String message) {
+    public SupportRequestCreationPage insertRequestMessage(String message) {
         waitOnPresenceOfElement(requestMessageField);
         sendKeys(requestMessageField, message);
         return this;
     }
 
-    public SupportRequestStartPage checkSelectSpecificUserCheckbox(){
+    public SupportRequestCreationPage checkSelectSpecificUserCheckbox(){
         waitOnElementToBeClickable(selectSpecifyUserCheckbox);
         click(selectSpecifyUserCheckbox);
         return this;
 
     }
 
-    public SupportRequestStartPage setSpecificUser(String username) {
+    public SupportRequestCreationPage setSpecificUser(String username) {
         waitOnElementToBeClickable(selectUserDropdownListExpandButton);
         click(selectUserDropdownListExpandButton);
         selectElementFromDropdownListByHtmlElement(username);
         return this;
     }
 
-    public SupportRequestStartPage setReasonForPriceSupport(String reason) {
+    public SupportRequestCreationPage setReasonForPriceSupport(String reason) {
         waitOnElementToBeClickable(reasonForPriceSupportDropdownListExpandButton);
         click(reasonForPriceSupportDropdownListExpandButton);
         selectElementFromDropdownListByHtmlElement(reason);
         return this;
     }
 
-    public SupportRequestStartPage pressSendSupportRequestButton() {
+    public SupportRequestCreationPage pressSendSupportRequestButton() {
         waitOnButton(sendRequestButton);
         click(sendRequestButton);
         return this;
     }
 
-    public SupportRequestStartPage createSupportRequestForSpecificUser(String username, String message, String reason) {
+    public SupportRequestCreationPage createSupportRequestForSpecificUser(String username, String message, String reason) {
         checkSelectSpecificUserCheckbox();
         setSpecificUser(username);
         insertRequestMessage(message);

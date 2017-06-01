@@ -3,7 +3,7 @@ package pageObjects.configurators;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pageObjects.mainPages.TopMenu;
-import pageObjects.quotationTabs.productsAndPricesPage.ProductsAndPricesCommonActionButtons;
+import pageObjects.quotationTabs.productsAndPricesPage.ProductsAndPricesPage;
 
 /**
  * Created by PLJAHAS on 2016-12-16.
@@ -22,7 +22,7 @@ public class LvDrivePage extends TopMenu {
     private By addToQuotationButton = By.xpath("//input[@name='submit' and @value='Add to quotation']");
     private final String FRAME_ID = "innerframe";
 
-    public ProductsAndPricesCommonActionButtons addProductFromLvDrive(String productId) {
+    public ProductsAndPricesPage addProductFromLvDrive(String productId) {
         waitForPageLoad(driver);
         initLvDrive();
         insertProductIdToUncode(productId);
@@ -31,7 +31,7 @@ public class LvDrivePage extends TopMenu {
         pressPriceCheckButton();
         pressAddToQuotationButton();
         closeLvDrive();
-        return new ProductsAndPricesCommonActionButtons(driver);
+        return new ProductsAndPricesPage(driver);
     }
 
     private LvDrivePage initLvDrive() {

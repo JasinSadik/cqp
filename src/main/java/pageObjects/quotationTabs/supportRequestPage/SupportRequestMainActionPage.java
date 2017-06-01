@@ -1,16 +1,14 @@
 package pageObjects.quotationTabs.supportRequestPage;
 
 import com.gargoylesoftware.htmlunit.ElementNotFoundException;
-import com.thoughtworks.selenium.Wait;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import pageObjects.quotationTabs.QuotationNavigationBar;
 
 /**
  * Created by PLJAHAS on 2016-12-28.
  */
-public class SupportRequestPuViewPage extends QuotationNavigationBar {
-    public SupportRequestPuViewPage(WebDriver driver) {
+public class SupportRequestMainActionPage extends SupportRequestPage {
+    public SupportRequestMainActionPage(WebDriver driver) {
         super(driver);
     }
 
@@ -36,7 +34,7 @@ public class SupportRequestPuViewPage extends QuotationNavigationBar {
         return getText(statusLabel);
     }
 
-    public SupportRequestPuViewPage replyAndCloseRequest(String message) {
+    public SupportRequestMainActionPage replyAndCloseRequest(String message) {
         pressReplyAndCloseButton();
         insertComment(message);
         pressSendRequestButton();
@@ -44,7 +42,7 @@ public class SupportRequestPuViewPage extends QuotationNavigationBar {
         return this;
     }
 
-    private SupportRequestPuViewPage insertComment(String message) {
+    private SupportRequestMainActionPage insertComment(String message) {
         waitOnPresenceOfElement(commentTextArea);
         try {
             Thread.sleep(500);
@@ -55,13 +53,13 @@ public class SupportRequestPuViewPage extends QuotationNavigationBar {
         return this;
     }
 
-    private SupportRequestPuViewPage pressSendRequestButton() {
+    private SupportRequestMainActionPage pressSendRequestButton() {
         waitOnButton(sendRequestButton);
         driver.findElement(sendRequestButton).click();
         return this;
     }
 
-    private SupportRequestPuViewPage pressReplyAndCloseButton() {
+    private SupportRequestMainActionPage pressReplyAndCloseButton() {
         waitOnButton(replyAndCloseButton);
         click(replyAndCloseButton);
         return this;

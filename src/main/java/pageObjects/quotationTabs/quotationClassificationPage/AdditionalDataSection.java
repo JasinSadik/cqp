@@ -10,7 +10,7 @@ import pageObjects.quotationTabs.QuotationNavigationBar;
 /**
  * Created by PLJAHAS on 2016-12-01.
  */
-public class AdditionalDataSection extends QuotationNavigationBar {
+public class AdditionalDataSection extends QuotationClassificationPage {
     public AdditionalDataSection(WebDriver driver) {
         super(driver);
 

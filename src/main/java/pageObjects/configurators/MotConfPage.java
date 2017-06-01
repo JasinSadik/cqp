@@ -3,7 +3,7 @@ package pageObjects.configurators;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pageObjects.mainPages.TopMenu;
-import pageObjects.quotationTabs.productsAndPricesPage.ProductsAndPricesCommonActionButtons;
+import pageObjects.quotationTabs.productsAndPricesPage.ProductsAndPricesPage;
 
 /**
  * Created by PLJAHAS on 2016-12-22.
@@ -74,10 +74,10 @@ public class MotConfPage extends TopMenu {
         return this;
     }
 
-    private ProductsAndPricesCommonActionButtons pressAddToCardButton() {
+    private ProductsAndPricesPage pressAddToCardButton() {
         waitOnButton(addToCardButton);
         click(addToCardButton);
-        return new ProductsAndPricesCommonActionButtons(driver);
+        return new ProductsAndPricesPage(driver);
     }
 
 

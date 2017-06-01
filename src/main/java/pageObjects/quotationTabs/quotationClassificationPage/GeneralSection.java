@@ -10,7 +10,7 @@ import pageObjects.quotationTabs.QuotationNavigationBar;
 /**
  * Created by PLJAHAS on 2016-12-02.
  */
-public class GeneralSection extends QuotationNavigationBar {
+public class GeneralSection extends QuotationClassificationPage {
     public GeneralSection(WebDriver driver) {
         super(driver);
 

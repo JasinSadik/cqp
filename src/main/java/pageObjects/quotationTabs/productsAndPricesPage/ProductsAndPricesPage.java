@@ -8,9 +8,9 @@ import pageObjects.configurators.LvDrivePage;
 import pageObjects.configurators.MotConfPage;
 import pageObjects.quotationTabs.QuotationNavigationBar;
 
-public class ProductsAndPricesCommonActionButtons extends QuotationNavigationBar {
+public class ProductsAndPricesPage extends QuotationNavigationBar {
 
-    public ProductsAndPricesCommonActionButtons(WebDriver driver) {
+    public ProductsAndPricesPage(WebDriver driver) {
         super(driver);
     }
 
@@ -26,31 +26,31 @@ public class ProductsAndPricesCommonActionButtons extends QuotationNavigationBar
     private By fcmTab = By.xpath("//div[@class = 'abbMenu']//div[contains(text(), 'FCM')]");
     private By addProductButton = By.xpath("//button[contains(text(), 'Add product')]");
 
-    public ProductsAndPricesCommonActionButtons switchToAllTab() {
+    public ProductsAndPricesPage switchToAllTab() {
         waitOnPresenceOfElement(allTab);
         click(allTab);
         return this;
     }
 
-    public ProductsAndPricesCommonActionButtons switchToPriceDetailsTab() {
+    public ProductsAndPricesPage switchToPriceDetailsTab() {
         waitOnPresenceOfElement(priceDetailsTab);
         click(priceDetailsTab);
         return this;
     }
 
-    public ProductsAndPricesCommonActionButtons switchToTechnicalDetailsTab() {
+    public ProductsAndPricesPage switchToTechnicalDetailsTab() {
         waitOnPresenceOfElement(technicalDetailsTab);
         click(technicalDetailsTab);
         return this;
     }
 
-    public ProductsAndPricesCommonActionButtons switchToTermsAndConditionsTab() {
+    public ProductsAndPricesPage switchToTermsAndConditionsTab() {
         waitOnPresenceOfElement(termsAndConditionsTab);
         click(termsAndConditionsTab);
         return this;
     }
 
-    public ProductsAndPricesCommonActionButtons switchToFcmTab() {
+    public ProductsAndPricesPage switchToFcmTab() {
         waitOnPresenceOfElement(fcmTab);
         click(fcmTab);
         return this;
@@ -64,7 +64,7 @@ public class ProductsAndPricesCommonActionButtons extends QuotationNavigationBar
         return new LvDrivePage(driver);
     }
 
-    public ProductsAndPricesCommonActionButtons addProductFromMotConf(String productId) {
+    public ProductsAndPricesPage addProductFromMotConf(String productId) {
         pressAddProductButton();
         actions.moveToElement(findElement(By.xpath("//a[contains(text(),'Add product from configurator')]"))).build().perform();
         selectElementFromDropdownListByHtmlElement("Search MotConf product", "a");
@@ -72,21 +72,28 @@ public class ProductsAndPricesCommonActionButtons extends QuotationNavigationBar
         return this;
     }
 
-    public ProductsAndPricesCommonActionButtons addLocalProduct(String productId) {
+    public ProductsAndPricesPage addLocalProduct(String productId) {
         pressAddProductButton();
         selectElementFromDropdownListByHtmlElement("Add local product", "a");
         return this;
     }
 
 
-    private ProductsAndPricesCommonActionButtons pressAddProductButton() {
+    private ProductsAndPricesPage pressAddProductButton() {
         waitOnButton(addProductButton);
         click(addProductButton);
         return this;
     }
 
+    public ProductsAndPricesPage pressAddToQuotationButton() {
+        waitOnButton(addToQuotationButton);
+        click(addToQuotationButton);
+        return this;
+    }
+
+
     /*
-    public ProductsAndPricesCommonActionButtons addProductFromQuickSearch(String productForSearch) {
+    public ProductsAndPricesPage addProductFromQuickSearch(String productForSearch) {
         waitForPageLoad(driver);
         waitOnPresenceOfElement(quickSearchField);
         clear(quickSearchField);
@@ -95,14 +102,10 @@ public class ProductsAndPricesCommonActionButtons extends QuotationNavigationBar
         pressAddToQuotationButton();
         return this;
     }
-*/
-    public ProductsAndPricesCommonActionButtons pressAddToQuotationButton() {
-        waitOnButton(addToQuotationButton);
-        click(addToQuotationButton);
-        return this;
-    }
-/*
-    public <T extends ProductsAndPricesCommonActionButtons> T addProductFromQuickSearch(String productForSearch, Class<T> clazz) {
+    */
+
+    /*
+    public <T extends ProductsAndPricesPage> T addProductFromQuickSearch(String productForSearch, Class<T> clazz) {
         addProductFromQuickSearch(productForSearch);
         return PageFactory.initElements(driver, clazz);
     }

@@ -2,13 +2,12 @@ package pageObjects.quotationTabs.fullCostAndFinalizationPage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import pageObjects.quotationTabs.ApprovalRequestPage;
-import pageObjects.quotationTabs.QuotationNavigationBar;
+import pageObjects.quotationTabs.approvalRequestPage.ApprovalRequestPage;
 
 /**
  * Created by PLJAHAS on 2016-12-23.
  */
-public class DocumentGenerationSection extends QuotationNavigationBar{
+public class DocumentGenerationSection extends FullCostAndFinalizationPage{
     public DocumentGenerationSection(WebDriver driver) {
         super(driver);
     }

@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pageObjects.mainPages.TopMenu;
 import pageObjects.quotationTabs.QuotationNavigationBar;
-import pageObjects.quotationTabs.quotationClassificationPage.QuotationClassificationCommonActionButtonsSection;
 
 /**
  * Created by PLJAHAS on 2016-12-21.

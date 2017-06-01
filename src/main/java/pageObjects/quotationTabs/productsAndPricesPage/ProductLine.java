@@ -2,12 +2,12 @@ package pageObjects.quotationTabs.productsAndPricesPage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import pageObjects.quotationTabs.supportRequestPage.SupportRequestStartPage;
+import pageObjects.quotationTabs.supportRequestPage.SupportRequestCreationPage;
 
 /**
  * Created by PLJAHAS on 2016-12-20.
  */
-public class ProductLine extends ProductsAndPricesCommonActionButtons {
+public class ProductLine extends ProductsAndPricesPage {
     public ProductLine(WebDriver driver) {
         super(driver);
     }
@@ -45,12 +45,12 @@ public class ProductLine extends ProductsAndPricesCommonActionButtons {
         return this;
     }
 
-    public SupportRequestStartPage createSupportRequest(int desiredLine, String workqueue){
+    public SupportRequestCreationPage createSupportRequest(int desiredLine, String workqueue){
         setPositionLine(desiredLine);
         pressActionMenuDropdownList();
         actions.moveToElement(findElement(By.xpath("//tr[@class = 'lineItem product']["+positionLine+"]//span[contains(text(),'Support')]"))).build().perform();
         selectElementFromDropdownListByHtmlElement(workqueue, "a");
-        return new SupportRequestStartPage(driver);
+        return new SupportRequestCreationPage(driver);
     }
 
     public ProductLine pressActionMenuDropdownList(){

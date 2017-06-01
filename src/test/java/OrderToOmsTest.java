@@ -1,6 +1,5 @@
-import baseScenarios.BaseScenario;
 import common.CommonMethods;
-import common.SqlMethods;
+import common.sqlMethods.SQL_ApprovalBehavior;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -11,11 +10,12 @@ import pageObjects.mainPages.LoginPage;
 import pageObjects.mainPages.LsuDashboard;
 import pageObjects.quotationTabs.QuotationNavigationBar;
 import pageObjects.quotationTabs.productsAndPricesPage.ProductLine;
-import pageObjects.quotationTabs.productsAndPricesPage.ProductsAndPricesCommonActionButtons;
+import pageObjects.quotationTabs.productsAndPricesPage.ProductsAndPricesPage;
 import pageObjects.quotationTabs.quotationClassificationPage.AdditionalDataSection;
 import pageObjects.quotationTabs.quotationClassificationPage.CustomerDataSection;
 import pageObjects.quotationTabs.quotationClassificationPage.GeneralSection;
-import pageObjects.quotationTabs.quotationClassificationPage.QuotationClassificationCommonActionButtonsSection;
+import pageObjects.quotationTabs.quotationClassificationPage.QuotationClassificationPage;
+import scenarios.ScenarioSweden;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -23,28 +23,27 @@ import static org.junit.Assert.assertTrue;
 /**
  * Created by PLJAHAS on 2016-12-16.
  */
-public class OrderToOmsTest extends BaseScenario {
+public class OrderToOmsTest extends ScenarioSweden {
 
     private final String PROJECT_NAME = new CommonMethods(driver).timestamp();
 
     protected OrderToOmsTest() throws Exception {
     }
 
+
     @BeforeTest
     public void before() throws Exception {
         driver = new CommonMethods(driver).browserSetup();
         driver.get(new CommonMethods(driver).getPropertyFromConfigurationFile("environment_url"));
 
-        new SqlMethods(driver).BindingGeneralApprovalSetNo(LSU);
-        new SqlMethods(driver).NonBindingGeneralApprovalSetNo(LSU);
+        new SQL_ApprovalBehavior(driver).BindingGeneralApprovalSetNo(LSU);
+        new SQL_ApprovalBehavior(driver).NonBindingGeneralApprovalSetNo(LSU);
     }
 
     @Test(priority = 1)
     public void shouldLogIntoToCqp() {
         LoginPage loginPage = new LoginPage(driver);
         LsuDashboard lsuDashboard  = loginPage.logInToCqp(USERNAME, PASSWORD);
-        loginPage = lsuDashboard.pressLogoutHyperlink();
-        lsuDashboard = loginPage.logInToCqp(USERNAME, PASSWORD);
         assertTrue(lsuDashboard.getCurrentlyLoggedUser().contains(USERNAME));
     }
 
@@ -62,8 +61,8 @@ public class OrderToOmsTest extends BaseScenario {
         generalSection.setQuotationType(QUOTATION_TYPE);
         AdditionalDataSection additionalDataSection = generalSection.pressSaveAndCollapseButton(AdditionalDataSection.class);
         additionalDataSection.setQuotationLanguage(LANGUAGE);
-        QuotationClassificationCommonActionButtonsSection quotationClassificationCommonActionButtonsSection = new QuotationClassificationCommonActionButtonsSection(driver);
-        SfdcSyncConfirmationModal sfdcSyncConfirmationModal = quotationClassificationCommonActionButtonsSection.pressCreateQuotationButton();
+        QuotationClassificationPage quotationClassificationPage = new QuotationClassificationPage(driver);
+        SfdcSyncConfirmationModal sfdcSyncConfirmationModal = quotationClassificationPage.pressCreateQuotationButton();
         sfdcSyncConfirmationModal.pressConfirmButton();
 
     }
@@ -71,9 +70,9 @@ public class OrderToOmsTest extends BaseScenario {
     @Test(priority = 3)
     public void shouldAddProducts(){
         QuotationNavigationBar quotationNavigationBar = new QuotationNavigationBar(driver);
-        ProductsAndPricesCommonActionButtons productsAndPricesCommonActionButtons = quotationNavigationBar.goToProductAndPriceTab(ProductsAndPricesCommonActionButtons.class);
-        productsAndPricesCommonActionButtons.addProductFromLvDrive(LV_DRIVE_PRODUCT_WITH_VC);
-        productsAndPricesCommonActionButtons.addProductFromMotConf(MOTCONF_PRODUCT_WITHOUT_VC);
+        ProductsAndPricesPage productsAndPricesPage = quotationNavigationBar.goToProductAndPriceTab(ProductsAndPricesPage.class);
+        productsAndPricesPage.addProductFromLvDrive(LV_DRIVE_PRODUCT_WITH_VC);
+        productsAndPricesPage.addProductFromMotConf(MOTCONF_PRODUCT_WITHOUT_VC);
         ProductLine productLine = new ProductLine(driver);
         productLine.setApplication(1, LV_DRIVE_APPLICATION);
         productLine.setApplication(2, MOTCONF_APPLICATION);

@@ -1,35 +1,29 @@
-import baseScenarios.BaseScenario;
-import com.microsoft.sqlserver.jdbc.SQLServerMetaData;
 import common.CommonMethods;
-import common.SqlMethods;
-import org.apache.xalan.lib.sql.SQLDocument;
+import common.sqlMethods.SQL_ApprovalBehavior;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pageObjects.mainPages.LoginPage;
 import pageObjects.mainPages.LsuDashboard;
-import pageObjects.mainPages.TopMenu;
 import pageObjects.popUpWindows.confirmationPopUp.SfdcSyncConfirmationModal;
-import pageObjects.quotationTabs.ApprovalRequestPage;
+import pageObjects.quotationTabs.approvalRequestPage.ApprovalRequestPage;
 import pageObjects.quotationTabs.QuotationNavigationBar;
 import pageObjects.quotationTabs.fullCostAndFinalizationPage.DocumentGenerationSection;
 import pageObjects.quotationTabs.productsAndPricesPage.ProductLine;
-import pageObjects.quotationTabs.productsAndPricesPage.ProductsAndPricesCommonActionButtons;
+import pageObjects.quotationTabs.productsAndPricesPage.ProductsAndPricesPage;
 import pageObjects.quotationTabs.quotationClassificationPage.AdditionalDataSection;
 import pageObjects.quotationTabs.quotationClassificationPage.CustomerDataSection;
 import pageObjects.quotationTabs.quotationClassificationPage.GeneralSection;
-import pageObjects.quotationTabs.quotationClassificationPage.QuotationClassificationCommonActionButtonsSection;
-
-import java.util.ArrayList;
+import pageObjects.quotationTabs.quotationClassificationPage.QuotationClassificationPage;
+import scenarios.ScenarioSweden;
 
 import static org.junit.Assert.assertTrue;
 
 /**
  * Created by PLJAHAS on 2016-12-23.
  */
-public class PositiveApprovalForNewQuotationTest extends BaseScenario {
-    protected PositiveApprovalForNewQuotationTest() throws Exception {
-    }
+public class PositiveApprovalForNewQuotationTest extends ScenarioSweden {
+
 
     private final String PROJECT_NAME = getClass().getName();
     private final String APPROVER_1 = "Robert Larsson";
@@ -37,19 +31,20 @@ public class PositiveApprovalForNewQuotationTest extends BaseScenario {
     private String quotationNumber = "";
     private final String APPROVAL_MESSAGE = "OK";
 
+    protected PositiveApprovalForNewQuotationTest() throws Exception {
+    }
+
     @BeforeTest
     public void before() throws Exception {
         driver = new CommonMethods(driver).browserSetup();
         driver.get(new CommonMethods(driver).getPropertyFromConfigurationFile("environment_url"));
-        new SqlMethods(driver).BindingGeneralApprovalSetBlocking(LSU);
-        new SqlMethods(driver).NonBindingGeneralApprovalSetBlocking(LSU);
+        new SQL_ApprovalBehavior(driver).BindingGeneralApprovalSetBlocking(LSU);
+        new SQL_ApprovalBehavior(driver).NonBindingGeneralApprovalSetBlocking(LSU);
     }
 
     @Test(priority = 1)
     public void shouldLogIntoToCqp() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.logInToCqp(USERNAME, PASSWORD);
-        new TopMenu(driver).pressLogoutHyperlink();
         loginPage.logInToCqp(USERNAME, PASSWORD);
         assertTrue(true);
     }
@@ -68,16 +63,16 @@ public class PositiveApprovalForNewQuotationTest extends BaseScenario {
         generalSection.setQuotationType(QUOTATION_TYPE);
         AdditionalDataSection additionalDataSection = generalSection.pressSaveAndCollapseButton(AdditionalDataSection.class);
         additionalDataSection.setQuotationLanguage(LANGUAGE);
-        QuotationClassificationCommonActionButtonsSection quotationClassificationCommonActionButtonsSection = new QuotationClassificationCommonActionButtonsSection(driver);
-        SfdcSyncConfirmationModal sfdcSyncConfirmationModal = quotationClassificationCommonActionButtonsSection.pressCreateQuotationButton();
+        QuotationClassificationPage quotationClassificationPage = new QuotationClassificationPage(driver);
+        SfdcSyncConfirmationModal sfdcSyncConfirmationModal = quotationClassificationPage.pressCreateQuotationButton();
         sfdcSyncConfirmationModal.pressConfirmButton();
 
     }
 
     @Test(priority = 3)
     public void shouldAddProducts() throws InterruptedException {
-        ProductsAndPricesCommonActionButtons productsAndPricesCommonActionButtons = new ProductsAndPricesCommonActionButtons(driver);
-        productsAndPricesCommonActionButtons.addProductFromLvDrive(LV_DRIVE_PRODUCT_WITH_VC);
+        ProductsAndPricesPage productsAndPricesPage = new ProductsAndPricesPage(driver);
+        productsAndPricesPage.addProductFromLvDrive(LV_DRIVE_PRODUCT_WITH_VC);
         ProductLine productLine = new ProductLine(driver);
         productLine.setApplication(1, LV_DRIVE_APPLICATION);
     }

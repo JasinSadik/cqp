@@ -2,7 +2,7 @@ package pageObjects.mainPages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import pageObjects.quotationTabs.supportRequestPage.SupportRequestPuViewPage;
+import pageObjects.quotationTabs.supportRequestPage.SupportRequestMainActionPage;
 
 /**
  * Created by PLJAHAS on 2016-12-28.
@@ -20,11 +20,11 @@ public class PuDashboard extends TopMenu {
 
     private By viewSupportRequestButton = By.xpath("//td[text()='" + quotationNumber + "']/..//a");
 
-    public SupportRequestPuViewPage openSupportRequest(String quotationNumber) {
+    public SupportRequestMainActionPage openSupportRequest(String quotationNumber) {
         setQuotationNumber(quotationNumber);
         waitOnElementToBeClickable(viewSupportRequestButton);
         click(viewSupportRequestButton);
-        return new SupportRequestPuViewPage(driver);
+        return new SupportRequestMainActionPage(driver);
     }
 
 

@@ -1,9 +1,13 @@
-import baseScenarios.BaseScenario;
+package testsInUse;
+
+import org.openqa.selenium.WebDriver;
+import scenarios.BaseScenario;
 import common.CommonMethods;
 import org.testng.annotations.*;
 import pageObjects.mainPages.LoginPage;
 import pageObjects.mainPages.LsuDashboard;
 import pageObjects.mainPages.UnauthorizedAccessPage;
+import scenarios.ScenarioSweden;
 
 import static org.junit.Assert.assertTrue;
 
@@ -18,13 +22,6 @@ public class LoginTest extends BaseScenario {
     protected LoginTest() throws Exception {
     }
 
-    @Test(priority = 1)
-    public void shouldLogInToCqp() {
-        LoginPage loginPage = new LoginPage(driver);
-        LsuDashboard lsuDashboard = loginPage.logInToCqp(USERNAME, PASSWORD);
-        assertTrue(lsuDashboard.getCurrentlyLoggedUser().contains(USERNAME));
-    }
-
     @BeforeMethod
     public void before() throws Exception {
         driver = new CommonMethods(driver).browserSetup();
@@ -32,6 +29,12 @@ public class LoginTest extends BaseScenario {
     }
 
 
+    @Test(priority = 1)
+    public void shouldLogInToCqp() {
+        LoginPage loginPage = new LoginPage(driver);
+        LsuDashboard lsuDashboard = loginPage.logInToCqp(USERNAME, PASSWORD);
+        assertTrue(lsuDashboard.getCurrentlyLoggedUser().contains(USERNAME));
+    }
 
     @Test(priority = 2)
     public void shouldShowUnauthorizedMessageLogInWithEmptyFields() {

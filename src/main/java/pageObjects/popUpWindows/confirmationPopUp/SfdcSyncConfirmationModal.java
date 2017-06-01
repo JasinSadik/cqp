@@ -3,8 +3,7 @@ package pageObjects.popUpWindows.confirmationPopUp;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pageObjects.quotationTabs.QuotationNavigationBar;
-import pageObjects.quotationTabs.productsAndPricesPage.ProductsAndPricesCommonActionButtons;
-import pageObjects.quotationTabs.quotationClassificationPage.AdditionalDataSection;
+import pageObjects.quotationTabs.productsAndPricesPage.ProductsAndPricesPage;
 
 /**
  * Created by PLJAHAS on 2016-12-20.
@@ -16,15 +15,15 @@ public class SfdcSyncConfirmationModal extends QuotationNavigationBar {
     private By confirmButton = By.xpath("//div[@id='sharedConfirmationModal']//button[contains(text(),'Confirm')]");
     private By cancelButton =  By.xpath("//div[@id='sharedConfirmationModal']//button[contains(text(),'Cancel')]");
 
-    public ProductsAndPricesCommonActionButtons pressConfirmButton(){
+    public ProductsAndPricesPage pressConfirmButton(){
         waitOnButton(confirmButton);
         click(confirmButton);
-        return new ProductsAndPricesCommonActionButtons(driver);
+        return new ProductsAndPricesPage(driver);
     }
-    public ProductsAndPricesCommonActionButtons pressCancelButton(){
+    public ProductsAndPricesPage pressCancelButton(){
         waitOnButton(cancelButton);
         click(cancelButton);
-        return new ProductsAndPricesCommonActionButtons(driver);
+        return new ProductsAndPricesPage(driver);
     }
 
 }

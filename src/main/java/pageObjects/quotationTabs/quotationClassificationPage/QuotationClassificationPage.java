@@ -8,21 +8,20 @@ import pageObjects.quotationTabs.QuotationNavigationBar;
 /**
  * Created by PLJAHAS on 2016-12-06.
  */
-public class QuotationClassificationCommonActionButtonsSection extends QuotationNavigationBar {
+public class QuotationClassificationPage extends QuotationNavigationBar {
 
-    public QuotationClassificationCommonActionButtonsSection(WebDriver driver) {
+    public QuotationClassificationPage(WebDriver driver) {
         super(driver);
 
     }
 
     private By createQuotationButton = By.id("btnCreateQuotation");
 
-    public SfdcSyncConfirmationModal pressCreateQuotationButton (){
+    public SfdcSyncConfirmationModal pressCreateQuotationButton() {
         waitOnButton(createQuotationButton);
         click(createQuotationButton);
         return new SfdcSyncConfirmationModal(driver);
     }
-
 
 
 }
