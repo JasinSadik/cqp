@@ -2,13 +2,14 @@ package pageObjects.popUpWindows.confirmationPopUp;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import pageObjects.popUpWindows.Modals;
 import pageObjects.quotationTabs.QuotationNavigationBar;
 import pageObjects.quotationTabs.quotationClassificationPage.AdditionalDataSection;
 
 /**
  * Created by PLJAHAS on 2016-12-19.
  */
-public class ConfirmationModal extends QuotationNavigationBar {
+public class ConfirmationModal extends Modals {
 
 
     public ConfirmationModal(WebDriver driver) {

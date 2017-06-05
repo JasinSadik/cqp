@@ -42,7 +42,7 @@ public class CommonMethods extends Page {
 
     protected void waitOnPresenceOfElement(By by) {
         boolean elementStatus = true;
-        while (elementStatus && loopGoThroughCounter < 30) {
+         while (elementStatus && loopGoThroughCounter < 30) {
             try {
                 new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(by));
                 elementStatus = false;
@@ -288,6 +288,8 @@ public class CommonMethods extends Page {
         waitOnPresenceOfElement(by);
         click(by);
     }
+
+
 
 
     protected void scrollToElement(By by) {

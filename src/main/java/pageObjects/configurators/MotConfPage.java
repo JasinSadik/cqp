@@ -2,13 +2,12 @@ package pageObjects.configurators;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import pageObjects.mainPages.TopMenu;
 import pageObjects.quotationTabs.productsAndPricesPage.ProductsAndPricesPage;
 
 /**
  * Created by PLJAHAS on 2016-12-22.
  */
-public class MotConfPage extends TopMenu {
+public class MotConfPage extends ConfiguratorsPage {
     public MotConfPage(WebDriver driver) {
         super(driver);
     }

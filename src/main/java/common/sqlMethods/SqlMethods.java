@@ -21,10 +21,7 @@ public class SqlMethods extends Page {
         String useremail = user.toLowerCase().trim().split(" ")[0] + "." + user.toLowerCase().trim().split(" ")[1];
         ResultSet rs = null;
         try {
-            rs = readDB("UserPreferences", "Username", " WHERE Username LIKE '%" + useremail + "%'");
-            while (rs.next()) {
-                useremail = rs.getString("Username");
-            }
+            useremail = readDB("UserPreferences", "Username", " WHERE Username LIKE '%" + useremail + "%'");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -46,13 +43,20 @@ public class SqlMethods extends Page {
 
     }
 
-    protected ResultSet readDB(String table, String columnName, String readStatement) throws Exception {
+    protected String readDB(String table, String columnName, String readStatement) throws Exception {
         ResultSet rs = null;
         Statement stmt = initDB();
         String environment = null;
         environment = new CommonMethods(driver).getPropertyFromConfigurationFile("environment");
         rs = stmt.executeQuery("SELECT [" + columnName + "] FROM [" + environment + "].[dbo].[" + table + "]" + readStatement);
-        return rs;
+        String singleResult = null;
+        while (rs.next()) {
+            singleResult = rs.getString(columnName);
+        }
+        if(singleResult==null){
+            singleResult = "n/a";
+        }
+        return singleResult;
     }
 
 

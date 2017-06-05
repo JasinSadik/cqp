@@ -1,3 +1,5 @@
+package testToBeUpdated;
+
 import common.CommonMethods;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;

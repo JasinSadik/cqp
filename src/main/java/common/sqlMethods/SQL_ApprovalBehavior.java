@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by PLJAHAS on 2017-05-26.
  */
-public class SQL_ApprovalBehavior extends SqlMethods {
-    public SQL_ApprovalBehavior(WebDriver driver) {
+public class Sql_ApprovalBehavior extends SqlMethods {
+    public Sql_ApprovalBehavior(WebDriver driver) {
         super(driver);
     }
 

@@ -16,8 +16,7 @@ public class LsuDashboard extends TopMenu {
     }
 
     private By newQuotationButton = By.cssSelector("a[class='button newQuotation']");
-    private By currentlyLoggedUser = By.cssSelector("#topMenu_C019 > span");
-    private By searchQuotationField = By.cssSelector("#firstClonePanelGroup input");
+     private By searchQuotationField = By.cssSelector("#firstClonePanelGroup input");
     private By searchAllQuotationsButton = By.xpath("//*[@id = 'firstClonePanelGroup']//input/../a");
 
     public CustomerDataSection pressNewQuotationButton() {
@@ -26,10 +25,7 @@ public class LsuDashboard extends TopMenu {
         return new CustomerDataSection(driver);
     }
 
-    public String getCurrentlyLoggedUser() {
-        waitOnPresenceOfElement(currentlyLoggedUser);
-        return getText(currentlyLoggedUser);
-    }
+
 
     public SearchQuotationsPopUp pressSearchAllQuotationsButton(){
         waitOnButton(searchAllQuotationsButton);

@@ -2,13 +2,12 @@ package pageObjects.configurators;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import pageObjects.mainPages.TopMenu;
 import pageObjects.quotationTabs.productsAndPricesPage.ProductsAndPricesPage;
 
 /**
  * Created by PLJAHAS on 2016-12-16.
  */
-public class LvDrivePage extends TopMenu {
+public class LvDrivePage extends ConfiguratorsPage {
     public LvDrivePage(WebDriver driver) {
         super(driver);
     }

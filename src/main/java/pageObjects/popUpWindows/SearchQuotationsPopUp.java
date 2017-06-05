@@ -8,7 +8,7 @@ import pageObjects.quotationTabs.QuotationNavigationBar;
 /**
  * Created by PLJAHAS on 2016-12-21.
  */
-public class SearchQuotationsPopUp extends TopMenu {
+public class SearchQuotationsPopUp extends Modals {
     public SearchQuotationsPopUp(WebDriver driver) {
         super(driver);
     }
@@ -21,8 +21,6 @@ public class SearchQuotationsPopUp extends TopMenu {
         return new QuotationNavigationBar(driver);
     }
 
-    public void dummyChange(){
-// zmiana
-    }
+
 
 }

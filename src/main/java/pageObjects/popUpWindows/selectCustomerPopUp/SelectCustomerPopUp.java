@@ -7,13 +7,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pageObjects.mainPages.TopMenu;
+import pageObjects.popUpWindows.Modals;
 import pageObjects.quotationTabs.QuotationNavigationBar;
 import pageObjects.quotationTabs.quotationClassificationPage.CustomerDataSection;
 
 /**
  * Created by PLJAHAS on 2016-12-06.
  */
-public class SelectCustomerPopUp extends TopMenu {
+public class SelectCustomerPopUp extends Modals {
 
     public SelectCustomerPopUp(WebDriver driver) {
         super(driver);

@@ -1,14 +1,16 @@
+package testToBeUpdated;
+
 import common.CommonMethods;
-import common.sqlMethods.SQL_ApprovalBehavior;
+import common.sqlMethods.Sql_ApprovalBehavior;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pageObjects.popUpWindows.confirmationPopUp.SfdcSyncConfirmationModal;
-import pageObjects.quotationTabs.CloseQuotationPage;
-import pageObjects.quotationTabs.fullCostAndFinalizationPage.DocumentGenerationSection;
 import pageObjects.mainPages.LoginPage;
 import pageObjects.mainPages.LsuDashboard;
+import pageObjects.popUpWindows.confirmationPopUp.SfdcSyncConfirmationModal;
+import pageObjects.quotationTabs.approvalRequestPage.ApprovalRequestPage;
 import pageObjects.quotationTabs.QuotationNavigationBar;
+import pageObjects.quotationTabs.fullCostAndFinalizationPage.DocumentGenerationSection;
 import pageObjects.quotationTabs.productsAndPricesPage.ProductLine;
 import pageObjects.quotationTabs.productsAndPricesPage.ProductsAndPricesPage;
 import pageObjects.quotationTabs.quotationClassificationPage.AdditionalDataSection;
@@ -17,34 +19,36 @@ import pageObjects.quotationTabs.quotationClassificationPage.GeneralSection;
 import pageObjects.quotationTabs.quotationClassificationPage.QuotationClassificationPage;
 import scenarios.ScenarioSweden;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Created by PLJAHAS on 2016-12-16.
+ * Created by PLJAHAS on 2016-12-23.
  */
-public class OrderToOmsTest extends ScenarioSweden {
+public class PositiveApprovalForNewQuotationTest extends ScenarioSweden {
 
-    private final String PROJECT_NAME = new CommonMethods(driver).timestamp();
 
-    protected OrderToOmsTest() throws Exception {
+    private final String PROJECT_NAME = getClass().getName();
+    private final String APPROVER_1 = "Robert Larsson";
+    private final String APPROVER_2 = "Adrian Wasielewski";
+    private String quotationNumber = "";
+    private final String APPROVAL_MESSAGE = "OK";
+
+    protected PositiveApprovalForNewQuotationTest() throws Exception {
     }
-
 
     @BeforeTest
     public void before() throws Exception {
         driver = new CommonMethods(driver).browserSetup();
         driver.get(new CommonMethods(driver).getPropertyFromConfigurationFile("environment_url"));
-
-        new SQL_ApprovalBehavior(driver).BindingGeneralApprovalSetNo(LSU);
-        new SQL_ApprovalBehavior(driver).NonBindingGeneralApprovalSetNo(LSU);
+        new Sql_ApprovalBehavior(driver).BindingGeneralApprovalSetBlocking(LSU);
+        new Sql_ApprovalBehavior(driver).NonBindingGeneralApprovalSetBlocking(LSU);
     }
 
     @Test(priority = 1)
     public void shouldLogIntoToCqp() {
         LoginPage loginPage = new LoginPage(driver);
-        LsuDashboard lsuDashboard  = loginPage.logInToCqp(USERNAME, PASSWORD);
-        assertTrue(lsuDashboard.getCurrentlyLoggedUser().contains(USERNAME));
+        loginPage.logInToCqp(USERNAME, PASSWORD);
+        assertTrue(true);
     }
 
 
@@ -68,30 +72,36 @@ public class OrderToOmsTest extends ScenarioSweden {
     }
 
     @Test(priority = 3)
-    public void shouldAddProducts(){
-        QuotationNavigationBar quotationNavigationBar = new QuotationNavigationBar(driver);
-        ProductsAndPricesPage productsAndPricesPage = quotationNavigationBar.goToProductAndPriceTab(ProductsAndPricesPage.class);
+    public void shouldAddProducts() throws InterruptedException {
+        ProductsAndPricesPage productsAndPricesPage = new ProductsAndPricesPage(driver);
         productsAndPricesPage.addProductFromLvDrive(LV_DRIVE_PRODUCT_WITH_VC);
-        productsAndPricesPage.addProductFromMotConf(MOTCONF_PRODUCT_WITHOUT_VC);
         ProductLine productLine = new ProductLine(driver);
         productLine.setApplication(1, LV_DRIVE_APPLICATION);
-        productLine.setApplication(2, MOTCONF_APPLICATION);
-
     }
 
     @Test(priority = 4)
-    public void shouldGenerateAndIssueDocument(){
+    public void shouldStartApproval() throws InterruptedException {
         QuotationNavigationBar quotationNavigationBar = new QuotationNavigationBar(driver);
         DocumentGenerationSection documentGenerationSection = quotationNavigationBar.goToFullCostAndFinalizationTab();
-        documentGenerationSection.generateAndIssueDocumentManually();
-        CloseQuotationPage closeQuotationTab = quotationNavigationBar.goToCloseQuotationTab();
-        closeQuotationTab.setWonStatus();
-        closeQuotationTab.fillInPreOrderData();
-        closeQuotationTab.setProductOrderingSystem(1, "OMS");
-        closeQuotationTab.setProductOrderingSystem(2, "OMS");
-        closeQuotationTab.setProductOrderingSystem(3, "OMS");
-        closeQuotationTab.setProductOrderingSystem(4, "OMS");
-        closeQuotationTab.submitOrder();
+        ApprovalRequestPage approvalRequestPage = documentGenerationSection.pressStartApprovalHyperlink();
+        approvalRequestPage.startApprovalForDefaultUsers();
+        quotationNumber = approvalRequestPage.getQuotationNumber();
+
+
+        LoginPage loginPage = approvalRequestPage.pressLogoutHyperlink();
+        LsuDashboard lsuDashboard= loginPage.logInToCqp(APPROVER_1, PASSWORD);
+        quotationNavigationBar =  lsuDashboard.openQuotationFromQuickSearch(quotationNumber);
+        approvalRequestPage = quotationNavigationBar.goToApprovalTab();
+        approvalRequestPage.approveQuotation(APPROVAL_MESSAGE);
+
+        approvalRequestPage.pressLogoutHyperlink();
+        lsuDashboard= loginPage.logInToCqp(APPROVER_2, PASSWORD);
+        quotationNavigationBar =  lsuDashboard.openQuotationFromQuickSearch(quotationNumber);
+        approvalRequestPage = quotationNavigationBar.goToApprovalTab();
+        approvalRequestPage.approveQuotation(APPROVAL_MESSAGE);
+
+
+        Thread.sleep(10000);
     }
 
     @AfterTest
@@ -100,4 +110,7 @@ public class OrderToOmsTest extends ScenarioSweden {
         driver.quit();
 
     }
+
 }
+
+
