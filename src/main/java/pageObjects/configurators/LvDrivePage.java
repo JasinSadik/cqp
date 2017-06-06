@@ -16,7 +16,7 @@ public class LvDrivePage extends ConfiguratorsPage {
 
     private By uncodeProductField = By.name("TypeCodeToParse");
     private By uncodeProductButton = By.xpath("//input[@name='TypeCodeToParse']/../../../../..//input[@name='submit']");
-    private By summaryButton = By.xpath("//table[4]//td[6]//input[@name='submit']");
+    private By summaryButton = By.xpath("//table[5]//td[6]//input[@name='submit']");
     private By priceCheckButton = By.xpath("//table[3]//input[7]");
     private By addToQuotationButton = By.xpath("//input[@name='submit' and @value='Add to quotation']");
     private final String FRAME_ID = "innerframe";
