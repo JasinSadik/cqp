@@ -25,38 +25,33 @@ public class ProductLine extends ProductsAndPricesPage {
     private By setEditApplicationExpandButton = By.xpath("//tr[@class = 'lineItem product']["+positionLine+"]//span[@role='button']");
     private By actionMenuDropdownList  =  By.xpath("//tr[@class = 'lineItem product']["+positionLine+"]//div[@id='productLineCommonOperations']/a");
 
-    private ProductLine pressEditApplicationButton() {
+    private void pressEditApplicationButton() {
         waitOnButton(editApplicationButton);
         click(editApplicationButton);
-        return this;
-    }
+     }
 
-    private ProductLine pressEditApplicationExpandButton() {
+    private void pressEditApplicationExpandButton() {
         waitOnButton(setEditApplicationExpandButton);
         click(setEditApplicationExpandButton);
-        return this;
     }
 
-    public ProductLine setApplication(int desiredLine, String value){
+    public void setApplication(int desiredLine, String value){
         setPositionLine(desiredLine);
         pressEditApplicationButton();
         pressEditApplicationExpandButton();
         selectElementFromDropdownListByHtmlElement(value);
-        return this;
     }
 
-    public SupportRequestCreationPage createSupportRequest(int desiredLine, String workqueue){
+    public void createSupportRequest(int desiredLine, String workqueue){
         setPositionLine(desiredLine);
         pressActionMenuDropdownList();
         actions.moveToElement(findElement(By.xpath("//tr[@class = 'lineItem product']["+positionLine+"]//span[contains(text(),'Support')]"))).build().perform();
         selectElementFromDropdownListByHtmlElement(workqueue, "a");
-        return new SupportRequestCreationPage(driver);
     }
 
-    public ProductLine pressActionMenuDropdownList(){
+    public void pressActionMenuDropdownList(){
         waitOnElementToBeClickable(actionMenuDropdownList);
         click(actionMenuDropdownList);
-        return this;
     }
 
 }
