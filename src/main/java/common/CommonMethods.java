@@ -5,6 +5,7 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -24,6 +25,7 @@ public class CommonMethods extends Page {
     protected WebElement element;
     protected List<WebElement> elements;
     protected int loopGoThroughCounter = 0;
+
 
     public CommonMethods(WebDriver driver) {
         super(driver);
@@ -309,5 +311,9 @@ public class CommonMethods extends Page {
         }
     }
 
+    protected void moveToElement(By by){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(findElement(by)).build().perform();
+    }
 
 }

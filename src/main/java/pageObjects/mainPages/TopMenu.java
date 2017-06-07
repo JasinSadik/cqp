@@ -130,7 +130,7 @@ public class TopMenu extends CommonMethods {
         waitForPageLoad(driver);
         if(isDashboard()){
             waitOnElementToBeClickable(smallMenuIconDashboard);
-            click(smallMenuIcon);
+            click(smallMenuIconDashboard);
         }else {
             waitOnElementToBeClickable(smallMenuIcon);
             click(smallMenuIcon);
@@ -140,6 +140,7 @@ public class TopMenu extends CommonMethods {
     public void pressLogoutHyperlink(){
         waitForPageLoad(driver);
         if(isSmallMenuDisplayed()){
+            pressSmallMenuIcon();
             if(isDashboard()){
                 waitOnElementToBeClickable(logoutHyperlinkSmallMenuDashboard);
                 click(logoutHyperlinkSmallMenuDashboard);
@@ -162,6 +163,7 @@ public class TopMenu extends CommonMethods {
     public void pressChangeUnitHyperlink(){
         waitForPageLoad(driver);
         if(isSmallMenuDisplayed()){
+            pressSmallMenuIcon();
             if(isDashboard()){
                 waitOnElementToBeClickable(changeUnitHyperlinkSmallMenuDashboard);
                 click(changeUnitHyperlinkSmallMenuDashboard);
@@ -180,12 +182,22 @@ public class TopMenu extends CommonMethods {
         }
     }
 
+    public void moveToPreferencesListElement(){
+        if(isDashboard()){
+            moveToElement(preferencesHyperlinkDashboard);
+        }else{
+            moveToElement(preferencesHyperlink);
+        }
+
+    }
+
     public void pressPreferencesHyperlink(){
         waitForPageLoad(driver);
         if(isSmallMenuDisplayed()){
+            pressSmallMenuIcon();
             if(isDashboard()){
                 waitOnElementToBeClickable(preferencesHyperlinkSmallMenuDashboard);
-                click(preferencesHyperlinkSmallMenuDashboard);
+                moveToElement(preferencesHyperlinkSmallMenuDashboard);
             }else {
                 waitOnElementToBeClickable(preferencesHyperlinkSmallMenu);
                 click(preferencesHyperlinkSmallMenu);
@@ -208,5 +220,7 @@ public class TopMenu extends CommonMethods {
         ChangeLsuPopUp changeLsuPopUp = new ChangeLsuPopUp(driver);
         changeLsuPopUp.changeLsu(LsuName);
     }
+
+
 
 }

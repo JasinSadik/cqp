@@ -14,7 +14,7 @@ public class ProductsAndPricesPage extends QuotationNavigationBar {
         super(driver);
     }
 
-    Actions actions = new Actions(driver);
+
 
     private By addToQuotationButton = By.xpath("//button[contains(text(), 'Add to quotation')]");
     private By quickSearchField = By.id("ProductAutoComplete");
@@ -53,14 +53,14 @@ public class ProductsAndPricesPage extends QuotationNavigationBar {
 
     public void addProductFromLvDrive(String productId) {
         pressAddProductButton();
-        actions.moveToElement(findElement(By.xpath("//a[contains(text(),'Add product from configurator')]"))).build().perform();
+        moveToElement(By.xpath("//a[contains(text(),'Add product from configurator')]"));
         selectElementFromDropdownListByHtmlElement("LV DRIVE", "a");
         new LvDrivePage(driver).addProductFromLvDrive(productId);
     }
 
     public void addProductFromMotConf(String productId) {
         pressAddProductButton();
-        actions.moveToElement(findElement(By.xpath("//a[contains(text(),'Add product from configurator')]"))).build().perform();
+        moveToElement(By.xpath("//a[contains(text(),'Add product from configurator')]"));
         selectElementFromDropdownListByHtmlElement("Search MotConf product", "a");
         new MotConfPage(driver).addProductFromMotConf(productId);
     }

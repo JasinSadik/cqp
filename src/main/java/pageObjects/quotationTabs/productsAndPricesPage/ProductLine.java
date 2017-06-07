@@ -49,7 +49,7 @@ public class ProductLine extends ProductsAndPricesPage {
     public void createSupportRequest(int desiredLine, String workqueue){
         setPositionLine(desiredLine);
         pressActionMenuDropdownList();
-        actions.moveToElement(findElement(supportRequestListElement)).build().perform();
+        moveToElement(supportRequestListElement);
         selectElementFromDropdownListByHtmlElement(workqueue, "a");
     }
 
