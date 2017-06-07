@@ -43,35 +43,30 @@ public class LvDrivePage extends ConfiguratorsPage {
         return this;
     }
 
-    private LvDrivePage insertProductIdToUncode(String productId) {
+    private void insertProductIdToUncode(String productId) {
         waitForPageLoad(driver);
         waitOnPresenceOfElement(uncodeProductField);
         sendKeys(uncodeProductField, productId);
-        return this;
     }
 
-    private LvDrivePage pressUncodeButton() {
+    private void pressUncodeButton() {
         waitOnButton(uncodeProductButton);
         click(uncodeProductButton);
-        return this;
     }
 
-    private LvDrivePage pressSummaryButton() {
+    private void pressSummaryButton() {
         waitOnButton(summaryButton);
         click(summaryButton);
-        return this;
     }
 
-    private LvDrivePage pressPriceCheckButton() {
+    private void pressPriceCheckButton() {
         waitOnButton(priceCheckButton);
         click(priceCheckButton);
-        return this;
     }
 
-    private LvDrivePage pressAddToQuotationButton() {
+    private void pressAddToQuotationButton() {
         waitOnButton(addToQuotationButton);
         click(addToQuotationButton);
-        return this;
     }
 
 }

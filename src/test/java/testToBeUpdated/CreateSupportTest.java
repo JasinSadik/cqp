@@ -62,13 +62,15 @@ public class CreateSupportTest extends ScenarioSweden {
         customerDataSection.pressTodayRfqButton();
         customerDataSection.setIndustryUsageLevelOne(INUDSTRY_USAGE_LEVEL1);
         customerDataSection.setIndustryUsageLevelTwo(INUDSTRY_USAGE_LEVEL2);
-        GeneralSection generalSection = customerDataSection.pressSaveAndCollapseButton();
+        GeneralSection generalSection = new GeneralSection(driver);
+        customerDataSection.pressSaveAndCollapseButton();
         generalSection.insertProjectName(PROJECT_NAME);
         generalSection.setQuotationType(QUOTATION_TYPE);
-        AdditionalDataSection additionalDataSection = generalSection.pressSaveAndCollapseButton(AdditionalDataSection.class);
+        AdditionalDataSection additionalDataSection = new AdditionalDataSection(driver);
+        generalSection.pressSaveAndCollapseButton();
         additionalDataSection.setQuotationLanguage("Arabic");
         QuotationClassificationPage quotationClassificationPage = new QuotationClassificationPage(driver);
-        SfdcSyncConfirmationModal sfdcSyncConfirmationModal = quotationClassificationPage.pressCreateQuotationButton();
+        quotationClassificationPage.pressCreateQuotationButton();
       //  sfdcSyncConfirmationModal.pressConfirmButton();
 
     }
@@ -84,7 +86,8 @@ public class CreateSupportTest extends ScenarioSweden {
     @Test(priority = 4)
     public void shouldStartSupportRequest() throws InterruptedException {
         ProductLine productLine = new ProductLine(driver);
-        SupportRequestCreationPage supportRequestCreationPage = productLine.createSupportRequest(1, "LV AC Drives Helsinki support");
+        SupportRequestCreationPage supportRequestCreationPage = new SupportRequestCreationPage(driver);
+        productLine.createSupportRequest(1, "LV AC Drives Helsinki support");
         supportRequestCreationPage.createSupportRequestForSpecificUser("Asko Hokkanen", "First Auto Support", "Special discount");
         quotationNumber = supportRequestCreationPage.getQuotationNumber();
 
