@@ -1,7 +1,7 @@
 package pageObjects.configurators;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import com.gargoylesoftware.htmlunit.ElementNotFoundException;
+import org.openqa.selenium.*;
 import pageObjects.quotationTabs.productsAndPricesPage.ProductsAndPricesPage;
 
 /**
@@ -32,8 +32,18 @@ public class MotConfPage extends ConfiguratorsPage {
 
 
     private void initMotConf() {
-        driver.switchTo().parentFrame();
-        driver.switchTo().frame(findElement(By.id(FRAME_ID)));
+        setTimeout(driver, 1);
+        boolean elementStatus = true;
+        while(elementStatus) {
+            try {
+                driver.switchTo().frame(driver.findElement(By.id(FRAME_ID)));
+                driver.findElement(searchByProductNumberField);
+                elementStatus = false;
+            } catch (ElementNotFoundException | NoSuchElementException | NoSuchFrameException | NoSuchWindowException e) {
+
+            }
+        }
+        setTimeout(driver, 30);
     }
 
     private void closeMotConf() {

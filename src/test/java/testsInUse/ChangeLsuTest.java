@@ -48,14 +48,14 @@ public class ChangeLsuTest extends BaseScenario {
         topMenu.changeLsu("SUESMOT");
         assertTrue(topMenu.getCurrentlyLoggedUsersLsu().contains("SUESMOT"));
     }
-/*
+
     @Test(priority = 4)
     public void shouldChangeLsuToPu() throws InterruptedException {
         TopMenu topMenu = new TopMenu(driver);
         topMenu.changeLsu("PUFIDRI");
         assertTrue(topMenu.getCurrentlyLoggedUsersLsu().contains("PUFIDRI"));
     }
-*/
+
        @AfterTest
     public void after(){
         driver.close();

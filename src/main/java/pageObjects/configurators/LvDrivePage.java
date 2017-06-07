@@ -1,7 +1,7 @@
 package pageObjects.configurators;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import com.gargoylesoftware.htmlunit.ElementNotFoundException;
+import org.openqa.selenium.*;
 import pageObjects.quotationTabs.productsAndPricesPage.ProductsAndPricesPage;
 
 /**
@@ -33,14 +33,24 @@ public class LvDrivePage extends ConfiguratorsPage {
         return new ProductsAndPricesPage(driver);
     }
 
-    private LvDrivePage initLvDrive() {
-        driver.switchTo().frame(findElement(By.id(FRAME_ID)));
-        return this;
+    private void initLvDrive() {
+        setTimeout(driver, 1);
+        boolean elementStatus = true;
+        while(elementStatus) {
+            try {
+                driver.switchTo().frame(driver.findElement(By.id(FRAME_ID)));
+                driver.findElement(uncodeProductField);
+                elementStatus = false;
+            } catch (ElementNotFoundException | NoSuchElementException | NoSuchFrameException | NoSuchWindowException e) {
+
+            }
+        }
+        setTimeout(driver, 30);
     }
 
-    private LvDrivePage closeLvDrive() {
+    private void closeLvDrive() {
+        waitForBlockUiToDisappear();
         driver.switchTo().parentFrame();
-        return this;
     }
 
     private void insertProductIdToUncode(String productId) {

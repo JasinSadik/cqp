@@ -16,36 +16,36 @@ import pageObjects.popUpWindows.ChangeLsuPopUp;
 public class TopMenu extends CommonMethods {
 
     //non-dashboard classic menu
-    private By logoutHyperlink = By.xpath("//div[@class='classicQuotationMenu']//a[text()='Logout']");
-    private By preferencesHyperlink = By.xpath("//div[@class='classicQuotationMenu']//*[@id='menuPreferences']/a");
-    private By changeUnitHyperlink = By.xpath("//div[@class='classicQuotationMenu']//a[text()='Change unit of work']");
-    private By currentlyLoggedUser = By.xpath("//div[@class='classicQuotationMenu']//*[@id='topMenu_C019']/span");
-    private By currentlyLoggedUsersLsu = By.xpath("//div[@class='classicQuotationMenu']//*[@id='topMenu_C019']/span/span");
+    private By logoutHyperlink = By.xpath("//div[contains(@class, 'classicQuotationMenu')]//a[text()='Logout']");
+    private By preferencesHyperlink = By.xpath("//div[contains(@class, 'classicQuotationMenu')]//*[@id='menuPreferences']/a");
+    private By changeUnitHyperlink = By.xpath("//div[contains(@class, 'classicQuotationMenu')]//a[text()='Change unit of work']");
+    private By currentlyLoggedUser = By.xpath("//div[contains(@class, 'classicQuotationMenu')]//*[@id='topMenu_C019']/span");
+    private By currentlyLoggedUsersLsu = By.xpath("//div[contains(@class, 'classicQuotationMenu')]//*[@id='topMenu_C019']/span/span");
 
     //dashboard classic menu
-    private By logoutHyperlinkDashboard = By.xpath("//div[@class='classicMenu']//a[text()='Logout']");
-    private By preferencesHyperlinkDashboard = By.xpath("//div[@class='classicMenu']//*[@id='menuPreferences']/a");
-    private By changeUnitHyperlinkDashboard = By.xpath("//div[@class='classicMenu']//a[text()='Change unit of work']");
-    private By currentlyLoggedUserDashboard = By.xpath("//div[@class='classicMenu']//*[@id='topMenu_C019']/span");
-    private By currentlyLoggedUsersLsuDashboard = By.xpath("//div[@class='classicMenu']//*[@id='topMenu_C019']/span/span");
+    private By logoutHyperlinkDashboard = By.xpath("//div[contains(@class, 'classicMenu')]//a[text()='Logout']");
+    private By preferencesHyperlinkDashboard = By.xpath("//div[contains(@class, 'classicMenu')]//*[@id='menuPreferences']/a");
+    private By changeUnitHyperlinkDashboard = By.xpath("//div[contains(@class, 'classicMenu')]//a[text()='Change unit of work']");
+    private By currentlyLoggedUserDashboard = By.xpath("//div[contains(@class, 'classicMenu')]//*[@id='topMenu_C019']/span");
+    private By currentlyLoggedUsersLsuDashboard = By.xpath("//div[contains(@class, 'classicMenu')]//*[@id='topMenu_C019']/span/span");
 
     //non dashboard small menu elements
-    private By logoutHyperlinkSmallMenu = By.xpath("//div[@class='quotationMenu']//a[text()='Logout']");
-    private By preferencesHyperlinkSmallMenu = By.xpath("//div[@class='quotationMenu']//*[@id='menuPreferences']/a");
-    private By changeUnitHyperlinkSmallMenu = By.xpath("//div[@class='quotationMenu']//a[text()='Change unit of work']");
-    private By currentlyLoggedUserSmallMenu = By.xpath("//div[@class='quotationMenu']//*[@id='topMenu_C019']/span");
-    private By currentlyLoggedUsersLsuSmallMenu = By.xpath("//div[@class='quotationMenu']//*[@id='topMenu_C019']/span/span");
+    private By logoutHyperlinkSmallMenu = By.xpath("//div[contains(@class, 'quotationMenu')]//a[text()='Logout']");
+    private By preferencesHyperlinkSmallMenu = By.xpath("//div[contains(@class, 'quotationMenu')]//*[@id='menuPreferences']/a");
+    private By changeUnitHyperlinkSmallMenu = By.xpath("//div[contains(@class, 'quotationMenu')]//a[text()='Change unit of work']");
+    private By currentlyLoggedUserSmallMenu = By.xpath("//div[contains(@class, 'quotationMenu')]//*[@id='topMenu_C019']/span");
+    private By currentlyLoggedUsersLsuSmallMenu = By.xpath("/div[contains(@class, 'quotationMenu')]//*[@id='topMenu_C019']/span/span");
 
-    private By smallMenuIcon = By.xpath("//div[@class='quotationMenu']//*[@id='topMenu_C019']/div[1]/a");
+    private By smallMenuIcon = By.xpath("//div[contains(@class, 'quotationMenu')]//*[@id='topMenu_C019']/div[1]/a");
 
     //dashboard small menu elements
-    private By logoutHyperlinkSmallMenuDashboard = By.xpath("//div[@class='dashboardMenu']//a[text()='Logout']");
-    private By preferencesHyperlinkSmallMenuDashboard = By.xpath("//div[@class='dashboardMenu']//*[@id='menuPreferences']/a");
-    private By changeUnitHyperlinkSmallMenuDashboard = By.xpath("//div[@class='dashboardMenu']//a[text()='Change unit of work']");
-    private By currentlyLoggedUserSmallMenuDashboard = By.xpath("//div[@class='dashboardMenu']//*[@id='topMenu_C019']/span");
-    private By currentlyLoggedUsersLsuSmallMenuDashboard = By.xpath("//div[@class='dashboardMenu']//*[@id='topMenu_C019']/span/span");
+    private By logoutHyperlinkSmallMenuDashboard = By.xpath("//div[contains(@class, 'dashboardMenu')]//a[text()='Logout']");
+    private By preferencesHyperlinkSmallMenuDashboard = By.xpath("//div[contains(@class, 'dashboardMenu')]//*[@id='menuPreferences']/a");
+    private By changeUnitHyperlinkSmallMenuDashboard = By.xpath("//div[contains(@class, 'dashboardMenu')]//a[text()='Change unit of work']");
+    private By currentlyLoggedUserSmallMenuDashboard = By.xpath("//div[contains(@class, 'dashboardMenu')]//*[@id='topMenu_C019']/span");
+    private By currentlyLoggedUsersLsuSmallMenuDashboard = By.xpath("//div[contains(@class, 'dashboardMenu')]//*[@id='topMenu_C019']/span/span");
 
-    private By smallMenuIconDashboard = By.xpath("//div[@class='dashboardMenu']//*[@id='topMenu_C019']/div[1]/a");
+    private By smallMenuIconDashboard = By.xpath("//div[contains(@class, 'dashboardMenu')]//*[@id='topMenu_C019']/div[1]/a");
 
 
     public TopMenu(WebDriver driver) {
@@ -221,6 +221,10 @@ public class TopMenu extends CommonMethods {
         changeLsuPopUp.changeLsu(LsuName);
     }
 
+    public void relogOnUser(String username){
+        pressLogoutHyperlink();
 
+
+    }
 
 }

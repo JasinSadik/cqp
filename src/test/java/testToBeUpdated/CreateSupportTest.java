@@ -61,7 +61,7 @@ public class CreateSupportTest extends ScenarioSweden {
         creditLimitPopUp.pressOkButton();
         customerDataSection.pressTodayRfqButton();
         customerDataSection.setIndustryUsageLevelOne(INUDSTRY_USAGE_LEVEL1);
-        customerDataSection.setIndustryUsageLevelTwo(INUDSTRY_USAGE_LEVEL2);
+      //  customerDataSection.setIndustryUsageLevelTwo(INUDSTRY_USAGE_LEVEL2);
         GeneralSection generalSection = new GeneralSection(driver);
         customerDataSection.pressSaveAndCollapseButton();
         generalSection.insertProjectName(PROJECT_NAME);
@@ -78,8 +78,8 @@ public class CreateSupportTest extends ScenarioSweden {
     @Test(priority = 3)
     public void shouldAddProducts() throws InterruptedException {
         ProductsAndPricesPage productsAndPricesPage = new ProductsAndPricesPage(driver);
-        productsAndPricesPage.addProductFromLvDrive("ACS800-01-0120-3+E202+K454");
         ProductLine productLine = new ProductLine(driver);
+        productsAndPricesPage.addProductFromLvDrive("ACS800-01-0120-3+E202+K454");
         productLine.setApplication(1, "Calander Line");
     }
 

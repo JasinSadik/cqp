@@ -39,16 +39,17 @@ public class CommonMethods extends Page {
     }
 
     protected void waitOnButton(By by) {
+        waitOnElementToBeVisible(by);
         waitOnElementToBeClickable(by);
     }
 
     protected void waitOnPresenceOfElement(By by) {
         boolean elementStatus = true;
-         while (elementStatus && loopGoThroughCounter < 30) {
+        loopGoThroughCounter = 0;
+        while (elementStatus && loopGoThroughCounter < 30) {
             try {
                 new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(by));
                 elementStatus = false;
-                loopGoThroughCounter = 0;
             } catch (TimeoutException e) {
                 System.out.println("Timeout - Element not found " + by.toString());
                 loopGoThroughCounter++;
@@ -58,12 +59,12 @@ public class CommonMethods extends Page {
 
     protected void waitOnElementToBeVisible(WebElement element) {
         boolean elementStatus = true;
+        loopGoThroughCounter = 0;
         while (elementStatus && loopGoThroughCounter < 30) {
             try {
                 new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(element));
                 elementStatus = false;
-                loopGoThroughCounter = 0;
-            } catch (TimeoutException e) {
+             } catch (TimeoutException e) {
                 System.out.println("Timeout - Element not found");
                 loopGoThroughCounter++;
             }
@@ -72,28 +73,27 @@ public class CommonMethods extends Page {
 
     protected void waitOnElementToBeVisible(By by) {
         boolean elementStatus = true;
+        loopGoThroughCounter = 0;
         while (elementStatus && loopGoThroughCounter < 30) {
             try {
                 new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(by));
                 elementStatus = false;
-                loopGoThroughCounter = 0;
             } catch (TimeoutException e) {
                 System.out.println("Timeout - Element not found " + by.toString());
                 loopGoThroughCounter++;
-
             }
         }
     }
 
     protected void waitOnElementToBeClickable(WebElement element) {
         boolean elementStatus = true;
+        loopGoThroughCounter = 0;
         while (elementStatus && loopGoThroughCounter < 30) {
             try {
                 new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(element));
                 elementStatus = false;
-                loopGoThroughCounter = 0;
             } catch (TimeoutException e) {
-                System.out.println("Timeout - Element not found");
+                System.out.println("Timeout - Element not found " + element.toString());
                 loopGoThroughCounter++;
             }
         }
@@ -101,11 +101,12 @@ public class CommonMethods extends Page {
 
     protected void waitOnElementToBeClickable(By by) {
         boolean elementStatus = true;
+        loopGoThroughCounter = 0;
         while (elementStatus && loopGoThroughCounter < 30) {
             try {
                 new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(by));
                 elementStatus = false;
-                loopGoThroughCounter = 0;
+
             } catch (TimeoutException e) {
                 System.out.println("Timeout - Element not found " + by.toString());
                 loopGoThroughCounter++;
@@ -124,11 +125,22 @@ public class CommonMethods extends Page {
         wait.until(pageLoadCondition);
     }
 
+    protected void waitForFrameToLoad(){
+        ExpectedCondition<Boolean> iframeLoadCondition = new
+                ExpectedCondition<Boolean>() {
+                    public Boolean apply(WebDriver driver) {
+                        return ((JavascriptExecutor) driver).executeScript("return iframe.readyState").equals("complete");
+                    }
+                };
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(iframeLoadCondition);
+    }
     //..........................SeleniumMethods......................
     protected WebElement findElement(By by) {
         boolean elementStatus = true;
         while (elementStatus && loopGoThroughCounter < 6) {
             try {
+                waitForBlockUiToDisappear();
                 element = driver.findElement(by);
                 elementStatus = false;
             } catch (ElementNotFoundException e) {
@@ -142,16 +154,17 @@ public class CommonMethods extends Page {
 
     protected List<WebElement> findElements(By by) {
         boolean elementStatus = true;
-        while (elementStatus && loopGoThroughCounter < 6) {
+        setTimeout(driver, 2);
+        while (elementStatus) {
             try {
                 elements = driver.findElements(by);
                 elementStatus = false;
             } catch (ElementNotFoundException e) {
                 System.out.println("Timeout - Element not found " + by.toString());
-                loopGoThroughCounter++;
                 scrollToElement(by);
             }
         }
+        setTimeout(driver, 30);
         return elements;
     }
 
@@ -170,6 +183,7 @@ public class CommonMethods extends Page {
                 elementStatus = false;
             } catch (WebDriverException e) {
                 System.out.println("Timeout - element not found: " + by.toString());
+                scrollToElement(by);
                 i++;
             }
         }
@@ -185,17 +199,18 @@ public class CommonMethods extends Page {
                 elementStatus = false;
             } catch (WebDriverException e) {
                 System.out.println("Timeout - element not found: " + by.toString());
+                scrollToElement(by);
                 i++;
             }
         }
     }
 
     protected void clear(By by) {
-        driver.findElement(by).clear();
+        findElement(by).clear();
     }
 
     protected String getText(By by) {
-        return driver.findElement(by).getText();
+        return findElement(by).getText();
     }
 
     //..........................ConfigParser......................
@@ -215,9 +230,6 @@ public class CommonMethods extends Page {
         }
         return key;
     }
-
-
-
 
     //..........................BrowserSetup....................
     public WebDriver browserSetup() throws Exception {
@@ -246,7 +258,6 @@ public class CommonMethods extends Page {
     protected void snapshot(WebDriver driver, String testName) throws Exception {
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         String newFileSrc = testName + "_" + timestamp() + ".jpg";
-
         FileUtils.copyFile(screenshot, new File(getPropertyFromConfigurationFile("snapshot_path") + newFileSrc));
         System.out.println("New screenshot was saved: " + newFileSrc);
     }
@@ -263,13 +274,13 @@ public class CommonMethods extends Page {
         By comboBoxList = By.xpath("//ul[contains(@id , '" + comboBoxId + "_listbox')]/li");
         By comboBoxElement = By.xpath("//ul[contains(@id , '" + comboBoxId + "_listbox')]/li[" + index + "]");
         waitOnButton(comboBoxButton);
-        while (driver.findElements(comboBoxList).size() == 0) {
+        while (findElements(comboBoxList).size() == 0) {
             // to fill up
         }
         click(comboBoxButton);
-        while (driver.findElements(comboBoxList).size() > index - 1) {
+        while (findElements(comboBoxList).size() > index - 1) {
             waitOnElementToBeClickable(driver.findElement(comboBoxElement));
-            if (driver.findElement(comboBoxElement).getText().toLowerCase().contains(value.toLowerCase())) {
+            if (findElement(comboBoxElement).getText().toLowerCase().contains(value.toLowerCase())) {
                 click(comboBoxElement);
                 break;
             } else {
@@ -290,9 +301,8 @@ public class CommonMethods extends Page {
         click(by);
     }
 
-
-    protected String[] getElementsFromDropdownList(String id){
-        elements =  findElements(By.id(id));
+    protected String[] getElementsFromDropdownList(String id) {
+        elements = findElements(By.id(id));
         String[] elementsToStringTable = null;
         int indexOfElementsCount = 0;
         for (WebElement e : elements) {
@@ -311,9 +321,22 @@ public class CommonMethods extends Page {
         }
     }
 
-    protected void moveToElement(By by){
+    protected void moveToElement(By by) {
         Actions actions = new Actions(driver);
         actions.moveToElement(findElement(by)).build().perform();
     }
+
+    protected void waitForBlockUiToDisappear() {
+        setTimeout(driver, 0);
+        try {
+            elements = driver.findElements(By.cssSelector("div[class*='blockUI']"));
+        } catch (ElementNotFoundException e) {
+        }
+        setTimeout(driver, 30);
+        if (elements != null) {
+            new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOfAllElements(elements));
+        }
+    }
+
 
 }
