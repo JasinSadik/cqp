@@ -16,14 +16,18 @@ public class ProductLine extends ProductsAndPricesPage {
 
     private void setPositionLine(int desiredLine) {
         positionLine = desiredLine;
-        editApplicationButton = By.xpath("//tr[@class = 'lineItem product']["+positionLine+"]//b[contains(text(), 'Edit application*')]");
-        setEditApplicationExpandButton = By.xpath("//tr[@class = 'lineItem product']["+positionLine+"]//span[@role='button']");
-        actionMenuDropdownList  =  By.xpath("//tr[@class = 'lineItem product']["+positionLine+"]//div[@id='productLineCommonOperations']/a");
+        editApplicationButton = By.xpath("//tbody[@class = 'product']["+positionLine+"]//button[text()='Edit application']");
+        setEditApplicationExpandButton = By.xpath("//tbody[@class = 'product']["+positionLine+"]//span[@role='button']");
+        actionMenuDropdownList  =  By.xpath("//tbody[@class = 'product']["+positionLine+"]//td[@class = 'actions']//li[contains (@class, 'additionalActions')]/a");
+        supportRequestListElement = By.xpath("//tbody[@class = 'product']["+positionLine+"]//td[@class = 'actions']//li[contains (@class, 'support')]");
     }
 
-    private By editApplicationButton = By.xpath("//tr[@class = 'lineItem product']["+positionLine+"]//b[contains(text(), 'Edit application*')]");
-    private By setEditApplicationExpandButton = By.xpath("//tr[@class = 'lineItem product']["+positionLine+"]//span[@role='button']");
-    private By actionMenuDropdownList  =  By.xpath("//tr[@class = 'lineItem product']["+positionLine+"]//div[@id='productLineCommonOperations']/a");
+    private By editApplicationButton = By.xpath("//tbody[@class = 'product']["+positionLine+"]//button[text()='Edit application']");
+    private By setEditApplicationExpandButton = By.xpath("//tbody[@class = 'product']["+positionLine+"]//span[@role='button']");
+    private By actionMenuDropdownList  =  By.xpath("//tbody[@class = 'product']["+positionLine+"]//td[@class = 'actions']//li[contains (@class, 'additionalActions')]/a");
+    private By supportRequestListElement = By.xpath("//tbody[@class = 'product']["+positionLine+"]//td[@class = 'actions']//li[contains (@class, 'support')]");
+
+    //*[@id="quoteProducts"]/tbody[1]/tr/td[6]/ul/li[1]/a
 
     private void pressEditApplicationButton() {
         waitOnButton(editApplicationButton);
@@ -45,7 +49,7 @@ public class ProductLine extends ProductsAndPricesPage {
     public void createSupportRequest(int desiredLine, String workqueue){
         setPositionLine(desiredLine);
         pressActionMenuDropdownList();
-        actions.moveToElement(findElement(By.xpath("//tr[@class = 'lineItem product']["+positionLine+"]//span[contains(text(),'Support')]"))).build().perform();
+        actions.moveToElement(findElement(supportRequestListElement)).build().perform();
         selectElementFromDropdownListByHtmlElement(workqueue, "a");
     }
 

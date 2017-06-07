@@ -6,6 +6,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pageObjects.mainPages.LoginPage;
 import pageObjects.mainPages.LsuDashboard;
+import pageObjects.popUpWindows.CreditLimitPopUp;
 import pageObjects.popUpWindows.confirmationPopUp.SfdcSyncConfirmationModal;
 import pageObjects.quotationTabs.supportRequestPage.SupportRequestCreationPage;
 import pageObjects.quotationTabs.productsAndPricesPage.ProductLine;
@@ -56,6 +57,8 @@ public class CreateSupportTest extends ScenarioSweden {
         LsuDashboard lsuDashboard = new LsuDashboard(driver);
         CustomerDataSection customerDataSection = lsuDashboard.pressNewQuotationButton();
         customerDataSection.selectCustomerFromSearch(CUSTOMER);
+        CreditLimitPopUp creditLimitPopUp = new CreditLimitPopUp(driver);
+        creditLimitPopUp.pressOkButton();
         customerDataSection.pressTodayRfqButton();
         customerDataSection.setIndustryUsageLevelOne(INUDSTRY_USAGE_LEVEL1);
         customerDataSection.setIndustryUsageLevelTwo(INUDSTRY_USAGE_LEVEL2);
