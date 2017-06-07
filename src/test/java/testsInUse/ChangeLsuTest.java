@@ -28,7 +28,8 @@ public class ChangeLsuTest extends BaseScenario {
     @Test(priority = 1)
     public void shouldLogInToCqp() throws Exception {
         LoginPage loginPage = new LoginPage(driver);
-        LsuDashboard lsuDashboard = loginPage.logInToCqp(USERNAME, PASSWORD);
+        LsuDashboard lsuDashboard = new LsuDashboard(driver);
+        loginPage.logInToCqp(USERNAME, PASSWORD);
         assertTrue(lsuDashboard.getCurrentlyLoggedUser().contains(USERNAME));
         assertTrue(lsuDashboard.getCurrentlyLoggedUsersLsu().contains( new Sql_UserPreferences(driver).getDefaultUnit(USERNAME)));
     }
@@ -47,14 +48,14 @@ public class ChangeLsuTest extends BaseScenario {
         topMenu.changeLsu("SUESMOT");
         assertTrue(topMenu.getCurrentlyLoggedUsersLsu().contains("SUESMOT"));
     }
-
+/*
     @Test(priority = 4)
     public void shouldChangeLsuToPu() throws InterruptedException {
         TopMenu topMenu = new TopMenu(driver);
         topMenu.changeLsu("PUFIDRI");
         assertTrue(topMenu.getCurrentlyLoggedUsersLsu().contains("PUFIDRI"));
     }
-
+*/
        @AfterTest
     public void after(){
         driver.close();

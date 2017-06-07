@@ -142,7 +142,6 @@ public class CommonMethods extends Page {
         boolean elementStatus = true;
         while (elementStatus && loopGoThroughCounter < 6) {
             try {
-                element = driver.findElement(by);
                 elements = driver.findElements(by);
                 elementStatus = false;
             } catch (ElementNotFoundException e) {
@@ -290,7 +289,16 @@ public class CommonMethods extends Page {
     }
 
 
-
+    protected String[] getElementsFromDropdownList(String id){
+        elements =  findElements(By.id(id));
+        String[] elementsToStringTable = null;
+        int indexOfElementsCount = 0;
+        for (WebElement e : elements) {
+            elementsToStringTable[indexOfElementsCount] = e.getText().toString();
+            indexOfElementsCount++;
+        }
+        return elementsToStringTable;
+    }
 
     protected void scrollToElement(By by) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", findElement(by));

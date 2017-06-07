@@ -32,28 +32,32 @@ public class LoginTest extends BaseScenario {
     @Test(priority = 1)
     public void shouldLogInToCqp() {
         LoginPage loginPage = new LoginPage(driver);
-        LsuDashboard lsuDashboard = loginPage.logInToCqp(USERNAME, PASSWORD);
+        LsuDashboard lsuDashboard = new LsuDashboard(driver);
+        loginPage.logInToCqp(USERNAME, PASSWORD);
         assertTrue(lsuDashboard.getCurrentlyLoggedUser().contains(USERNAME));
     }
 
     @Test(priority = 2)
     public void shouldShowUnauthorizedMessageLogInWithEmptyFields() {
         LoginPage loginPage = new LoginPage(driver);
-        UnauthorizedAccessPage unauthorizedAccessPage = loginPage.invalidLogInToCqp(EMPTY_USERNAME, EMPTY_PASSWORD);
+        UnauthorizedAccessPage unauthorizedAccessPage = new UnauthorizedAccessPage(driver);
+        loginPage.invalidLogInToCqp(EMPTY_USERNAME, EMPTY_PASSWORD);
         assertTrue(unauthorizedAccessPage.checkUnauthorizedAccessMessageShown());
     }
 
     @Test(priority = 3)
     public void shouldShowUnauthorizedMessageLogInWithWrongPassword() {
         LoginPage loginPage = new LoginPage(driver);
-        UnauthorizedAccessPage unauthorizedAccessPage = loginPage.invalidLogInToCqp(USERNAME, EMPTY_PASSWORD);
+        UnauthorizedAccessPage unauthorizedAccessPage = new UnauthorizedAccessPage(driver);
+        loginPage.invalidLogInToCqp(USERNAME, EMPTY_PASSWORD);
         assertTrue(unauthorizedAccessPage.checkUnauthorizedAccessMessageShown());
     }
 
     @Test(priority = 4)
     public void shouldShowUnauthorizedMessageLogInWithWrongUsername() {
         LoginPage loginPage = new LoginPage(driver);
-        UnauthorizedAccessPage unauthorizedAccessPage = loginPage.invalidLogInToCqp(EMPTY_USERNAME, PASSWORD);
+        UnauthorizedAccessPage unauthorizedAccessPage = new UnauthorizedAccessPage(driver);
+        loginPage.invalidLogInToCqp(EMPTY_USERNAME, PASSWORD);
         assertTrue(unauthorizedAccessPage.checkUnauthorizedAccessMessageShown());
     }
 

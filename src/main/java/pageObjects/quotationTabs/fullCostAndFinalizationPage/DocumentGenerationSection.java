@@ -43,11 +43,10 @@ public class DocumentGenerationSection extends FullCostAndFinalizationPage{
     }
 
 
-    public ApprovalRequestPage pressStartApprovalHyperlink(){
+    public void pressStartApprovalHyperlink(){
         pressOpenSectionButton();
         waitOnElementToBeClickable(startApprovalHyperlink);
         click(startApprovalHyperlink);
-        return new ApprovalRequestPage(driver);
     }
 
 

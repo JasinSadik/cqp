@@ -60,13 +60,16 @@ public class PositiveApprovalForNewQuotationTest extends ScenarioSweden {
         customerDataSection.pressTodayRfqButton();
         customerDataSection.setIndustryUsageLevelOne(INUDSTRY_USAGE_LEVEL1);
         customerDataSection.setIndustryUsageLevelTwo(INUDSTRY_USAGE_LEVEL2);
-        GeneralSection generalSection = customerDataSection.pressSaveAndCollapseButton();
+        GeneralSection generalSection = new GeneralSection(driver);
+        customerDataSection.pressSaveAndCollapseButton();
         generalSection.insertProjectName(PROJECT_NAME);
         generalSection.setQuotationType(QUOTATION_TYPE);
-        AdditionalDataSection additionalDataSection = generalSection.pressSaveAndCollapseButton(AdditionalDataSection.class);
+        AdditionalDataSection additionalDataSection = new AdditionalDataSection(driver);
+        generalSection.pressSaveAndCollapseButton();
         additionalDataSection.setQuotationLanguage(LANGUAGE);
         QuotationClassificationPage quotationClassificationPage = new QuotationClassificationPage(driver);
-        SfdcSyncConfirmationModal sfdcSyncConfirmationModal = quotationClassificationPage.pressCreateQuotationButton();
+        SfdcSyncConfirmationModal sfdcSyncConfirmationModal = new SfdcSyncConfirmationModal(driver);
+        quotationClassificationPage.pressCreateQuotationButton();
         sfdcSyncConfirmationModal.pressConfirmButton();
 
     }
@@ -82,25 +85,27 @@ public class PositiveApprovalForNewQuotationTest extends ScenarioSweden {
     @Test(priority = 4)
     public void shouldStartApproval() throws InterruptedException {
         QuotationNavigationBar quotationNavigationBar = new QuotationNavigationBar(driver);
-        DocumentGenerationSection documentGenerationSection = quotationNavigationBar.goToFullCostAndFinalizationTab();
-        ApprovalRequestPage approvalRequestPage = documentGenerationSection.pressStartApprovalHyperlink();
+        DocumentGenerationSection documentGenerationSection = new DocumentGenerationSection(driver);
+        quotationNavigationBar.goToFullCostAndFinalizationTab();
+        ApprovalRequestPage approvalRequestPage = new ApprovalRequestPage(driver);
+        documentGenerationSection.pressStartApprovalHyperlink();
         approvalRequestPage.startApprovalForDefaultUsers();
         quotationNumber = approvalRequestPage.getQuotationNumber();
 
 
-        LoginPage loginPage = approvalRequestPage.pressLogoutHyperlink();
-        LsuDashboard lsuDashboard= loginPage.logInToCqp(APPROVER_1, PASSWORD);
-        quotationNavigationBar =  lsuDashboard.openQuotationFromQuickSearch(quotationNumber);
-        approvalRequestPage = quotationNavigationBar.goToApprovalTab();
+        LoginPage loginPage = new LoginPage(driver);
+        approvalRequestPage.pressLogoutHyperlink();
+        LsuDashboard lsuDashboard= new LsuDashboard(driver);
+        loginPage.logInToCqp(APPROVER_1, PASSWORD);
+        lsuDashboard.openQuotationFromQuickSearch(quotationNumber);
+        quotationNavigationBar.goToApprovalTab();
         approvalRequestPage.approveQuotation(APPROVAL_MESSAGE);
 
         approvalRequestPage.pressLogoutHyperlink();
-        lsuDashboard= loginPage.logInToCqp(APPROVER_2, PASSWORD);
-        quotationNavigationBar =  lsuDashboard.openQuotationFromQuickSearch(quotationNumber);
-        approvalRequestPage = quotationNavigationBar.goToApprovalTab();
+        loginPage.logInToCqp(APPROVER_2, PASSWORD);
+        lsuDashboard.openQuotationFromQuickSearch(quotationNumber);
+        quotationNavigationBar.goToApprovalTab();
         approvalRequestPage.approveQuotation(APPROVAL_MESSAGE);
-
-
         Thread.sleep(10000);
     }
 

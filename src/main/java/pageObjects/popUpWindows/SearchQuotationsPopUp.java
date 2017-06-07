@@ -15,10 +15,9 @@ public class SearchQuotationsPopUp extends Modals {
 
     private By eyeIcon = By.xpath("//div[@id='searchAllQuotations']//div[@class='icon watchAction']");
 
-    public QuotationNavigationBar openQuotation(){
+    public void openQuotation(){
         waitOnButton(eyeIcon);
         click(eyeIcon);
-        return new QuotationNavigationBar(driver);
     }
 
 

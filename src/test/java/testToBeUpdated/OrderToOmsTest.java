@@ -45,7 +45,8 @@ public class OrderToOmsTest extends ScenarioSweden {
     @Test(priority = 1)
     public void shouldLogIntoToCqp() {
         LoginPage loginPage = new LoginPage(driver);
-        LsuDashboard lsuDashboard  = loginPage.logInToCqp(USERNAME, PASSWORD);
+        loginPage.logInToCqp(USERNAME, PASSWORD);
+        LsuDashboard lsuDashboard  = new LsuDashboard(driver);
         assertTrue(lsuDashboard.getCurrentlyLoggedUser().contains(USERNAME));
     }
 
@@ -58,13 +59,16 @@ public class OrderToOmsTest extends ScenarioSweden {
         customerDataSection.pressTodayRfqButton();
         customerDataSection.setIndustryUsageLevelOne(INUDSTRY_USAGE_LEVEL1);
         customerDataSection.setIndustryUsageLevelTwo(INUDSTRY_USAGE_LEVEL2);
-        GeneralSection generalSection = customerDataSection.pressSaveAndCollapseButton();
+        customerDataSection.pressSaveAndCollapseButton();
+        GeneralSection generalSection =new GeneralSection(driver);
         generalSection.insertProjectName(PROJECT_NAME);
         generalSection.setQuotationType(QUOTATION_TYPE);
-        AdditionalDataSection additionalDataSection = generalSection.pressSaveAndCollapseButton(AdditionalDataSection.class);
+        AdditionalDataSection additionalDataSection = new AdditionalDataSection(driver);
+        generalSection.pressSaveAndCollapseButton();
         additionalDataSection.setQuotationLanguage(LANGUAGE);
         QuotationClassificationPage quotationClassificationPage = new QuotationClassificationPage(driver);
-        SfdcSyncConfirmationModal sfdcSyncConfirmationModal = quotationClassificationPage.pressCreateQuotationButton();
+        SfdcSyncConfirmationModal sfdcSyncConfirmationModal = new SfdcSyncConfirmationModal(driver);
+        quotationClassificationPage.pressCreateQuotationButton();
         sfdcSyncConfirmationModal.pressConfirmButton();
 
     }
@@ -72,7 +76,8 @@ public class OrderToOmsTest extends ScenarioSweden {
     @Test(priority = 3)
     public void shouldAddProducts(){
         QuotationNavigationBar quotationNavigationBar = new QuotationNavigationBar(driver);
-        ProductsAndPricesPage productsAndPricesPage = quotationNavigationBar.goToProductAndPriceTab(ProductsAndPricesPage.class);
+        ProductsAndPricesPage productsAndPricesPage = new ProductsAndPricesPage(driver);
+        quotationNavigationBar.goToProductAndPriceTab();
         productsAndPricesPage.addProductFromLvDrive(LV_DRIVE_PRODUCT_WITH_VC);
         productsAndPricesPage.addProductFromMotConf(MOTCONF_PRODUCT_WITHOUT_VC);
         ProductLine productLine = new ProductLine(driver);
@@ -84,9 +89,11 @@ public class OrderToOmsTest extends ScenarioSweden {
     @Test(priority = 4)
     public void shouldGenerateAndIssueDocument(){
         QuotationNavigationBar quotationNavigationBar = new QuotationNavigationBar(driver);
-        DocumentGenerationSection documentGenerationSection = quotationNavigationBar.goToFullCostAndFinalizationTab();
+        DocumentGenerationSection documentGenerationSection = new DocumentGenerationSection(driver);
+        quotationNavigationBar.goToFullCostAndFinalizationTab();
         documentGenerationSection.generateAndIssueDocumentManually();
-        CloseQuotationPage closeQuotationTab = quotationNavigationBar.goToCloseQuotationTab();
+        CloseQuotationPage closeQuotationTab = new CloseQuotationPage(driver);
+        quotationNavigationBar.goToCloseQuotationTab();
         closeQuotationTab.setWonStatus();
         closeQuotationTab.fillInPreOrderData();
         closeQuotationTab.setProductOrderingSystem(1, "OMS");

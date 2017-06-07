@@ -26,70 +26,60 @@ public class ProductsAndPricesPage extends QuotationNavigationBar {
     private By fcmTab = By.xpath("//div[@class = 'abbMenu']//div[contains(text(), 'FCM')]");
     private By addProductButton = By.xpath("//button[contains(text(), 'Add product')]");
 
-    public ProductsAndPricesPage switchToAllTab() {
+    public void switchToAllTab() {
         waitOnPresenceOfElement(allTab);
         click(allTab);
-        return this;
     }
 
-    public ProductsAndPricesPage switchToPriceDetailsTab() {
+    public void switchToPriceDetailsTab() {
         waitOnPresenceOfElement(priceDetailsTab);
         click(priceDetailsTab);
-        return this;
     }
 
-    public ProductsAndPricesPage switchToTechnicalDetailsTab() {
+    public void switchToTechnicalDetailsTab() {
         waitOnPresenceOfElement(technicalDetailsTab);
         click(technicalDetailsTab);
-        return this;
     }
 
-    public ProductsAndPricesPage switchToTermsAndConditionsTab() {
+    public void switchToTermsAndConditionsTab() {
         waitOnPresenceOfElement(termsAndConditionsTab);
         click(termsAndConditionsTab);
-        return this;
     }
 
-    public ProductsAndPricesPage switchToFcmTab() {
+    public void switchToFcmTab() {
         waitOnPresenceOfElement(fcmTab);
         click(fcmTab);
-        return this;
     }
 
-    public LvDrivePage addProductFromLvDrive(String productId) {
+    public void addProductFromLvDrive(String productId) {
         pressAddProductButton();
         actions.moveToElement(findElement(By.xpath("//a[contains(text(),'Add product from configurator')]"))).build().perform();
         selectElementFromDropdownListByHtmlElement("LV DRIVE", "a");
         new LvDrivePage(driver).addProductFromLvDrive(productId);
-        return new LvDrivePage(driver);
     }
 
-    public ProductsAndPricesPage addProductFromMotConf(String productId) {
+    public void addProductFromMotConf(String productId) {
         pressAddProductButton();
         actions.moveToElement(findElement(By.xpath("//a[contains(text(),'Add product from configurator')]"))).build().perform();
         selectElementFromDropdownListByHtmlElement("Search MotConf product", "a");
         new MotConfPage(driver).addProductFromMotConf(productId);
-        return this;
     }
 
-    public ProductsAndPricesPage addLocalProduct(String productId) {
+    public void addLocalProduct(String productId) {
         pressAddProductButton();
         selectElementFromDropdownListByHtmlElement("Add local product", "a");
-        return this;
     }
 
 
-    private ProductsAndPricesPage pressAddProductButton() {
+    private void pressAddProductButton() {
         waitOnButton(addProductButton);
         click(addProductButton);
-        return this;
     }
 
-    public ProductsAndPricesPage pressAddToQuotationButton() {
+    public void pressAddToQuotationButton() {
         waitOnButton(addToQuotationButton);
         click(addToQuotationButton);
-        return this;
-    }
+     }
 
 
     /*

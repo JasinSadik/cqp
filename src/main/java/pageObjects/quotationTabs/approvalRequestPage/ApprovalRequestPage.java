@@ -18,7 +18,7 @@ public class ApprovalRequestPage extends QuotationNavigationBar {
     private By sendButton = By.xpath("//button[text() = 'Send']");
     private By commentForApprovalField = By.xpath("//span[text() = 'Add comment:']/../div/div");
 
-    private ApprovalRequestPage insertComment(String message){
+    private void insertComment(String message){
         waitOnPresenceOfElement(commentForApprovalField);
         try {
             Thread.sleep(500);
@@ -26,33 +26,28 @@ public class ApprovalRequestPage extends QuotationNavigationBar {
             e.printStackTrace();
         }
         sendKeys(commentForApprovalField, message);
-        return this;
     }
 
 
-    private ApprovalRequestPage pressSendButton() {
+    private void pressSendButton() {
         waitOnButton(sendButton);
         click(sendButton);
-        return this;
     }
 
-    private ApprovalRequestPage pressApproveButton() {
+    private void pressApproveButton() {
         waitOnButton(approveButton);
         click(approveButton);
-        return this;
     }
 
-    private ApprovalRequestPage pressNextButton() {
+    private void pressNextButton() {
         waitOnButton(nextButton);
         click(nextButton);
-        return this;
     }
 
 
-    private ApprovalRequestPage pressSubmitForApprovalButton() {
+    private void pressSubmitForApprovalButton() {
         waitOnButton(submitForApprovalButton);
         click(submitForApprovalButton);
-        return this;
     }
 
 
@@ -61,11 +56,10 @@ public class ApprovalRequestPage extends QuotationNavigationBar {
         pressSubmitForApprovalButton();
     }
 
-    public ApprovalRequestPage approveQuotation(String message){
+    public void approveQuotation(String message){
         pressApproveButton();
         insertComment(message);
         pressSendButton();
-        return this;
     }
 
 

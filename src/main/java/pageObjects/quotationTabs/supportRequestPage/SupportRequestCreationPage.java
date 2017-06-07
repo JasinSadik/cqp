@@ -17,46 +17,39 @@ public class SupportRequestCreationPage extends SupportRequestPage {
     private By selectUserDropdownListExpandButton = By.xpath("//span[text()='Select user (*):']/..//span[text()='select']");
     private By selectSpecifyUserCheckbox = By.xpath("//span[text()='Select specific user:']/..//input");
 
-    public SupportRequestCreationPage insertRequestMessage(String message) {
+    public void insertRequestMessage(String message) {
         waitOnPresenceOfElement(requestMessageField);
         sendKeys(requestMessageField, message);
-        return this;
     }
 
-    public SupportRequestCreationPage checkSelectSpecificUserCheckbox(){
+    public void checkSelectSpecificUserCheckbox(){
         waitOnElementToBeClickable(selectSpecifyUserCheckbox);
         click(selectSpecifyUserCheckbox);
-        return this;
-
     }
 
-    public SupportRequestCreationPage setSpecificUser(String username) {
+    public void setSpecificUser(String username) {
         waitOnElementToBeClickable(selectUserDropdownListExpandButton);
         click(selectUserDropdownListExpandButton);
         selectElementFromDropdownListByHtmlElement(username);
-        return this;
     }
 
-    public SupportRequestCreationPage setReasonForPriceSupport(String reason) {
+    public void setReasonForPriceSupport(String reason) {
         waitOnElementToBeClickable(reasonForPriceSupportDropdownListExpandButton);
         click(reasonForPriceSupportDropdownListExpandButton);
         selectElementFromDropdownListByHtmlElement(reason);
-        return this;
     }
 
-    public SupportRequestCreationPage pressSendSupportRequestButton() {
+    public void pressSendSupportRequestButton() {
         waitOnButton(sendRequestButton);
         click(sendRequestButton);
-        return this;
     }
 
-    public SupportRequestCreationPage createSupportRequestForSpecificUser(String username, String message, String reason) {
+    public void createSupportRequestForSpecificUser(String username, String message, String reason) {
         checkSelectSpecificUserCheckbox();
         setSpecificUser(username);
         insertRequestMessage(message);
         setReasonForPriceSupport(reason);
         pressSendSupportRequestButton();
-        return this;
     }
 
 }

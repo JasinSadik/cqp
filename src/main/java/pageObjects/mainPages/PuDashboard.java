@@ -20,11 +20,10 @@ public class PuDashboard extends TopMenu {
 
     private By viewSupportRequestButton = By.xpath("//td[text()='" + quotationNumber + "']/..//a");
 
-    public SupportRequestMainActionPage openSupportRequest(String quotationNumber) {
+    public void openSupportRequest(String quotationNumber) {
         setQuotationNumber(quotationNumber);
         waitOnElementToBeClickable(viewSupportRequestButton);
         click(viewSupportRequestButton);
-        return new SupportRequestMainActionPage(driver);
     }
 
 

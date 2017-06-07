@@ -28,34 +28,29 @@ public class QuotationNavigationBar extends TopMenu {
     private By closeQuotationTab = By.xpath("//*[@id='teaserTiles']//span[contains(text(),'Close quotation')]/..");
     private By quotationNumberLabel = By.xpath("//div[@id='pageHeaderInfo']//span[contains(text(),'CQ')]");
 
-    public QuotationClassificationPage goToQuotationClassificationTab() {
+    public void goToQuotationClassificationTab() {
         openTab(quotationClassificationTab);
-        return new QuotationClassificationPage(driver);
     }
 
 
-    public <T extends ProductsAndPricesPage> T goToProductAndPriceTab(Class<T> clazz) {
+    public void goToProductAndPriceTab() {
         openTab(productAndPricesTab);
-        return PageFactory.initElements(driver, clazz);
     }
 
-    public DocumentGenerationSection goToFullCostAndFinalizationTab() {
+    public void goToFullCostAndFinalizationTab() {
         openTab(fullCostAndFinalizationTab);
-        return new DocumentGenerationSection(driver);
     }
 
     public String getQuotationNumber() {
         return getText(quotationNumberLabel);
     }
 
-    public ApprovalRequestPage goToApprovalTab() {
+    public void goToApprovalTab() {
         openTab(approvalRequestsTab);
-        return new ApprovalRequestPage(driver);
     }
 
-    public CloseQuotationPage goToCloseQuotationTab() {
+    public void goToCloseQuotationTab() {
         openTab(closeQuotationTab);
-        return new CloseQuotationPage(driver);
     }
 
 

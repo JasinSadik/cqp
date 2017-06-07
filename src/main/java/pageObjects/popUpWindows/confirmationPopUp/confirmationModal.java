@@ -22,20 +22,17 @@ public class ConfirmationModal extends Modals {
     private By cancelButton =  By.xpath("//div[@id='sharedConfirmationYesNoModal']//button[contains(text(),'Cancel')]");
 
 
-    public AdditionalDataSection pressYesButton(){
+    public void pressYesButton(){
         waitOnButton(yesButton);
         click(yesButton);
-        return new AdditionalDataSection(driver);
     }
-    public AdditionalDataSection pressNoButton(){
+    public void pressNoButton(){
         waitOnButton(noButton);
         click(noButton);
-        return new AdditionalDataSection(driver);
     }
-    public AdditionalDataSection pressCancelButton(){
+    public void pressCancelButton(){
         waitOnButton(cancelButton);
         click(cancelButton);
-        return new AdditionalDataSection(driver);
     }
 
 }

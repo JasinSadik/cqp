@@ -24,27 +24,24 @@ public class LsuDashboard extends TopMenu {
         click(newQuotationButton);
         return new CustomerDataSection(driver);
     }
+    
 
-
-
-    public SearchQuotationsPopUp pressSearchAllQuotationsButton(){
+    public void pressSearchAllQuotationsButton(){
         waitOnButton(searchAllQuotationsButton);
         click(searchAllQuotationsButton);
-        return new SearchQuotationsPopUp(driver);
     }
 
-    public LsuDashboard insertQuotationNumberToSearchField(String quoteNumber){
+    public void insertQuotationNumberToSearchField(String quoteNumber){
         waitOnPresenceOfElement(searchQuotationField);
         clear(searchQuotationField);
         sendKeys(searchQuotationField, quoteNumber);
-        return this;
     }
 
-    public QuotationNavigationBar openQuotationFromQuickSearch(String quoteNumber) {
+    public void openQuotationFromQuickSearch(String quoteNumber) {
         waitOnPresenceOfElement(searchQuotationField);
         insertQuotationNumberToSearchField(quoteNumber);
-        SearchQuotationsPopUp searchQuotationsPopUp = pressSearchAllQuotationsButton();
+        pressSearchAllQuotationsButton();
+        SearchQuotationsPopUp searchQuotationsPopUp = new SearchQuotationsPopUp(driver);
         searchQuotationsPopUp.openQuotation();
-        return new QuotationNavigationBar(driver);
     }
 }

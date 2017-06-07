@@ -17,10 +17,9 @@ public class QuotationClassificationPage extends QuotationNavigationBar {
 
     private By createQuotationButton = By.id("btnCreateQuotation");
 
-    public SfdcSyncConfirmationModal pressCreateQuotationButton() {
+    public void pressCreateQuotationButton() {
         waitOnButton(createQuotationButton);
         click(createQuotationButton);
-        return new SfdcSyncConfirmationModal(driver);
     }
 
 

@@ -68,28 +68,23 @@ public class CustomerDataSection extends QuotationClassificationPage {
     }
 
     public void selectCustomerFromSearch(String customer){
-        SelectCustomerPopUp selectCustomerPopUp = pressCustomerSearchButton();
+        pressCustomerSearchButton();
+        SelectCustomerPopUp selectCustomerPopUp = new SelectCustomerPopUp(driver);
         selectCustomerPopUp.insertCustomerSearchFieldSearchValue(customer);
         selectCustomerPopUp.pressSearchButton();
         selectCustomerPopUp.pressSelectButtonForFirstSearchResult();
     }
 
-    public GeneralSection pressSaveAndCollapseButton() {
+    public void pressSaveAndCollapseButton() {
         scrollToElement(saveAndCollapseButton);
         waitOnButton(saveAndCollapseButton);
         click(saveAndCollapseButton);
-        return new GeneralSection(driver);
     }
 
-    public SelectCustomerPopUp pressCustomerSearchButton() {
+    public void pressCustomerSearchButton() {
         waitOnButton(customerSearchButton);
         click(customerSearchButton);
-        return new SelectCustomerPopUp(driver);
     }
 
-    public <T extends QuotationNavigationBar> T pressSaveAndCollapseButton(Class<T> clazz) {
-        pressSaveAndCollapseButton();
-        return PageFactory.initElements(driver, clazz);
-    }
 
 }

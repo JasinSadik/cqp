@@ -34,15 +34,14 @@ public class SupportRequestMainActionPage extends SupportRequestPage {
         return getText(statusLabel);
     }
 
-    public SupportRequestMainActionPage replyAndCloseRequest(String message) {
+    public void replyAndCloseRequest(String message) {
         pressReplyAndCloseButton();
         insertComment(message);
         pressSendRequestButton();
         waitOnLogOfAction("Final Reply", message);
-        return this;
     }
 
-    private SupportRequestMainActionPage insertComment(String message) {
+    private void insertComment(String message) {
         waitOnPresenceOfElement(commentTextArea);
         try {
             Thread.sleep(500);
@@ -50,19 +49,16 @@ public class SupportRequestMainActionPage extends SupportRequestPage {
             e.printStackTrace();
         }
         sendKeys(commentTextArea, message);
-        return this;
     }
 
-    private SupportRequestMainActionPage pressSendRequestButton() {
+    private void pressSendRequestButton() {
         waitOnButton(sendRequestButton);
         driver.findElement(sendRequestButton).click();
-        return this;
     }
 
-    private SupportRequestMainActionPage pressReplyAndCloseButton() {
+    private void pressReplyAndCloseButton() {
         waitOnButton(replyAndCloseButton);
         click(replyAndCloseButton);
-        return this;
     }
 
     private boolean checkButtonAvailability(By by) {

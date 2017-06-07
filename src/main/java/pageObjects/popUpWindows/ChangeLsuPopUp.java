@@ -15,25 +15,20 @@ public class ChangeLsuPopUp extends Modals {
     private By lsuComboBox = By.xpath("//*[@id='headerLinks']/div[1]/div[2]/div/div/span[2]/span/span[2]/span");
     private By confirmButton = By.xpath("//*[@id='headerLinks']/div[1]/div[3]/button[2]");
 
-    public ChangeLsuPopUp changeLsu(String LsuName){
+    public void changeLsu(String LsuName){
         waitOnButton(lsuComboBox);
         selectElementFromDropdownListByHtmlElement(LsuName);
         pressConfirmButton();
-        return new ChangeLsuPopUp(driver);
     }
 
-    public ChangeLsuPopUp pressConfirmButton(){
+    public void pressConfirmButton(){
         waitOnButton(confirmButton);
         click(confirmButton);
-        return new ChangeLsuPopUp(driver);
     }
 
 
-    public void getUsersLsus(){
-
-        selectElementFromDropdownListByHtmlElement("Choose one...");
-
-
+    public void getUsersLsus(){ //not completed
+        getElementsFromDropdownList("id");
         click(confirmButton);
     }
 

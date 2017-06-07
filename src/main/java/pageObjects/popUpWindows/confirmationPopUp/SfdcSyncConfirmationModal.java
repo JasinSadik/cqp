@@ -16,15 +16,13 @@ public class SfdcSyncConfirmationModal extends Modals {
     private By confirmButton = By.xpath("//div[@id='sharedConfirmationModal']//button[contains(text(),'Confirm')]");
     private By cancelButton =  By.xpath("//div[@id='sharedConfirmationModal']//button[contains(text(),'Cancel')]");
 
-    public ProductsAndPricesPage pressConfirmButton(){
+    public void pressConfirmButton(){
         waitOnButton(confirmButton);
         click(confirmButton);
-        return new ProductsAndPricesPage(driver);
     }
-    public ProductsAndPricesPage pressCancelButton(){
+    public void pressCancelButton(){
         waitOnButton(cancelButton);
         click(cancelButton);
-        return new ProductsAndPricesPage(driver);
     }
 
 }

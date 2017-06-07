@@ -24,30 +24,22 @@ public class SelectCustomerPopUp extends Modals {
     private By searchButton = By.cssSelector("#customerCamSearch button[class='primaryButton searchButton']");
     private By selectButtonFirstSearchResult = By.cssSelector("#customerCamSearch table tr:nth-child(1)  button");
 
-    public SelectCustomerPopUp insertCustomerSearchFieldSearchValue(String searchValue) {
+    public void insertCustomerSearchFieldSearchValue(String searchValue) {
         waitOnElementToBeVisible(customerSearchField);
         clear(customerSearchField);
         sendKeys(customerSearchField, searchValue);
-        return this;
     }
 
-    public SelectCustomerPopUp pressSearchButton() {
+    public void pressSearchButton() {
         waitOnButton(searchButton);
         click(searchButton);
-        return this;
     }
 
-    public CustomerDataSection pressSelectButtonForFirstSearchResult() {
+    public void pressSelectButtonForFirstSearchResult() {
         waitOnButton(selectButtonFirstSearchResult);
         click(selectButtonFirstSearchResult);;
-        return new CustomerDataSection(driver);
     }
 
-    public <T extends QuotationNavigationBar> T pressSaveAndCollapseButton(Class<T> clazz) {
-        waitOnButton(selectButtonFirstSearchResult);
-        click(selectButtonFirstSearchResult);;
-        return PageFactory.initElements(driver, clazz);
-    }
 
 
 

@@ -15,10 +15,9 @@ public class DocumentGenerationModal extends Modals {
 
     private By confirmButton = By.xpath("");
 
-    public Modals pressConfirmButton(){
+    public void pressConfirmButton(){
         waitOnButton(confirmButton);
         click(confirmButton);
-        return new DocumentGenerationModal(driver);
     }
 
 
