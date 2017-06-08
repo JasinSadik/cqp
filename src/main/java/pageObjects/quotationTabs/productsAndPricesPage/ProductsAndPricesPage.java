@@ -1,7 +1,9 @@
 package pageObjects.quotationTabs.productsAndPricesPage;
 
 
+import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import pageObjects.configurators.LvDrivePage;
@@ -25,6 +27,23 @@ public class ProductsAndPricesPage extends QuotationNavigationBar {
     private By termsAndConditionsTab = By.xpath("//div[@class = 'abbMenu']//div[contains(text(), 'Terms')]");
     private By fcmTab = By.xpath("//div[@class = 'abbMenu']//div[contains(text(), 'FCM')]");
     private By addProductButton = By.xpath("//button[contains(text(), 'Add product')]");
+
+    public boolean isAddProductButtonDisplayed() {
+        setTimeout(driver, 1);
+        boolean elementStatus = false;
+        int counter = 0;
+        while (!elementStatus && counter<30){
+            try {
+                driver.findElement(addProductButton);
+                elementStatus = true;
+            } catch (NoSuchElementException | ElementNotFoundException e) {
+                counter++;
+            }
+         }
+        setTimeout(driver, 30);
+
+        return elementStatus;
+    }
 
     public void switchToAllTab() {
         waitOnPresenceOfElement(allTab);

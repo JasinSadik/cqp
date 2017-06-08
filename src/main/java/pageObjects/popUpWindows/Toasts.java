@@ -31,7 +31,12 @@ public class Toasts extends Modals {
             }
         }
         setTimeout(driver, 30);
-    return elementStatus;
+
+        if (elementStatus && element.getText().contains(text)) {
+            return true;
+        } else {
+            return false;
+        }
 
     }
 
@@ -43,7 +48,7 @@ public class Toasts extends Modals {
             try {
 
                 elements = driver.findElements(toastPath);
-                if(elements != null) {
+                if (elements != null) {
                     elementStatus = false;
                 }
             } catch (NoSuchElementException | ElementNotFoundException e) {
@@ -68,9 +73,9 @@ public class Toasts extends Modals {
         if (elementStatus) {
             return false;
         } else {
-            if(correctTextFound) {
+            if (correctTextFound) {
                 return true;
-            }else {
+            } else {
                 return false;
             }
         }
