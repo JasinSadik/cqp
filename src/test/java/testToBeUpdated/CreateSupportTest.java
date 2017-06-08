@@ -6,6 +6,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pageObjects.mainPages.LoginPage;
 import pageObjects.mainPages.LsuDashboard;
+import pageObjects.mainPages.TopMenu;
 import pageObjects.popUpWindows.CreditLimitPopUp;
 import pageObjects.popUpWindows.confirmationPopUp.SfdcSyncConfirmationModal;
 import pageObjects.quotationTabs.supportRequestPage.SupportRequestCreationPage;
@@ -89,6 +90,8 @@ public class CreateSupportTest extends ScenarioSweden {
         SupportRequestCreationPage supportRequestCreationPage = new SupportRequestCreationPage(driver);
         productLine.createSupportRequest(1, "LV AC Drives Helsinki support");
         supportRequestCreationPage.createSupportRequestForSpecificUser("Asko Hokkanen", "First Auto Support", "Special discount");
+        ProductsAndPricesPage productsAndPricesPage = new ProductsAndPricesPage(driver);
+        assertTrue("The support request is not sent. Probably caused by K2 unavailability.", productsAndPricesPage.isAddProductButtonDisplayed());
         quotationNumber = supportRequestCreationPage.getQuotationNumber();
 
     }/*
