@@ -6,7 +6,9 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pageObjects.mainPages.LoginPage;
 import pageObjects.mainPages.LsuDashboard;
+import pageObjects.mainPages.TopMenu;
 import pageObjects.popUpWindows.CreditLimitPopUp;
+import pageObjects.popUpWindows.Toasts;
 import pageObjects.popUpWindows.confirmationPopUp.SfdcSyncConfirmationModal;
 import pageObjects.quotationTabs.supportRequestPage.SupportRequestCreationPage;
 import pageObjects.quotationTabs.productsAndPricesPage.ProductLine;
@@ -71,7 +73,7 @@ public class CreateSupportTest extends ScenarioSweden {
         additionalDataSection.setQuotationLanguage("Arabic");
         QuotationClassificationPage quotationClassificationPage = new QuotationClassificationPage(driver);
         quotationClassificationPage.pressCreateQuotationButton();
-      //  sfdcSyncConfirmationModal.pressConfirmButton();
+        assertTrue(new Toasts(driver).isQuotationSavedSuccessfullyToatstrDisplayed());
 
     }
 
@@ -89,6 +91,7 @@ public class CreateSupportTest extends ScenarioSweden {
         SupportRequestCreationPage supportRequestCreationPage = new SupportRequestCreationPage(driver);
         productLine.createSupportRequest(1, "LV AC Drives Helsinki support");
         supportRequestCreationPage.createSupportRequestForSpecificUser("Asko Hokkanen", "First Auto Support", "Special discount");
+        assertTrue("Support request not created, probably K2 is not working", new Toasts(driver).isSupportRequestSuccessfullyCreatedToatstrDisplayed());
         quotationNumber = supportRequestCreationPage.getQuotationNumber();
 
     }/*
