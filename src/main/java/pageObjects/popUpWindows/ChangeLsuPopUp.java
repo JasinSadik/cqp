@@ -28,7 +28,7 @@ public class ChangeLsuPopUp extends Modals {
 
 
     public void getUsersLsus(){ //not completed
-        getElementsFromDropdownList("id");
+        //getElementsFromDropdownList("id");
         click(confirmButton);
     }
 

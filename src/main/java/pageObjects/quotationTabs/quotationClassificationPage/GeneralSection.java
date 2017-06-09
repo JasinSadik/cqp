@@ -20,6 +20,9 @@ public class GeneralSection extends QuotationClassificationPage {
     private By projectNameField = By.cssSelector("#isRfqOriginal");
     private By bindingButton= By.xpath("//div[@id='quotationOwner']//button[contains(text(), 'Binding')]");
     private By saveAndCollapseButton= By.xpath("//div[@id='quotationOwner']//button[contains(text(), 'Save and collapse')]");
+    private By BindingQuotationCategoryButton= By.xpath("//div[@id='generalEditSection']//button[text()='Binding']");
+
+
     private String quotationTypeComboboxId = "comboQuotationType";
 
 
@@ -40,6 +43,11 @@ public class GeneralSection extends QuotationClassificationPage {
         click(saveAndCollapseButton);
     }
 
+    public void pressBindingQuotationCategoryButton() {
+        scrollToElement(BindingQuotationCategoryButton);
+        waitOnButton(BindingQuotationCategoryButton);
+        click(BindingQuotationCategoryButton);
+    }
 
 
 }

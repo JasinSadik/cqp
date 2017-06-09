@@ -93,4 +93,17 @@ public class Toasts extends Modals {
     public boolean isSupportRequestSuccessfullyCreatedToatstrDisplayed() {
         return verifyIfElementWasDisplayed("Support request added");
     }
+
+    public boolean isQuoationStatusChangedDisplayed() {
+        return verifyIfElementWasDisplayed("Quotation status changed");
+    }
+
+
+    public boolean isPreOrderDataSectionSaved() {
+        return verifyIfElementWasDisplayed("Preorder Data saved");
+    }
+
+    public boolean isOrderSentSuccessfully() {
+        return verifyIfElementWasDisplayed("uccess");
+    }
 }
