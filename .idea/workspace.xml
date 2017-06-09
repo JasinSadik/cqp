@@ -1,45 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/common/CommonMethods.java" description="selectElementFromDropdownListByHtmlElement(value, ..." line="293" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/common/CommonMethods.java" description="selectElementFromDropdownListByHtmlElement(value, ..." line="249" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e3e64b61-2bd1-481d-867a-301d2c72465a" name="Default" comment="Init">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/common/SqlMethods.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/pageObjects/configurators/boss/bossStartPage.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/pageObjects/quotationTabs/ApprovalRequestPage.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/pageObjects/quotationTabs/productsAndPricesPage/ProductsAndPricesCommonActionButtons.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/pageObjects/quotationTabs/quotationClassificationPage/QuotationClassificationCommonActionButtonsSection.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/pageObjects/quotationTabs/supportRequestPage/SupportRequestPuViewPage.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/pageObjects/quotationTabs/supportRequestPage/SupportRequestStartPage.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/CreateSupportTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/LoginTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/OrderToOmsTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/PositiveApprovalForNewQuotationTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/baseScenarios/BaseScenario.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/common/CommonMethods$1.class" afterPath="$PROJECT_DIR$/target/classes/common/CommonMethods$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/confirmationPopUp/DeleteQuotation.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/confirmationPopUp/RemoveRequestConfirmationPopUp.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/testToBeUpdated/SupportWorkflowTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/common/CommonMethods.class" afterPath="$PROJECT_DIR$/target/classes/common/CommonMethods.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pageObjects/configurators/LvDrivePage.class" afterPath="$PROJECT_DIR$/target/classes/pageObjects/configurators/LvDrivePage.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pageObjects/configurators/MotConfPage.class" afterPath="$PROJECT_DIR$/target/classes/pageObjects/configurators/MotConfPage.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pageObjects/mainPages/LoginPage.class" afterPath="$PROJECT_DIR$/target/classes/pageObjects/mainPages/LoginPage.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pageObjects/mainPages/LsuDashboard.class" afterPath="$PROJECT_DIR$/target/classes/pageObjects/mainPages/LsuDashboard.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pageObjects/mainPages/PuDashboard.class" afterPath="$PROJECT_DIR$/target/classes/pageObjects/mainPages/PuDashboard.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pageObjects/mainPages/TopMenu.class" afterPath="$PROJECT_DIR$/target/classes/pageObjects/mainPages/TopMenu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pageObjects/popUpWindows/SearchQuotationsPopUp.class" afterPath="$PROJECT_DIR$/target/classes/pageObjects/popUpWindows/SearchQuotationsPopUp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pageObjects/popUpWindows/confirmationPopUp/ConfirmationModal.class" afterPath="$PROJECT_DIR$/target/classes/pageObjects/popUpWindows/confirmationPopUp/ConfirmationModal.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pageObjects/popUpWindows/confirmationPopUp/DocumentGenerationModal.class" afterPath="$PROJECT_DIR$/target/classes/pageObjects/popUpWindows/confirmationPopUp/DocumentGenerationModal.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pageObjects/popUpWindows/confirmationPopUp/SfdcSyncConfirmationModal.class" afterPath="$PROJECT_DIR$/target/classes/pageObjects/popUpWindows/confirmationPopUp/SfdcSyncConfirmationModal.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pageObjects/popUpWindows/selectCustomerPopUp/SelectCustomerPopUp.class" afterPath="$PROJECT_DIR$/target/classes/pageObjects/popUpWindows/selectCustomerPopUp/SelectCustomerPopUp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pageObjects/quotationTabs/QuotationNavigationBar.class" afterPath="$PROJECT_DIR$/target/classes/pageObjects/quotationTabs/QuotationNavigationBar.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pageObjects/quotationTabs/CloseQuotationPage.class" afterPath="$PROJECT_DIR$/target/classes/pageObjects/quotationTabs/CloseQuotationPage.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pageObjects/quotationTabs/fullCostAndFinalizationPage/DocumentGenerationSection.class" afterPath="$PROJECT_DIR$/target/classes/pageObjects/quotationTabs/fullCostAndFinalizationPage/DocumentGenerationSection.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pageObjects/quotationTabs/productsAndPricesPage/ProductLine.class" afterPath="$PROJECT_DIR$/target/classes/pageObjects/quotationTabs/productsAndPricesPage/ProductLine.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pageObjects/quotationTabs/quotationClassificationPage/AdditionalDataSection.class" afterPath="$PROJECT_DIR$/target/classes/pageObjects/quotationTabs/quotationClassificationPage/AdditionalDataSection.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pageObjects/quotationTabs/quotationClassificationPage/CustomerDataSection.class" afterPath="$PROJECT_DIR$/target/classes/pageObjects/quotationTabs/quotationClassificationPage/CustomerDataSection.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pageObjects/quotationTabs/quotationClassificationPage/GeneralSection.class" afterPath="$PROJECT_DIR$/target/classes/pageObjects/quotationTabs/quotationClassificationPage/GeneralSection.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/common/configuration.txt" afterPath="$PROJECT_DIR$/src/main/java/common/configuration.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/common/CommonMethods.java" afterPath="$PROJECT_DIR$/src/main/java/common/CommonMethods.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pageObjects/mainPages/PuDashboard.java" afterPath="$PROJECT_DIR$/src/main/java/pageObjects/mainPages/PuDashboard.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pageObjects/mainPages/TopMenu.java" afterPath="$PROJECT_DIR$/src/main/java/pageObjects/mainPages/TopMenu.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/Toasts.java" afterPath="$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/Toasts.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/productsAndPricesPage/ProductsAndPricesPage.java" afterPath="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/productsAndPricesPage/ProductsAndPricesPage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/QuotationNavigationBar.java" afterPath="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/QuotationNavigationBar.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/quotationClassificationPage/QuotationClassificationPage.java" afterPath="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/quotationClassificationPage/QuotationClassificationPage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/supportRequestPage/SupportRequestMainActionPage.java" afterPath="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/supportRequestPage/SupportRequestMainActionPage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/supportRequestPage/SupportRequestPage.java" afterPath="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/supportRequestPage/SupportRequestPage.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/testToBeUpdated/CreateSupportTest.java" afterPath="$PROJECT_DIR$/src/test/java/testToBeUpdated/CreateSupportTest.java" />
     </list>
     <ignored path="CQP.iws" />
@@ -66,9 +48,10 @@
       <file leaf-file-name="CommonMethods.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/common/CommonMethods.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1037">
-              <caret line="147" column="0" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
+            <state relative-caret-position="907">
+              <caret line="252" column="13" selection-start-line="252" selection-start-column="13" selection-end-line="252" selection-end-column="13" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="docComment;class#CommonMethods#0" expanded="false" />
                 <element signature="method#waitOnButton#0;class#CommonMethods#0" expanded="false" />
                 <element signature="method#waitOnButton#1;class#CommonMethods#0" expanded="false" />
@@ -77,112 +60,118 @@
                 <element signature="method#waitOnElementToBeVisible#1;class#CommonMethods#0" expanded="false" />
                 <element signature="method#waitOnElementToBeClickable#0;class#CommonMethods#0" expanded="false" />
                 <element signature="method#waitOnElementToBeClickable#1;class#CommonMethods#0" expanded="false" />
+                <element signature="method#waitForPageLoad#0;class#CommonMethods#0" expanded="false" />
+                <element signature="method#waitForFrameToLoad#0;class#CommonMethods#0" expanded="false" />
+                <element signature="method#findElement#0;class#CommonMethods#0" expanded="false" />
                 <element signature="method#findElements#0;class#CommonMethods#0" expanded="false" />
-                <element signature="method#setAttribute#0;class#CommonMethods#0" expanded="false" />
-                <element signature="method#click#0;class#CommonMethods#0" expanded="false" />
-                <element signature="method#getPropertyFromConfigurationFile#0;class#CommonMethods#0" expanded="false" />
-                <element signature="method#browserSetup#0;class#CommonMethods#0" expanded="false" />
-                <element signature="method#setTimeout#0;class#CommonMethods#0" expanded="false" />
-                <element signature="method#snapshot#0;class#CommonMethods#0" expanded="false" />
-                <element signature="method#timestamp#0;class#CommonMethods#0" expanded="false" />
-                <element signature="method#selectElementFromDropdownList#0;class#CommonMethods#0" expanded="false" />
-                <element signature="method#selectElementFromDropdownListByHtmlElement#0;class#CommonMethods#0" expanded="false" />
-                <element signature="method#selectElementFromDropdownListByHtmlElement#1;class#CommonMethods#0" expanded="false" />
-                <element signature="method#getElementsFromDropdownList#0;class#CommonMethods#0" expanded="false" />
-                <element signature="method#scrollToElement#0;class#CommonMethods#0" expanded="false" />
-                <element signature="method#moveToElement#0;class#CommonMethods#0" expanded="false" />
                 <element signature="method#waitForBlockUiToDisappear#0;class#CommonMethods#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProductsAndPricesPage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/productsAndPricesPage/ProductsAndPricesPage.java">
+      <file leaf-file-name="OrderToOmsTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/testToBeUpdated/OrderToOmsTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
-              <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LvDrivePage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/configurators/LvDrivePage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="47" column="31" selection-start-line="36" selection-start-column="8" selection-end-line="47" selection-end-column="31" />
+            <state relative-caret-position="748">
+              <caret line="67" column="57" selection-start-line="67" selection-start-column="57" selection-end-line="67" selection-end-column="57" />
               <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#347#348#0" expanded="false" />
-                <element signature="e#376#377#0" expanded="false" />
+                <element signature="e#2313#2366#1" expanded="true" />
+                <element signature="e#2375#2456#1" expanded="true" />
+                <element signature="e#2529#2594#1" expanded="true" />
+                <element signature="e#2696#2763#0" expanded="true" />
+                <element signature="e#2696#2763#0" expanded="true" />
+                <element signature="e#2773#2840#0" expanded="true" />
+                <element signature="e#2773#2840#0" expanded="true" />
+                <element signature="e#2850#2909#1" expanded="true" />
+                <element signature="e#3032#3079#0" expanded="true" />
+                <element signature="e#3032#3079#0" expanded="true" />
+                <element signature="e#3151#3231#1" expanded="true" />
+                <element signature="e#3293#3345#0" expanded="true" />
+                <element signature="e#3293#3345#0" expanded="true" />
+                <element signature="e#3355#3453#1" expanded="true" />
+                <element signature="e#3539#3604#0" expanded="true" />
+                <element signature="e#4054#4137#1" expanded="true" />
+                <element signature="e#4146#4238#1" expanded="true" />
+                <element signature="e#4451#4534#1" expanded="true" />
+                <element signature="e#4543#4613#1" expanded="true" />
+                <element signature="e#4731#4784#0" expanded="true" />
+                <element signature="e#4950#4997#0" expanded="true" />
+                <element signature="e#5074#5145#1" expanded="true" />
+                <element signature="e#5281#5325#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MotConfPage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/configurators/MotConfPage.java">
+      <file leaf-file-name="CloseQuotationPage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/CloseQuotationPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="44" column="9" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
+            <state relative-caret-position="272">
+              <caret line="24" column="96" selection-start-line="24" selection-start-column="96" selection-end-line="24" selection-end-column="96" />
               <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#347#348#0" expanded="false" />
-                <element signature="e#376#377#0" expanded="false" />
-                <element signature="e#1639#1640#0" expanded="false" />
-                <element signature="e#1686#1687#0" expanded="false" />
+                <element signature="docComment;class#CloseQuotationPage#0" expanded="false" />
+                <element signature="method#setPositionLine#0;class#CloseQuotationPage#0" expanded="false" />
+                <element signature="method#expandNewStatusDropdownList#0;class#CloseQuotationPage#0" expanded="false" />
+                <element signature="method#pressSaveStatusButton#0;class#CloseQuotationPage#0" expanded="false" />
+                <element signature="method#setWonStatus#0;class#CloseQuotationPage#0" expanded="false" />
+                <element signature="method#insertCustomerOrderNumber#0;class#CloseQuotationPage#0" expanded="false" />
+                <element signature="method#pressEditPreOrderDataButton#0;class#CloseQuotationPage#0" expanded="false" />
+                <element signature="method#pressSavePreOrderDataButton#0;class#CloseQuotationPage#0" expanded="false" />
+                <element signature="method#fillInPreOrderData#0;class#CloseQuotationPage#0" expanded="false" />
+                <element signature="method#selectProductForOrderingCheckbox#0;class#CloseQuotationPage#0" expanded="false" />
+                <element signature="method#setProductOrderingSystem#0;class#CloseQuotationPage#0" expanded="false" />
+                <element signature="method#selectProductForOrdering#0;class#CloseQuotationPage#0" expanded="false" />
+                <element signature="method#pressSubmitOrderButton#0;class#CloseQuotationPage#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TopMenu.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/mainPages/TopMenu.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1462">
-              <caret line="96" column="14" selection-start-line="96" selection-start-column="14" selection-end-line="96" selection-end-column="14" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#3561#3562#0" expanded="false" />
-                <element signature="e#3590#3591#0" expanded="false" />
-                <element signature="e#3636#3663#1" expanded="false" />
-                <element signature="e#3880#3916#1" expanded="false" />
-                <element signature="e#3996#4009#0" expanded="false" />
-                <element signature="e#4715#4737#0" expanded="false" />
-                <element signature="e#4756#4769#0" expanded="false" />
-                <element signature="e#5120#5133#0" expanded="false" />
-                <element signature="e#5528#5550#0" expanded="false" />
-                <element signature="e#5568#5581#0" expanded="false" />
-                <element signature="e#5948#5961#0" expanded="false" />
-                <element signature="e#6361#6374#0" expanded="false" />
-                <element signature="e#6690#6712#0" expanded="false" />
-                <element signature="e#6764#6777#0" expanded="false" />
-                <element signature="e#7100#7113#0" expanded="false" />
-                <element signature="e#7476#7498#0" expanded="false" />
-                <element signature="e#7550#7563#0" expanded="false" />
-                <element signature="e#7902#7915#0" expanded="false" />
-                <element signature="e#8264#8277#0" expanded="false" />
-                <element signature="e#8509#8531#0" expanded="false" />
-                <element signature="e#8583#8596#0" expanded="false" />
-                <element signature="e#8947#8960#0" expanded="false" />
-                <element signature="e#9379#9438#1" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Toasts.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Toasts.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/Toasts.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="28" column="4" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="4" />
+            <state relative-caret-position="567">
+              <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="docComment;class#Toasts#0" expanded="false" />
                 <element signature="e#990#1007#0" expanded="true" />
-                <element signature="method#verifyIfElementWasDisplayedNotUsedForNow#0;class#Toasts#0" expanded="false" />
-                <element signature="e#1817#1850#1" expanded="true" />
-                <element signature="e#1897#1909#0" expanded="true" />
+                <element signature="method#isQuotationSavedSuccessfullyToatstrDisplayed#0;class#Toasts#0" expanded="false" />
+                <element signature="method#isCustomerSuccessfullyAddedToatstrDisplayed#0;class#Toasts#0" expanded="false" />
+                <element signature="e#2968#2969#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SupportRequestMainActionPage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/supportRequestPage/SupportRequestMainActionPage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+              <folding>
+                <element signature="e#362#363#0" expanded="true" />
+                <element signature="e#391#392#0" expanded="true" />
+                <element signature="e#1437#1560#0" expanded="true" />
+                <element signature="e#1437#1560#0" expanded="true" />
+                <element signature="e#1437#1560#0" expanded="true" />
+                <element signature="e#1437#1560#0" expanded="true" />
+                <element signature="e#2617#2625#1" expanded="true" />
+                <element signature="e#2612#2702#0" expanded="true" />
+                <element signature="e#2612#2702#0" expanded="true" />
+                <element signature="e#2612#2702#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SupportWorkflowTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/testToBeUpdated/SupportWorkflowTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="618">
+              <caret line="124" column="74" selection-start-line="124" selection-start-column="74" selection-end-line="124" selection-end-column="74" />
+              <folding>
+                <element signature="e#5646#5747#1" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -191,67 +180,21 @@
       <file leaf-file-name="CreateSupportTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/testToBeUpdated/CreateSupportTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
-              <folding>
-                <element signature="e#1984#2028#1" expanded="true" />
-                <element signature="e#2214#2267#1" expanded="true" />
-                <element signature="e#2276#2357#1" expanded="true" />
-                <element signature="e#2430#2495#1" expanded="true" />
-                <element signature="e#2597#2664#0" expanded="true" />
-                <element signature="e#2597#2664#0" expanded="true" />
-                <element signature="e#2753#2812#1" expanded="true" />
-                <element signature="e#2935#2982#0" expanded="true" />
-                <element signature="e#2935#2982#0" expanded="true" />
-                <element signature="e#2992#3072#1" expanded="true" />
-                <element signature="e#3134#3186#0" expanded="true" />
-                <element signature="e#3134#3186#0" expanded="true" />
-                <element signature="e#3196#3294#1" expanded="true" />
-                <element signature="e#3525#3605#1" expanded="true" />
-                <element signature="e#3614#3664#1" expanded="true" />
-                <element signature="e#3917#3967#1" expanded="true" />
-                <element signature="e#3976#4071#1" expanded="true" />
-                <element signature="e#4289#4369#1" expanded="true" />
-                <element signature="e#4463#4514#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="configuration.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/common/configuration.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
+            <state relative-caret-position="694">
+              <caret line="83" column="5" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Parser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/common/Parser.java">
+      <file leaf-file-name="PositiveApprovalForNewQuotationTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/testToBeUpdated/PositiveApprovalForNewQuotationTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+            <state relative-caret-position="357">
+              <caret line="65" column="26" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#393#423#1" expanded="true" />
-                <element signature="e#450#486#1" expanded="true" />
-                <element signature="e#499#571#1" expanded="true" />
-                <element signature="e#584#642#1" expanded="true" />
-                <element signature="e#655#696#1" expanded="true" />
-                <element signature="e#709#733#0" expanded="true" />
-                <element signature="e#759#806#1" expanded="true" />
-                <element signature="e#824#837#1" expanded="true" />
-                <element signature="e#819#1319#0" expanded="true" />
-                <element signature="e#845#862#0" expanded="true" />
-                <element signature="e#890#920#1" expanded="true" />
-                <element signature="e#819#1319#0" expanded="true" />
-                <element signature="e#819#1319#0" expanded="true" />
-                <element signature="e#941#960#0" expanded="true" />
-                <element signature="e#1005#1040#1" expanded="true" />
-                <element signature="e#1024#1039#0" expanded="true" />
-                <element signature="e#1110#1179#0" expanded="true" />
+                <element signature="e#2801#2868#0" expanded="true" />
+                <element signature="e#2801#2868#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -260,22 +203,24 @@
       <file leaf-file-name="SomeTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/SomeTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
+            <state relative-caret-position="408">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#473#588#1" expanded="true" />
-                <element signature="e#597#625#1" expanded="true" />
-                <element signature="e#634#670#1" expanded="true" />
-                <element signature="e#679#726#1" expanded="true" />
-                <element signature="e#740#749#0" expanded="true" />
-                <element signature="e#777#790#0" expanded="true" />
-                <element signature="e#813#827#0" expanded="true" />
-                <element signature="e#888#917#0" expanded="true" />
-                <element signature="e#888#917#0" expanded="true" />
-                <element signature="e#888#917#0" expanded="true" />
-                <element signature="e#903#917#0" expanded="true" />
-                <element signature="e#888#917#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Parser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/common/Parser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#parseXmlFile#0;class#Parser#0" expanded="false" />
+                <element signature="e#393#423#1" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -315,9 +260,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/CloseQuotationPage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/quotationClassificationPage/QuotationClassificationCommonActionButtonsSection.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/fullCostAndFinalizationPage/FullCostAndFinalizationPage.java" />
         <option value="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/supportRequestPage/SupportRequestPage.java" />
         <option value="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/supportRequestPage/SupportRequestPuViewPage.java" />
         <option value="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/supportRequestPage/SupportRequestStartPage.java" />
@@ -330,42 +272,45 @@
         <option value="$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/Modals.java" />
         <option value="$PROJECT_DIR$/src/main/java/common/sqlMethods/SqlMethods.java" />
         <option value="$PROJECT_DIR$/src/main/java/common/sqlMethods/SQL_UserPreferences.java" />
-        <option value="$PROJECT_DIR$/src/test/java/scenarios/ScenarionSuesmot.java" />
         <option value="$PROJECT_DIR$/src/test/java/scenarios/ScenarioSweden.java" />
         <option value="$PROJECT_DIR$/src/main/java/pageObjects/mainPages/LoginPage.java" />
         <option value="$PROJECT_DIR$/src/main/java/pageObjects/mainPages/PuDashboard.java" />
         <option value="$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/confirmationPopUp/ConfirmationModal.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/confirmationPopUp/DocumentGenerationModal.java" />
         <option value="$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/confirmationPopUp/SfdcSyncConfirmationModal.java" />
         <option value="$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/selectCustomerPopUp/SelectCustomerPopUp.java" />
         <option value="$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/SearchQuotationsPopUp.java" />
         <option value="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/approvalRequestPage/ApprovalRequestPage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/fullCostAndFinalizationPage/DocumentGenerationSection.java" />
         <option value="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/quotationClassificationPage/AdditionalDataSection.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/quotationClassificationPage/CustomerDataSection.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/quotationClassificationPage/GeneralSection.java" />
         <option value="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/quotationClassificationPage/QuotationClassificationPage.java" />
         <option value="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/supportRequestPage/SupportRequestCreationPage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/supportRequestPage/SupportRequestMainActionPage.java" />
         <option value="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/QuotationNavigationBar.java" />
-        <option value="$PROJECT_DIR$/src/test/java/testToBeUpdated/OrderToOmsTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/testsInUse/LoginTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/testToBeUpdated/PositiveApprovalForNewQuotationTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/pageObjects/mainPages/LsuDashboard.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/ChangeLsuPopUp.java" />
         <option value="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/productsAndPricesPage/ProductLine.java" />
         <option value="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/productsAndPricesPage/ProductsAndPricesPage.java" />
         <option value="$PROJECT_DIR$/src/main/java/pageObjects/mainPages/TopMenu.java" />
         <option value="$PROJECT_DIR$/src/test/java/testsInUse/ChangeLsuTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/common/CommonMethods.java" />
         <option value="$PROJECT_DIR$/src/main/java/pageObjects/configurators/LvDrivePage.java" />
         <option value="$PROJECT_DIR$/src/main/java/pageObjects/configurators/MotConfPage.java" />
         <option value="$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/Toastrs.java" />
         <option value="$PROJECT_DIR$/src/test/java/testToBeUpdated/CreateSupportTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/common/Parser.java" />
-        <option value="$PROJECT_DIR$/src/test/java/SomeTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/common/configuration.txt" />
+        <option value="$PROJECT_DIR$/src/test/java/SomeTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/scenarios/ScenarionSuesmot.java" />
+        <option value="$PROJECT_DIR$/src/test/java/testToBeUpdated/PositiveApprovalForNewQuotationTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/confirmationPopUp/DocumentGenerationModal.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/fullCostAndFinalizationPage/DocumentGenerationSection.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/confirmationPopUp/ChangeStatusConfirmationModal.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/quotationClassificationPage/GeneralSection.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/OrderResultPopUp.java" />
+        <option value="$PROJECT_DIR$/src/test/java/testToBeUpdated/OrderToOmsTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/ChangeLsuPopUp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/quotationClassificationPage/CustomerDataSection.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/CloseQuotationPage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/common/CommonMethods.java" />
         <option value="$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/Toasts.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/supportRequestPage/SupportRequestMainActionPage.java" />
       </list>
     </option>
   </component>
@@ -377,10 +322,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1176" />
+    <option name="x" value="68" />
+    <option name="width" value="1918" />
+    <option name="height" value="1160" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -508,32 +452,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="testsInUse" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CQP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CQP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -561,6 +479,44 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="pageObjects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="quotationTabs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CQP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CQP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pageObjects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="quotationTabs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="supportRequestPage" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -591,6 +547,66 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="popUpWindows" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CQP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CQP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pageObjects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mainPages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CQP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CQP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pageObjects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="configurators" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -665,63 +681,7 @@
       <recent name="C:\Users\pljahas\Desktop\CQP\src\main\java\pageObjects" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.CreateSupportTest">
-    <configuration default="false" name="LoginTest" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="CQP" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="testsInUse.LoginTest" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
-      <method />
-    </configuration>
-    <configuration default="false" name="PositiveApprovalForNewQuotationTest" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="CQP" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="testToBeUpdated.PositiveApprovalForNewQuotationTest" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="TestNG.OrderToOmsTest">
     <configuration default="false" name="CreateSupportTest" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="CQP" />
@@ -791,6 +751,67 @@
       <option name="SUITE_NAME" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="SomeTest" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="false" name="SomeTest.someTest" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="CQP" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="SomeTest" />
+      <option name="METHOD_NAME" value="someTest" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="false" name="OrderToOmsTest" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="testToBeUpdated.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="CQP" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" value="testToBeUpdated" />
+      <option name="MAIN_CLASS_NAME" value="testToBeUpdated.OrderToOmsTest" />
       <option name="METHOD_NAME" />
       <option name="GROUP_NAME" />
       <option name="TEST_OBJECT" value="CLASS" />
@@ -1091,19 +1112,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="TestNG.LoginTest" />
-      <item index="1" class="java.lang.String" itemvalue="TestNG.PositiveApprovalForNewQuotationTest" />
-      <item index="2" class="java.lang.String" itemvalue="TestNG.CreateSupportTest" />
-      <item index="3" class="java.lang.String" itemvalue="TestNG.ChangeLsuTest" />
-      <item index="4" class="java.lang.String" itemvalue="TestNG.SomeTest" />
+      <item index="0" class="java.lang.String" itemvalue="TestNG.CreateSupportTest" />
+      <item index="1" class="java.lang.String" itemvalue="TestNG.ChangeLsuTest" />
+      <item index="2" class="java.lang.String" itemvalue="TestNG.SomeTest" />
+      <item index="3" class="java.lang.String" itemvalue="TestNG.SomeTest.someTest" />
+      <item index="4" class="java.lang.String" itemvalue="TestNG.OrderToOmsTest" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="TestNG.CreateSupportTest" />
-        <item index="1" class="java.lang.String" itemvalue="TestNG.SomeTest" />
-        <item index="2" class="java.lang.String" itemvalue="TestNG.ChangeLsuTest" />
-        <item index="3" class="java.lang.String" itemvalue="TestNG.LoginTest" />
-        <item index="4" class="java.lang.String" itemvalue="TestNG.PositiveApprovalForNewQuotationTest" />
+        <item index="0" class="java.lang.String" itemvalue="TestNG.OrderToOmsTest" />
+        <item index="1" class="java.lang.String" itemvalue="TestNG.ChangeLsuTest" />
+        <item index="2" class="java.lang.String" itemvalue="TestNG.CreateSupportTest" />
+        <item index="3" class="java.lang.String" itemvalue="TestNG.SomeTest" />
+        <item index="4" class="java.lang.String" itemvalue="TestNG.SomeTest.someTest" />
       </list>
     </recent_temporary>
   </component>
@@ -1308,62 +1329,76 @@
       <option name="project" value="LOCAL" />
       <updated>1496906620846</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="CreateSupportTest Merge">
+      <created>1496906823727</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1496906823727</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Init">
+      <created>1497014718917</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1497014718917</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CreateSupportTest - 2017.06.08 at 07h 59m 49s.xml">
-      <configuration name="CreateSupportTest" configurationId="TestNG" />
+    <history-entry file="OrderToOmsTest - 2017.06.09 at 13h 52m 10s.xml">
+      <configuration name="OrderToOmsTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="CreateSupportTest - 2017.06.08 at 08h 03m 43s.xml">
-      <configuration name="CreateSupportTest" configurationId="TestNG" />
+    <history-entry file="OrderToOmsTest - 2017.06.09 at 13h 58m 30s.xml">
+      <configuration name="OrderToOmsTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="CreateSupportTest - 2017.06.08 at 08h 05m 41s.xml">
-      <configuration name="CreateSupportTest" configurationId="TestNG" />
+    <history-entry file="OrderToOmsTest - 2017.06.09 at 14h 02m 07s.xml">
+      <configuration name="OrderToOmsTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="CreateSupportTest - 2017.06.08 at 08h 34m 26s.xml">
-      <configuration name="CreateSupportTest" configurationId="TestNG" />
+    <history-entry file="OrderToOmsTest - 2017.06.09 at 14h 11m 58s.xml">
+      <configuration name="OrderToOmsTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="SomeTest - 2017.06.07 at 22h 54m 04s.xml">
-      <configuration name="SomeTest" configurationId="TestNG" />
+    <history-entry file="OrderToOmsTest - 2017.06.09 at 14h 15m 09s.xml">
+      <configuration name="OrderToOmsTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="SomeTest - 2017.06.07 at 22h 58m 55s.xml">
-      <configuration name="SomeTest" configurationId="TestNG" />
+    <history-entry file="OrderToOmsTest - 2017.06.09 at 14h 15m 31s.xml">
+      <configuration name="OrderToOmsTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="SomeTest - 2017.06.07 at 23h 11m 47s.xml">
-      <configuration name="SomeTest" configurationId="TestNG" />
+    <history-entry file="OrderToOmsTest - 2017.06.09 at 14h 16m 39s.xml">
+      <configuration name="OrderToOmsTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="SomeTest - 2017.06.07 at 23h 20m 56s.xml">
-      <configuration name="SomeTest" configurationId="TestNG" />
+    <history-entry file="OrderToOmsTest - 2017.06.09 at 14h 28m 25s.xml">
+      <configuration name="OrderToOmsTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="SomeTest - 2017.06.07 at 23h 26m 23s.xml">
-      <configuration name="SomeTest" configurationId="TestNG" />
+    <history-entry file="OrderToOmsTest - 2017.06.09 at 14h 56m 36s.xml">
+      <configuration name="OrderToOmsTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="SomeTest - 2017.06.07 at 23h 26m 52s.xml">
-      <configuration name="SomeTest" configurationId="TestNG" />
+    <history-entry file="OrderToOmsTest - 2017.06.09 at 15h 01m 42s.xml">
+      <configuration name="OrderToOmsTest" configurationId="TestNG" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
+    <frame x="68" y="0" width="1918" height="1160" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32791328" sideWeight="0.49791667" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32791328" sideWeight="0.49375" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29719964" sideWeight="0.22239584" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13027179" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45454547" sideWeight="0.77760416" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17411989" sideWeight="0.50210303" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17411989" sideWeight="0.49789694" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23336457" sideWeight="0.70625" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28802082" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21556257" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41799438" sideWeight="0.49375" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41734418" sideWeight="0.48958334" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1386,69 +1421,52 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="LV Drive and CreateSupportRequest -methids changed to void" />
-    <MESSAGE value="Init" />
     <MESSAGE value="Stable version" />
     <MESSAGE value="Toasts class" />
     <MESSAGE value="Some changes" />
     <MESSAGE value="Merge CreateSupportTest" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge CreateSupportTest" />
+    <MESSAGE value="CreateSupportTest Merge" />
+    <MESSAGE value="Init" />
+    <option name="LAST_COMMIT_MESSAGE" value="Init" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/supportRequestPage/SupportRequestMainActionPage.java</url>
-          <line>43</line>
+          <line>57</line>
           <properties />
           <option name="timeStamp" value="83" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/common/CommonMethods.java</url>
-          <line>304</line>
-          <properties />
-          <option name="timeStamp" value="188" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/common/CommonMethods.java</url>
-          <line>297</line>
-          <properties />
-          <option name="timeStamp" value="189" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/common/CommonMethods.java</url>
-          <line>305</line>
-          <properties />
-          <option name="timeStamp" value="190" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/common/CommonMethods.java</url>
-          <line>306</line>
-          <properties />
-          <option name="timeStamp" value="191" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/SomeTest.java</url>
-          <line>26</line>
+          <line>4</line>
           <properties />
           <option name="timeStamp" value="233" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/SomeTest.java</url>
-          <line>25</line>
+          <line>3</line>
           <properties />
           <option name="timeStamp" value="234" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/Toasts.java</url>
-          <line>33</line>
+          <url>file://$PROJECT_DIR$/src/test/java/SomeTest.java</url>
+          <line>20</line>
           <properties />
-          <option name="timeStamp" value="239" />
+          <option name="timeStamp" value="252" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/pageObjects/mainPages/TopMenu.java</url>
+          <line>213</line>
+          <properties />
+          <option name="timeStamp" value="258" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="240" />
+      <option name="time" value="269" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1457,75 +1475,11 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/common/sqlMethods/Sql_ApprovalBehavior.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="21" column="70" selection-start-line="21" selection-start-column="70" selection-end-line="21" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/scenarios/BaseScenario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/scenarios/ScenarioSweden.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="10" column="47" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/scenarios/ScenarionSuesmot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/configurators/boss/BossPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/configurators/ConfiguratorsPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/mainPages/PuDashboard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="22" column="15" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/mainPages/UnauthorizedAccessPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/confirmationPopUp/ConfirmationModal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/confirmationPopUp/DocumentGenerationModal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1533,6 +1487,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="22" column="15" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1540,6 +1495,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1547,6 +1503,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#228#229#0" expanded="false" />
+            <element signature="e#257#258#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1585,33 +1546,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/fullCostAndFinalizationPage/DocumentGenerationSection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/fullCostAndFinalizationPage/FullCostAndFinalizationPage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/quotationClassificationPage/GeneralSection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/quotationClassificationPage/QuotationClassificationPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1623,29 +1561,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/supportRequestPage/SupportRequestMainActionPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/CloseQuotationPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="35" column="38" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/supportRequestPage/SupportRequestPage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
-          <folding>
-            <element signature="e#309#310#0" expanded="false" />
-            <element signature="e#338#339#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1654,15 +1574,15 @@
         <state relative-caret-position="442">
           <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding>
-            <element signature="e#1781#1782#0" expanded="false" />
-            <element signature="e#1832#1833#0" expanded="false" />
-            <element signature="e#1877#1878#0" expanded="false" />
-            <element signature="e#1973#1974#0" expanded="false" />
-            <element signature="e#2024#2025#0" expanded="false" />
-            <element signature="e#2155#2156#0" expanded="false" />
-            <element signature="e#2199#2200#0" expanded="false" />
-            <element signature="e#2242#2243#0" expanded="false" />
-            <element signature="e#2284#2285#0" expanded="false" />
+            <element signature="e#1949#1950#0" expanded="false" />
+            <element signature="e#2000#2001#0" expanded="false" />
+            <element signature="e#2045#2046#0" expanded="false" />
+            <element signature="e#2141#2142#0" expanded="false" />
+            <element signature="e#2192#2193#0" expanded="false" />
+            <element signature="e#2323#2324#0" expanded="false" />
+            <element signature="e#2367#2368#0" expanded="false" />
+            <element signature="e#2410#2411#0" expanded="false" />
+            <element signature="e#3157#3158#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1672,27 +1592,6 @@
         <state relative-caret-position="289">
           <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="77" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/ChangeLsuPopUp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/testToBeUpdated/OrderToOmsTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="66" column="8" selection-start-line="66" selection-start-column="8" selection-end-line="66" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/testToBeUpdated/PositiveApprovalForNewQuotationTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="91" column="22" selection-start-line="91" selection-start-column="22" selection-end-line="91" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -1711,35 +1610,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/productsAndPricesPage/ProductLine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="51" column="4" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="4" />
-          <folding>
-            <element signature="e#547#629#0" expanded="false" />
-            <element signature="e#547#629#0" expanded="false" />
-            <element signature="e#682#751#0" expanded="false" />
-            <element signature="e#682#751#0" expanded="false" />
-            <element signature="e#798#915#0" expanded="false" />
-            <element signature="e#798#915#0" expanded="false" />
-            <element signature="e#963#1068#0" expanded="false" />
-            <element signature="e#963#1068#0" expanded="false" />
-            <element signature="e#1126#1208#0" expanded="false" />
-            <element signature="e#1126#1208#0" expanded="false" />
-            <element signature="e#1268#1337#0" expanded="false" />
-            <element signature="e#1268#1337#0" expanded="false" />
-            <element signature="e#1391#1508#0" expanded="false" />
-            <element signature="e#1391#1508#0" expanded="false" />
-            <element signature="e#1563#1668#0" expanded="false" />
-            <element signature="e#1563#1668#0" expanded="false" />
-            <element signature="e#2103#2131#0" expanded="false" />
-            <element signature="e#2103#2131#0" expanded="false" />
-            <element signature="e#2362#2390#0" expanded="false" />
-            <element signature="e#2362#2390#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/mainPages/LoginPage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
@@ -1752,6 +1622,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="35" column="23" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#900#944#1" expanded="false" />
+            <element signature="e#953#1006#1" expanded="false" />
+            <element signature="e#1076#1113#0" expanded="false" />
+            <element signature="e#1244#1288#1" expanded="false" />
+            <element signature="e#1297#1380#1" expanded="false" />
+            <element signature="e#1643#1687#1" expanded="false" />
+            <element signature="e#1696#1779#1" expanded="false" />
+            <element signature="e#2036#2080#1" expanded="false" />
+            <element signature="e#2089#2172#1" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1770,66 +1652,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/testsInUse/ChangeLsuTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="39" column="46" selection-start-line="39" selection-start-column="46" selection-end-line="39" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/quotationClassificationPage/CustomerDataSection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#718#719#0" expanded="false" />
-            <element signature="e#752#753#0" expanded="false" />
-            <element signature="e#2757#2758#0" expanded="false" />
-            <element signature="e#2809#2810#0" expanded="false" />
-            <element signature="e#2916#2990#1" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/productsAndPricesPage/ProductsAndPricesPage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="799">
           <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/common/CommonMethods.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="147" column="0" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#CommonMethods#0" expanded="false" />
-            <element signature="method#waitOnButton#0;class#CommonMethods#0" expanded="false" />
-            <element signature="method#waitOnButton#1;class#CommonMethods#0" expanded="false" />
-            <element signature="method#waitOnPresenceOfElement#0;class#CommonMethods#0" expanded="false" />
-            <element signature="method#waitOnElementToBeVisible#0;class#CommonMethods#0" expanded="false" />
-            <element signature="method#waitOnElementToBeVisible#1;class#CommonMethods#0" expanded="false" />
-            <element signature="method#waitOnElementToBeClickable#0;class#CommonMethods#0" expanded="false" />
-            <element signature="method#waitOnElementToBeClickable#1;class#CommonMethods#0" expanded="false" />
-            <element signature="method#findElements#0;class#CommonMethods#0" expanded="false" />
-            <element signature="method#setAttribute#0;class#CommonMethods#0" expanded="false" />
-            <element signature="method#click#0;class#CommonMethods#0" expanded="false" />
-            <element signature="method#getPropertyFromConfigurationFile#0;class#CommonMethods#0" expanded="false" />
-            <element signature="method#browserSetup#0;class#CommonMethods#0" expanded="false" />
-            <element signature="method#setTimeout#0;class#CommonMethods#0" expanded="false" />
-            <element signature="method#snapshot#0;class#CommonMethods#0" expanded="false" />
-            <element signature="method#timestamp#0;class#CommonMethods#0" expanded="false" />
-            <element signature="method#selectElementFromDropdownList#0;class#CommonMethods#0" expanded="false" />
-            <element signature="method#selectElementFromDropdownListByHtmlElement#0;class#CommonMethods#0" expanded="false" />
-            <element signature="method#selectElementFromDropdownListByHtmlElement#1;class#CommonMethods#0" expanded="false" />
-            <element signature="method#getElementsFromDropdownList#0;class#CommonMethods#0" expanded="false" />
-            <element signature="method#scrollToElement#0;class#CommonMethods#0" expanded="false" />
-            <element signature="method#moveToElement#0;class#CommonMethods#0" expanded="false" />
-            <element signature="method#waitForBlockUiToDisappear#0;class#CommonMethods#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1859,62 +1686,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/mainPages/TopMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1462">
-          <caret line="96" column="14" selection-start-line="96" selection-start-column="14" selection-end-line="96" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#3561#3562#0" expanded="false" />
-            <element signature="e#3590#3591#0" expanded="false" />
-            <element signature="e#3636#3663#1" expanded="false" />
-            <element signature="e#3880#3916#1" expanded="false" />
-            <element signature="e#3996#4009#0" expanded="false" />
-            <element signature="e#4715#4737#0" expanded="false" />
-            <element signature="e#4756#4769#0" expanded="false" />
-            <element signature="e#5120#5133#0" expanded="false" />
-            <element signature="e#5528#5550#0" expanded="false" />
-            <element signature="e#5568#5581#0" expanded="false" />
-            <element signature="e#5948#5961#0" expanded="false" />
-            <element signature="e#6361#6374#0" expanded="false" />
-            <element signature="e#6690#6712#0" expanded="false" />
-            <element signature="e#6764#6777#0" expanded="false" />
-            <element signature="e#7100#7113#0" expanded="false" />
-            <element signature="e#7476#7498#0" expanded="false" />
-            <element signature="e#7550#7563#0" expanded="false" />
-            <element signature="e#7902#7915#0" expanded="false" />
-            <element signature="e#8264#8277#0" expanded="false" />
-            <element signature="e#8509#8531#0" expanded="false" />
-            <element signature="e#8583#8596#0" expanded="false" />
-            <element signature="e#8947#8960#0" expanded="false" />
-            <element signature="e#9379#9438#1" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/toastrs/Toastrs.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/SomeTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#473#588#1" expanded="true" />
-            <element signature="e#597#625#1" expanded="true" />
-            <element signature="e#634#670#1" expanded="true" />
-            <element signature="e#679#726#1" expanded="true" />
-            <element signature="e#740#749#0" expanded="true" />
-            <element signature="e#777#790#0" expanded="true" />
-            <element signature="e#813#827#0" expanded="true" />
-            <element signature="e#888#917#0" expanded="true" />
-            <element signature="e#888#917#0" expanded="true" />
-            <element signature="e#888#917#0" expanded="true" />
-            <element signature="e#903#917#0" expanded="true" />
-            <element signature="e#888#917#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/common/configuration.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -1923,71 +1695,302 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/testToBeUpdated/CreateSupportTest.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/scenarios/BaseScenario.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+        <state relative-caret-position="153">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/productsAndPricesPage/ProductLine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="41" column="58" selection-start-line="41" selection-start-column="58" selection-end-line="41" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/fullCostAndFinalizationPage/DocumentGenerationSection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding>
-            <element signature="e#1984#2028#1" expanded="true" />
-            <element signature="e#2214#2267#1" expanded="true" />
-            <element signature="e#2276#2357#1" expanded="true" />
-            <element signature="e#2430#2495#1" expanded="true" />
-            <element signature="e#2597#2664#0" expanded="true" />
-            <element signature="e#2597#2664#0" expanded="true" />
-            <element signature="e#2753#2812#1" expanded="true" />
-            <element signature="e#2935#2982#0" expanded="true" />
-            <element signature="e#2935#2982#0" expanded="true" />
-            <element signature="e#2992#3072#1" expanded="true" />
-            <element signature="e#3134#3186#0" expanded="true" />
-            <element signature="e#3134#3186#0" expanded="true" />
-            <element signature="e#3196#3294#1" expanded="true" />
-            <element signature="e#3525#3605#1" expanded="true" />
-            <element signature="e#3614#3664#1" expanded="true" />
-            <element signature="e#3917#3967#1" expanded="true" />
-            <element signature="e#3976#4071#1" expanded="true" />
-            <element signature="e#4289#4369#1" expanded="true" />
-            <element signature="e#4463#4514#0" expanded="true" />
+            <element signature="e#1274#1297#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/confirmationPopUp/DocumentGenerationModal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="26" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/confirmationPopUp/ConfirmationModal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="110" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/scenarios/ScenarionSuesmot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="46" selection-start-line="13" selection-start-column="46" selection-end-line="13" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/scenarios/ScenarioSweden.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="47" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/quotationClassificationPage/QuotationClassificationPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/OrderResultPopUp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#243#244#0" expanded="false" />
+            <element signature="e#272#273#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/testsInUse/ChangeLsuTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="54" column="34" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="34" />
+          <folding>
+            <element signature="e#1260#1298#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/mainPages/TopMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="217" column="36" selection-start-line="217" selection-start-column="36" selection-end-line="217" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/confirmationPopUp/ChangeStatusConfirmationModal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/mainPages/UnauthorizedAccessPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/ChangeLsuPopUp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="34" column="1" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
+          <folding>
+            <element signature="e#277#278#0" expanded="true" />
+            <element signature="e#306#307#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/quotationClassificationPage/CustomerDataSection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="52" column="42" selection-start-line="52" selection-start-column="42" selection-end-line="52" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/quotationClassificationPage/GeneralSection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="45" column="51" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/CloseQuotationPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="24" column="96" selection-start-line="24" selection-start-column="96" selection-end-line="24" selection-end-column="96" />
+          <folding>
+            <element signature="docComment;class#CloseQuotationPage#0" expanded="false" />
+            <element signature="method#setPositionLine#0;class#CloseQuotationPage#0" expanded="false" />
+            <element signature="method#expandNewStatusDropdownList#0;class#CloseQuotationPage#0" expanded="false" />
+            <element signature="method#pressSaveStatusButton#0;class#CloseQuotationPage#0" expanded="false" />
+            <element signature="method#setWonStatus#0;class#CloseQuotationPage#0" expanded="false" />
+            <element signature="method#insertCustomerOrderNumber#0;class#CloseQuotationPage#0" expanded="false" />
+            <element signature="method#pressEditPreOrderDataButton#0;class#CloseQuotationPage#0" expanded="false" />
+            <element signature="method#pressSavePreOrderDataButton#0;class#CloseQuotationPage#0" expanded="false" />
+            <element signature="method#fillInPreOrderData#0;class#CloseQuotationPage#0" expanded="false" />
+            <element signature="method#selectProductForOrderingCheckbox#0;class#CloseQuotationPage#0" expanded="false" />
+            <element signature="method#setProductOrderingSystem#0;class#CloseQuotationPage#0" expanded="false" />
+            <element signature="method#selectProductForOrdering#0;class#CloseQuotationPage#0" expanded="false" />
+            <element signature="method#pressSubmitOrderButton#0;class#CloseQuotationPage#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/common/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+        <state relative-caret-position="289">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#parseXmlFile#0;class#Parser#0" expanded="false" />
             <element signature="e#393#423#1" expanded="true" />
-            <element signature="e#450#486#1" expanded="true" />
-            <element signature="e#499#571#1" expanded="true" />
-            <element signature="e#584#642#1" expanded="true" />
-            <element signature="e#655#696#1" expanded="true" />
-            <element signature="e#709#733#0" expanded="true" />
-            <element signature="e#759#806#1" expanded="true" />
-            <element signature="e#824#837#1" expanded="true" />
-            <element signature="e#819#1319#0" expanded="true" />
-            <element signature="e#845#862#0" expanded="true" />
-            <element signature="e#890#920#1" expanded="true" />
-            <element signature="e#819#1319#0" expanded="true" />
-            <element signature="e#819#1319#0" expanded="true" />
-            <element signature="e#941#960#0" expanded="true" />
-            <element signature="e#1005#1040#1" expanded="true" />
-            <element signature="e#1024#1039#0" expanded="true" />
-            <element signature="e#1110#1179#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/popUpWindows/Toasts.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="28" column="4" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="4" />
+        <state relative-caret-position="567">
+          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#Toasts#0" expanded="false" />
+            <element signature="e#990#1007#0" expanded="true" />
+            <element signature="method#isQuotationSavedSuccessfullyToatstrDisplayed#0;class#Toasts#0" expanded="false" />
+            <element signature="method#isCustomerSuccessfullyAddedToatstrDisplayed#0;class#Toasts#0" expanded="false" />
+            <element signature="e#2968#2969#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/common/CommonMethods.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="907">
+          <caret line="252" column="13" selection-start-line="252" selection-start-column="13" selection-end-line="252" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#990#1007#0" expanded="true" />
-            <element signature="method#verifyIfElementWasDisplayedNotUsedForNow#0;class#Toasts#0" expanded="false" />
-            <element signature="e#1817#1850#1" expanded="true" />
-            <element signature="e#1897#1909#0" expanded="true" />
+            <element signature="docComment;class#CommonMethods#0" expanded="false" />
+            <element signature="method#waitOnButton#0;class#CommonMethods#0" expanded="false" />
+            <element signature="method#waitOnButton#1;class#CommonMethods#0" expanded="false" />
+            <element signature="method#waitOnPresenceOfElement#0;class#CommonMethods#0" expanded="false" />
+            <element signature="method#waitOnElementToBeVisible#0;class#CommonMethods#0" expanded="false" />
+            <element signature="method#waitOnElementToBeVisible#1;class#CommonMethods#0" expanded="false" />
+            <element signature="method#waitOnElementToBeClickable#0;class#CommonMethods#0" expanded="false" />
+            <element signature="method#waitOnElementToBeClickable#1;class#CommonMethods#0" expanded="false" />
+            <element signature="method#waitForPageLoad#0;class#CommonMethods#0" expanded="false" />
+            <element signature="method#waitForFrameToLoad#0;class#CommonMethods#0" expanded="false" />
+            <element signature="method#findElement#0;class#CommonMethods#0" expanded="false" />
+            <element signature="method#findElements#0;class#CommonMethods#0" expanded="false" />
+            <element signature="method#waitForBlockUiToDisappear#0;class#CommonMethods#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/testToBeUpdated/OrderToOmsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="67" column="57" selection-start-line="67" selection-start-column="57" selection-end-line="67" selection-end-column="57" />
+          <folding>
+            <element signature="e#2313#2366#1" expanded="true" />
+            <element signature="e#2375#2456#1" expanded="true" />
+            <element signature="e#2529#2594#1" expanded="true" />
+            <element signature="e#2696#2763#0" expanded="true" />
+            <element signature="e#2696#2763#0" expanded="true" />
+            <element signature="e#2773#2840#0" expanded="true" />
+            <element signature="e#2773#2840#0" expanded="true" />
+            <element signature="e#2850#2909#1" expanded="true" />
+            <element signature="e#3032#3079#0" expanded="true" />
+            <element signature="e#3032#3079#0" expanded="true" />
+            <element signature="e#3151#3231#1" expanded="true" />
+            <element signature="e#3293#3345#0" expanded="true" />
+            <element signature="e#3293#3345#0" expanded="true" />
+            <element signature="e#3355#3453#1" expanded="true" />
+            <element signature="e#3539#3604#0" expanded="true" />
+            <element signature="e#4054#4137#1" expanded="true" />
+            <element signature="e#4146#4238#1" expanded="true" />
+            <element signature="e#4451#4534#1" expanded="true" />
+            <element signature="e#4543#4613#1" expanded="true" />
+            <element signature="e#4731#4784#0" expanded="true" />
+            <element signature="e#4950#4997#0" expanded="true" />
+            <element signature="e#5074#5145#1" expanded="true" />
+            <element signature="e#5281#5325#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/testToBeUpdated/CreateSupportTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="694">
+          <caret line="83" column="5" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/testToBeUpdated/PositiveApprovalForNewQuotationTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="65" column="26" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
+          <folding>
+            <element signature="e#2801#2868#0" expanded="true" />
+            <element signature="e#2801#2868#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/SomeTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pageObjects/quotationTabs/supportRequestPage/SupportRequestMainActionPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+          <folding>
+            <element signature="e#362#363#0" expanded="true" />
+            <element signature="e#391#392#0" expanded="true" />
+            <element signature="e#1437#1560#0" expanded="true" />
+            <element signature="e#1437#1560#0" expanded="true" />
+            <element signature="e#1437#1560#0" expanded="true" />
+            <element signature="e#1437#1560#0" expanded="true" />
+            <element signature="e#2617#2625#1" expanded="true" />
+            <element signature="e#2612#2702#0" expanded="true" />
+            <element signature="e#2612#2702#0" expanded="true" />
+            <element signature="e#2612#2702#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/testToBeUpdated/SupportWorkflowTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="618">
+          <caret line="124" column="74" selection-start-line="124" selection-start-column="74" selection-end-line="124" selection-end-column="74" />
+          <folding>
+            <element signature="e#5646#5747#1" expanded="true" />
           </folding>
         </state>
       </provider>

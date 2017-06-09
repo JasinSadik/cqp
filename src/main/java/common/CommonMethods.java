@@ -298,7 +298,7 @@ public class CommonMethods extends Page {
         elements = findElements(comboBoxList);
         for (WebElement e: elements) {
             if(e.getText().toLowerCase().contains(value.toLowerCase())){
-              break;
+                break;
             }
             indexOfElement++;
         }
@@ -307,6 +307,7 @@ public class CommonMethods extends Page {
         click(comboBoxElement);
 
     }
+
 
     protected void selectElementFromDropdownListByHtmlElement(String value) {
         selectElementFromDropdownListByHtmlElement(value, "li");
@@ -331,12 +332,10 @@ public class CommonMethods extends Page {
         }
         int indexOfElement = 1;
         for (WebElement e : elements) {
-            if(e.getText().toLowerCase().contains(value.toLowerCase())){
-                break;
-            }
-            indexOfElement++;
+            elementsToStringTable[indexOfElementsCount] = e.getText().toString();
+            indexOfElementsCount++;
         }
-        return indexOfElement;
+        return elementsToStringTable;
     }
 
     protected void scrollToElement(By by) {
@@ -351,6 +350,11 @@ public class CommonMethods extends Page {
     protected void moveToElement(By by) {
         Actions actions = new Actions(driver);
         actions.moveToElement(findElement(by)).build().perform();
+    }
+
+    protected void clickElementAction (By by){
+        Actions actions = new Actions(driver);
+        actions.click(findElement(by)).build().perform();
     }
 
     protected void waitForBlockUiToDisappear() {
