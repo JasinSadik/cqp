@@ -23,6 +23,8 @@ public class SupportRequestMainActionPage extends SupportRequestPage {
     private By sendRequestButton = By.xpath("//div[@class='commentButtonBar']//button[text()='Send']");
     private By statusLabel = By.xpath("//span[text()='Status: ']/..//span[2]");
     private By goToProductHyperlink = By.xpath("//a[text()='Go to product']");
+    private By acceptResponseButton = By.xpath("//button[text() = 'Accept response']");
+    private By increaseButton = By.xpath("//span [text() = 'Increase']/..");
 
     private void waitOnLogOfAction(String action, String message) {
         waitOnPresenceOfElement(By.xpath("//span[contains(@class,'requestText')]//div[text()='" + message + "']/../../../../../../..//span[text()='" + action + "']"));
@@ -59,6 +61,18 @@ public class SupportRequestMainActionPage extends SupportRequestPage {
     private void pressReplyAndCloseButton() {
         waitOnButton(replyAndCloseButton);
         click(replyAndCloseButton);
+    }
+
+    public void setNpsScore (int npsScore){
+        waitOnElementToBeClickable(increaseButton);
+        for (int i=0; i<npsScore; i++) {
+            clickElementAction(increaseButton);
+        }
+    }
+
+    public void pressAcceptResponseButton(){
+        waitOnElementToBeClickable(acceptResponseButton);
+        click(acceptResponseButton);
     }
 
     private boolean checkButtonAvailability(By by) {

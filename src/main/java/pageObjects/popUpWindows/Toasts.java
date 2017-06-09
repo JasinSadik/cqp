@@ -90,7 +90,19 @@ public class Toasts extends Modals {
         return verifyIfElementWasDisplayed("Customer added");
     }
 
+    public boolean isRemoveRequestToastrDisplayed() {
+        return verifyIfElementWasDisplayed("Request removed");
+    }
+
+    public boolean isRemoveQuotationToastrDisplayed() {
+        return verifyIfElementWasDisplayed("Quotation delete correctly");
+    }
+
     public boolean isSupportRequestSuccessfullyCreatedToatstrDisplayed() {
         return verifyIfElementWasDisplayed("Support request added");
+    }
+
+    public boolean isSupportRequestAccepted (){
+        return verifyIfElementWasDisplayed("Response action accepted");
     }
 }

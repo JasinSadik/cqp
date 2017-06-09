@@ -12,6 +12,8 @@ public class PuDashboard extends TopMenu {
         super(driver);
     }
 
+    private By loadMoreRequestButton = By.xpath("//button[text()='Load more request']");
+
     private String quotationNumber = "";
 
     private void setQuotationNumber(String quotationNumber) {
@@ -21,6 +23,10 @@ public class PuDashboard extends TopMenu {
     private By viewSupportRequestButton = By.xpath("//td[text()='" + quotationNumber + "']/..//a");
 
     public void openSupportRequest(String quotationNumber) {
+        waitForPageLoad(driver);
+        if (findElement(loadMoreRequestButton).isDisplayed()){
+            click(loadMoreRequestButton);
+        }
         setQuotationNumber(quotationNumber);
         waitOnElementToBeClickable(viewSupportRequestButton);
         click(viewSupportRequestButton);

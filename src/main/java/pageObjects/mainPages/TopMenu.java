@@ -223,8 +223,7 @@ public class TopMenu extends CommonMethods {
 
     public void relogOnUser(String username){
         pressLogoutHyperlink();
-
-
+        new LoginPage(driver).logInToCqp(username, "a");
     }
 
 }
