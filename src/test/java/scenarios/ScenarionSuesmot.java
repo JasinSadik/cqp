@@ -11,7 +11,7 @@ public class ScenarionSuesmot extends BaseScenario {
     final protected String INUDSTRY_USAGE_LEVEL1 = "Electric Utility";
     final protected String INUDSTRY_USAGE_LEVEL2 = "Hydro";
     final protected String QUOTATION_TYPE = "Product quotation";
-    final protected String LANGUAGE = "Swedish";
+    final protected String LANGUAGE = "Spanish";
     final protected String LV_DRIVE_APPLICATION = "Calander Line";
     final protected String MOTCONF_APPLICATION = "Centrifuge";
     final protected String LV_DRIVE_PRODUCT_WITHOUT_VC = "ACS800-01-0120-3";

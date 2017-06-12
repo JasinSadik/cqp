@@ -5,6 +5,8 @@ import common.sqlMethods.Sql_ApprovalBehavior;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import pageObjects.popUpWindows.CreditLimitPopUp;
+import pageObjects.popUpWindows.Toasts;
 import pageObjects.popUpWindows.confirmationPopUp.SfdcSyncConfirmationModal;
 import pageObjects.quotationTabs.CloseQuotationPage;
 import pageObjects.quotationTabs.fullCostAndFinalizationPage.DocumentGenerationSection;
@@ -18,6 +20,7 @@ import pageObjects.quotationTabs.quotationClassificationPage.CustomerDataSection
 import pageObjects.quotationTabs.quotationClassificationPage.GeneralSection;
 import pageObjects.quotationTabs.quotationClassificationPage.QuotationClassificationPage;
 import scenarios.ScenarioSweden;
+import scenarios.ScenarionSuesmot;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -25,7 +28,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * Created by PLJAHAS on 2016-12-16.
  */
-public class OrderToOmsTest extends ScenarioSweden {
+public class OrderToOmsTest extends ScenarionSuesmot {
 
     private final String PROJECT_NAME = new CommonMethods(driver).timestamp();
 
@@ -56,33 +59,31 @@ public class OrderToOmsTest extends ScenarioSweden {
         LsuDashboard lsuDashboard = new LsuDashboard(driver);
         CustomerDataSection customerDataSection = lsuDashboard.pressNewQuotationButton();
         customerDataSection.selectCustomerFromSearch(CUSTOMER);
+        CreditLimitPopUp creditLimitPopUp = new CreditLimitPopUp(driver);
+        creditLimitPopUp.pressOkButton();
         customerDataSection.pressTodayRfqButton();
         customerDataSection.setIndustryUsageLevelOne(INUDSTRY_USAGE_LEVEL1);
         customerDataSection.setIndustryUsageLevelTwo(INUDSTRY_USAGE_LEVEL2);
+        GeneralSection generalSection = new GeneralSection(driver);
         customerDataSection.pressSaveAndCollapseButton();
-        GeneralSection generalSection =new GeneralSection(driver);
         generalSection.insertProjectName(PROJECT_NAME);
         generalSection.setQuotationType(QUOTATION_TYPE);
+        generalSection.pressBindingQuotationCategoryButton();
         AdditionalDataSection additionalDataSection = new AdditionalDataSection(driver);
         generalSection.pressSaveAndCollapseButton();
         additionalDataSection.setQuotationLanguage(LANGUAGE);
         QuotationClassificationPage quotationClassificationPage = new QuotationClassificationPage(driver);
-        SfdcSyncConfirmationModal sfdcSyncConfirmationModal = new SfdcSyncConfirmationModal(driver);
         quotationClassificationPage.pressCreateQuotationButton();
-        sfdcSyncConfirmationModal.pressConfirmButton();
+        assertTrue(new Toasts(driver).isQuotationSavedSuccessfullyToatstrDisplayed());
 
     }
 
     @Test(priority = 3)
     public void shouldAddProducts(){
-        QuotationNavigationBar quotationNavigationBar = new QuotationNavigationBar(driver);
         ProductsAndPricesPage productsAndPricesPage = new ProductsAndPricesPage(driver);
-        quotationNavigationBar.goToProductAndPriceTab();
         productsAndPricesPage.addProductFromLvDrive(LV_DRIVE_PRODUCT_WITH_VC);
-        productsAndPricesPage.addProductFromMotConf(MOTCONF_PRODUCT_WITHOUT_VC);
         ProductLine productLine = new ProductLine(driver);
         productLine.setApplication(1, LV_DRIVE_APPLICATION);
-        productLine.setApplication(2, MOTCONF_APPLICATION);
 
     }
 
@@ -92,15 +93,29 @@ public class OrderToOmsTest extends ScenarioSweden {
         DocumentGenerationSection documentGenerationSection = new DocumentGenerationSection(driver);
         quotationNavigationBar.goToFullCostAndFinalizationTab();
         documentGenerationSection.generateAndIssueDocumentManually();
+    }
+
+    @Test(priority = 5)
+    public void shouldSetWonStatus(){
+        QuotationNavigationBar quotationNavigationBar = new QuotationNavigationBar(driver);
         CloseQuotationPage closeQuotationTab = new CloseQuotationPage(driver);
         quotationNavigationBar.goToCloseQuotationTab();
         closeQuotationTab.setWonStatus();
-        closeQuotationTab.fillInPreOrderData();
-        closeQuotationTab.setProductOrderingSystem(1, "OMS");
-        closeQuotationTab.setProductOrderingSystem(2, "OMS");
-        closeQuotationTab.setProductOrderingSystem(3, "OMS");
-        closeQuotationTab.setProductOrderingSystem(4, "OMS");
-        closeQuotationTab.submitOrder();
+        assertTrue(new Toasts(driver).isQuoationStatusChangedDisplayed());
+    }
+
+    @Test(priority = 6)
+    public void shouldSavePreOrderData(){
+        new CloseQuotationPage(driver).fillInPreOrderData("12345678");
+        assertTrue(new Toasts(driver).isPreOrderDataSectionSaved());
+    }
+
+    @Test(priority = 7)
+    public void shouldSendOrder(){
+        CloseQuotationPage closeQuotationPage = new CloseQuotationPage(driver);
+        closeQuotationPage.selectProductForOrdering(1, "OMS");
+        closeQuotationPage.pressSubmitOrderButton();
+        assertTrue(new Toasts(driver).isOrderSentSuccessfully());
     }
 
     @AfterTest

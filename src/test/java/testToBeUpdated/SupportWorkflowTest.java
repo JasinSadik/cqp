@@ -1,41 +1,38 @@
 package testToBeUpdated;
 
 import common.CommonMethods;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pageObjects.mainPages.LoginPage;
 import pageObjects.mainPages.LsuDashboard;
+import pageObjects.mainPages.PuDashboard;
 import pageObjects.mainPages.TopMenu;
 import pageObjects.popUpWindows.CreditLimitPopUp;
 import pageObjects.popUpWindows.Toasts;
-import pageObjects.popUpWindows.confirmationPopUp.RemoveRequestConfirmationPopUp;
-import pageObjects.popUpWindows.confirmationPopUp.SfdcSyncConfirmationModal;
 import pageObjects.quotationTabs.QuotationNavigationBar;
-import pageObjects.quotationTabs.supportRequestPage.SupportRequestCreationPage;
 import pageObjects.quotationTabs.productsAndPricesPage.ProductLine;
 import pageObjects.quotationTabs.productsAndPricesPage.ProductsAndPricesPage;
 import pageObjects.quotationTabs.quotationClassificationPage.AdditionalDataSection;
 import pageObjects.quotationTabs.quotationClassificationPage.CustomerDataSection;
 import pageObjects.quotationTabs.quotationClassificationPage.GeneralSection;
 import pageObjects.quotationTabs.quotationClassificationPage.QuotationClassificationPage;
+import pageObjects.quotationTabs.supportRequestPage.SupportRequestCreationPage;
+import pageObjects.quotationTabs.supportRequestPage.SupportRequestMainActionPage;
 import pageObjects.quotationTabs.supportRequestPage.SupportRequestPage;
 import scenarios.ScenarioSweden;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Created by PLJAHAS on 2016-12-27.
+ * Created by PLLIKOS on 2017-06-09.
  */
-public class CreateSupportTest extends ScenarioSweden {
-
+public class SupportWorkflowTest extends ScenarioSweden {
 
     private final String PROJECT_NAME = new CommonMethods(driver).timestamp();
     private final String PU_USER = "asko.hokkanen@fi.abb.com";
     private String quotationNumber = "";
 
-    protected CreateSupportTest() throws Exception {
+    protected SupportWorkflowTest() throws Exception {
     }
 
     @BeforeTest
@@ -95,53 +92,41 @@ public class CreateSupportTest extends ScenarioSweden {
     }
 
     @Test(priority = 5)
-    public void shouldRemoveSupportRequest() throws InterruptedException {
-        SupportRequestPage supportRequestPage = new SupportRequestPage(driver);
-        QuotationNavigationBar quotationNavigationBar = new QuotationNavigationBar(driver);
-        quotationNavigationBar.goToSupportRequestTab();
-        supportRequestPage.pressRemoveRequestIcon(1);
-        RemoveRequestConfirmationPopUp removeRequestConfirmationPopUp = new RemoveRequestConfirmationPopUp(driver);
-        removeRequestConfirmationPopUp.pressRemoveRequestConfirmationButton();
-        assertTrue("Support can not be removed.", new Toasts(driver).isRemoveRequestToastrDisplayed());
+    public void shouldRelogCqpUser() throws InterruptedException {
+        new TopMenu(driver).relogOnUser(PU_USER);
     }
 
     @Test(priority = 6)
-    public void shouldRemoveQuotation() throws InterruptedException {
-        new QuotationNavigationBar(driver).goToQuotationClassificationTab();
-        new QuotationClassificationPage(driver).pressDeleteQuotationButton();
-        assertTrue("Quotation can not be deleted.", new Toasts(driver).isRemoveQuotationToastrDisplayed());
+    public void shouldOpenSupportRequestFromDashboard() throws Exception {
+        new PuDashboard(driver).openSupportRequest(quotationNumber);
     }
+        /*
+    Tutaj powinno być jeszcze przejście do Product and Prices, zmiana cen
+    Wykonanie innych akcji
+     */
 
+    @Test(priority = 7)
+    public void shouldReplyAndCloseRequest() {
+        new SupportRequestMainActionPage(driver).replyAndCloseRequest("Please find my final comment");
+    }
     /*
-
-
-    @Test(priority = 5)
-    public void shouldOpenRequest() throws InterruptedException {
-        TopMenu topMenu = new TopMenu(driver);
-        LoginPage loginPage = topMenu.pressLogoutHyperlink();
-        PuDashboard puDashboard = loginPage.logInToCqp(PU_USER, "a", PuDashboard.class);
-        SupportRequestMainActionPage supportRequestPuViewPage = puDashboard.openSupportRequest(quotationNumber);
-        assertTrue(supportRequestPuViewPage.checkDelegateButtonAvailability());
-        assertTrue(supportRequestPuViewPage.checkDelegateToGroupButtonAvailability());
-        assertTrue(supportRequestPuViewPage.checkForwardButtonAvailability());
-        assertTrue(supportRequestPuViewPage.checkInformButtonAvailability());
-        assertTrue(supportRequestPuViewPage.checkOnHoldButtonAvailability());
-        assertTrue(supportRequestPuViewPage.checkReplyAndCloseButtonAvailability());
-        assertTrue(supportRequestPuViewPage.checkRequestMoreInfoButtonAvailability());
+      Dopisać w przyszłości sprawdzenie czy jest approval, przejście przez approval
+       */
+    @Test(priority = 8)
+    public void shouldRelogOnLsuUser() {
+        new TopMenu(driver).relogOnUser(USERNAME);
     }
 
-    @Test(priority = 6)
-    public void shouldReplyToRequest() throws InterruptedException {
-        SupportRequestMainActionPage supportRequestPuViewPage = new SupportRequestMainActionPage(driver);
-        supportRequestPuViewPage.replyAndCloseRequest("dupa dupa");
-        assertEquals("Answered", supportRequestPuViewPage.getCurrentStatus());
+    @Test(priority = 9)
+    public void shouldLsuAcceptFinalResponseFromPu() {
+        new LsuDashboard(driver).openQuotationFromQuickSearch(quotationNumber);
+        new QuotationNavigationBar(driver).goToSupportRequestTab();
+        new SupportRequestPage(driver).pressViewRequestIcon(1);
+        SupportRequestMainActionPage supportRequestMainActionPage = new SupportRequestMainActionPage(driver);
+        supportRequestMainActionPage.setNpsScore(8);
+        supportRequestMainActionPage.pressAcceptResponseButton();
+        assertTrue("Unable to close support request",  new Toasts(driver).isSupportRequestAccepted());
     }
-*/
-    @AfterTest
-    public void after() {
-        driver.close();
-        driver.quit();
-    }
-
-
 }
+
+

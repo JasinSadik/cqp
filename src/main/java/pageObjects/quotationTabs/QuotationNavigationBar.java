@@ -2,6 +2,7 @@ package pageObjects.quotationTabs;
 
 import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -27,6 +28,7 @@ public class QuotationNavigationBar extends TopMenu {
     private By approvalRequestsTab = By.xpath("//*[@id='teaserTiles']//span[contains(text(),'Approval requests')]/..");
     private By closeQuotationTab = By.xpath("//*[@id='teaserTiles']//span[contains(text(),'Close quotation')]/..");
     private By quotationNumberLabel = By.xpath("//div[@id='pageHeaderInfo']//span[contains(text(),'CQ')]");
+    private By addStandaloneSupportRequestButton = By.xpath("//button[text() = 'Add stand alone support request']");
 
     public void goToQuotationClassificationTab() {
         openTab(quotationClassificationTab);
@@ -51,6 +53,27 @@ public class QuotationNavigationBar extends TopMenu {
 
     public void goToCloseQuotationTab() {
         openTab(closeQuotationTab);
+    }
+
+    public void goToSupportRequestTab() {
+        waitForPageLoad(driver);
+        waitOnElementToBeClickable(supportRequestsTab);
+        int attempt = 0;
+        boolean isElelemetDisplayed = false;
+        setTimeout(driver, 1);
+        while (!isElelemetDisplayed && attempt < 30) {
+            try {
+                click(supportRequestsTab);
+                waitForPageLoad(driver);
+                driver.findElement(addStandaloneSupportRequestButton);
+                isElelemetDisplayed = true;
+
+            } catch (StaleElementReferenceException | ElementNotFoundException | NoSuchElementException e) {
+                attempt++;
+            }
+
+        }
+        setTimeout(driver, 30);
     }
 
 

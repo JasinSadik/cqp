@@ -7,6 +7,9 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pageObjects.mainPages.LoginPage;
 import pageObjects.mainPages.LsuDashboard;
+import pageObjects.mainPages.TopMenu;
+import pageObjects.popUpWindows.CreditLimitPopUp;
+import pageObjects.popUpWindows.Toasts;
 import pageObjects.popUpWindows.confirmationPopUp.SfdcSyncConfirmationModal;
 import pageObjects.quotationTabs.approvalRequestPage.ApprovalRequestPage;
 import pageObjects.quotationTabs.QuotationNavigationBar;
@@ -57,6 +60,8 @@ public class PositiveApprovalForNewQuotationTest extends ScenarioSweden {
         LsuDashboard lsuDashboard = new LsuDashboard(driver);
         CustomerDataSection customerDataSection = lsuDashboard.pressNewQuotationButton();
         customerDataSection.selectCustomerFromSearch(CUSTOMER);
+        CreditLimitPopUp creditLimitPopUp = new CreditLimitPopUp(driver);
+        creditLimitPopUp.pressOkButton();
         customerDataSection.pressTodayRfqButton();
         customerDataSection.setIndustryUsageLevelOne(INUDSTRY_USAGE_LEVEL1);
         customerDataSection.setIndustryUsageLevelTwo(INUDSTRY_USAGE_LEVEL2);
@@ -68,10 +73,8 @@ public class PositiveApprovalForNewQuotationTest extends ScenarioSweden {
         generalSection.pressSaveAndCollapseButton();
         additionalDataSection.setQuotationLanguage(LANGUAGE);
         QuotationClassificationPage quotationClassificationPage = new QuotationClassificationPage(driver);
-        SfdcSyncConfirmationModal sfdcSyncConfirmationModal = new SfdcSyncConfirmationModal(driver);
         quotationClassificationPage.pressCreateQuotationButton();
-        sfdcSyncConfirmationModal.pressConfirmButton();
-
+        assertTrue(new Toasts(driver).isQuotationSavedSuccessfullyToatstrDisplayed());
     }
 
     @Test(priority = 3)

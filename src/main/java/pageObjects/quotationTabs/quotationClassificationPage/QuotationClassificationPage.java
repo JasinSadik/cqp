@@ -16,11 +16,15 @@ public class QuotationClassificationPage extends QuotationNavigationBar {
     }
 
     private By createQuotationButton = By.id("btnCreateQuotation");
+    private By deleteQuotationButton = By.xpath("//*[@id='newQuotation']//span[4]//button[text()='Delete quotation']");
 
     public void pressCreateQuotationButton() {
         waitOnButton(createQuotationButton);
         click(createQuotationButton);
     }
 
-
+    public void pressDeleteQuotationButton() {
+        waitOnButton(deleteQuotationButton);
+        click(deleteQuotationButton);
+    }
 }

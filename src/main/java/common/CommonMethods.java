@@ -170,7 +170,10 @@ public class CommonMethods extends Page {
 
 
     protected void sendKeys(By by, String text) {
-        findElement(by).sendKeys(text);
+        element = findElement(by);
+        element.sendKeys(text);
+        element.sendKeys(Keys.TAB);
+
     }
 
     protected void setAttribute(By by, String attributeName, String key) {
@@ -268,27 +271,43 @@ public class CommonMethods extends Page {
         return timestamp;
     }
 
-    protected void selectElementFromDropdownList(String comboBoxId, String value) {
+    protected void selectElementFromDropdownList(String comboBoxId, String value){
         int index = 1;
         By comboBoxButton = By.xpath("//input[contains(@id , '" + comboBoxId + "')]/..//span[contains(text(), 'select')]");
         By comboBoxList = By.xpath("//ul[contains(@id , '" + comboBoxId + "_listbox')]/li");
+        By comboBoxListParent = By.xpath("//ul[contains(@id , '" + comboBoxId + "_listbox')]");
         By comboBoxElement = By.xpath("//ul[contains(@id , '" + comboBoxId + "_listbox')]/li[" + index + "]");
         waitOnButton(comboBoxButton);
-        while (findElements(comboBoxList).size() == 0) {
+        while (findElements(comboBoxListParent).size() == 0) {
             // to fill up
         }
+
+        boolean elementStatus = false;
         click(comboBoxButton);
-        while (findElements(comboBoxList).size() > index - 1) {
-            waitOnElementToBeClickable(driver.findElement(comboBoxElement));
-            if (findElement(comboBoxElement).getText().toLowerCase().contains(value.toLowerCase())) {
-                click(comboBoxElement);
-                break;
-            } else {
-                index++;
-                comboBoxElement = By.xpath("//ul[contains(@id , '" + comboBoxId + "_listbox')]/li[" + index + "]");
+        while (!elementStatus){
+            try {
+                Thread.sleep(500);
+                driver.findElement(By.xpath("//ul[contains(@id , '" + comboBoxId + "_listbox')]/li[1]"));
+                elementStatus = true;
+            }catch (ElementNotFoundException | NoSuchElementException e) {
+                click(comboBoxButton);
+            }catch (InterruptedException x){
             }
         }
+        int indexOfElement= 1;
+        elements = findElements(comboBoxList);
+        for (WebElement e: elements) {
+            if(e.getText().toLowerCase().contains(value.toLowerCase())){
+                break;
+            }
+            indexOfElement++;
+        }
+        comboBoxElement = By.xpath("//ul[contains(@id , '" + comboBoxId + "_listbox')]/li[" + indexOfElement + "]");
+        waitOnElementToBeClickable(driver.findElement(comboBoxElement));
+        click(comboBoxElement);
+
     }
+
 
     protected void selectElementFromDropdownListByHtmlElement(String value) {
         selectElementFromDropdownListByHtmlElement(value, "li");
@@ -301,15 +320,24 @@ public class CommonMethods extends Page {
         click(by);
     }
 
-    protected String[] getElementsFromDropdownList(String id) {
-        elements = findElements(By.id(id));
-        String[] elementsToStringTable = null;
-        int indexOfElementsCount = 0;
+    protected int getElementIndexFromDropdownList(By by, String value) {
+        elements = null;
+        int indexOfElementsCount=1;
+        String[] elementsToStringTable=null;
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        while(elements == null) {
+            elements = findElements(by);
+        }
+        int indexOfElement = 1;
         for (WebElement e : elements) {
             elementsToStringTable[indexOfElementsCount] = e.getText().toString();
             indexOfElementsCount++;
         }
-        return elementsToStringTable;
+        return indexOfElementsCount;
     }
 
     protected void scrollToElement(By by) {
@@ -326,6 +354,11 @@ public class CommonMethods extends Page {
         actions.moveToElement(findElement(by)).build().perform();
     }
 
+    protected void clickElementAction (By by){
+        Actions actions = new Actions(driver);
+        actions.click(findElement(by)).build().perform();
+    }
+
     protected void waitForBlockUiToDisappear() {
         setTimeout(driver, 0);
         try {
@@ -334,7 +367,7 @@ public class CommonMethods extends Page {
         }
         setTimeout(driver, 30);
         if (elements != null) {
-            new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOfAllElements(elements));
+            new WebDriverWait(driver, 30).until(ExpectedConditions.invisibilityOfAllElements(elements));
         }
     }
 
