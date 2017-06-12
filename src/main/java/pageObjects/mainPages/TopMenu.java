@@ -21,6 +21,8 @@ public class TopMenu extends CommonMethods {
     private By changeUnitHyperlink = By.xpath("//div[contains(@class, 'classicQuotationMenu')]//a[text()='Change unit of work']");
     private By currentlyLoggedUser = By.xpath("//div[contains(@class, 'classicQuotationMenu')]//*[@id='topMenu_C019']/span");
     private By currentlyLoggedUsersLsu = By.xpath("//div[contains(@class, 'classicQuotationMenu')]//*[@id='topMenu_C019']/span/span");
+    //moja zmiana
+    private By dashboardHyperLink = By.xpath("//*[@id='menuDashboard']/a");
 
     //dashboard classic menu
     private By logoutHyperlinkDashboard = By.xpath("//div[contains(@class, 'classicMenu')]//a[text()='Logout']");
@@ -28,6 +30,9 @@ public class TopMenu extends CommonMethods {
     private By changeUnitHyperlinkDashboard = By.xpath("//div[contains(@class, 'classicMenu')]//a[text()='Change unit of work']");
     private By currentlyLoggedUserDashboard = By.xpath("//div[contains(@class, 'classicMenu')]//*[@id='topMenu_C019']/span");
     private By currentlyLoggedUsersLsuDashboard = By.xpath("//div[contains(@class, 'classicMenu')]//*[@id='topMenu_C019']/span/span");
+    //moja zmiana
+    private By dashboardHyperLinkDashboard = By.xpath("//*[@id='menuDashboard']/a");
+    private By searchQuotationHyperLinkDashboard = By.xpath("//*[@id='firstNavTile']/span");
 
     //non dashboard small menu elements
     private By logoutHyperlinkSmallMenu = By.xpath("//div[contains(@class, 'quotationMenu')]//a[text()='Logout']");
@@ -37,6 +42,8 @@ public class TopMenu extends CommonMethods {
     private By currentlyLoggedUsersLsuSmallMenu = By.xpath("/div[contains(@class, 'quotationMenu')]//*[@id='topMenu_C019']/span/span");
 
     private By smallMenuIcon = By.xpath("//div[contains(@class, 'quotationMenu')]//*[@id='topMenu_C019']/div[1]/a");
+    //moja zmiana
+    private By dashboardHyperLinkSmallMenu = By.xpath("//*[@id='topMenu_C019']/div[1]/ul/li[1]/a");
 
     //dashboard small menu elements
     private By logoutHyperlinkSmallMenuDashboard = By.xpath("//div[contains(@class, 'dashboardMenu')]//a[text()='Logout']");
@@ -44,7 +51,7 @@ public class TopMenu extends CommonMethods {
     private By changeUnitHyperlinkSmallMenuDashboard = By.xpath("//div[contains(@class, 'dashboardMenu')]//a[text()='Change unit of work']");
     private By currentlyLoggedUserSmallMenuDashboard = By.xpath("//div[contains(@class, 'dashboardMenu')]//*[@id='topMenu_C019']/span");
     private By currentlyLoggedUsersLsuSmallMenuDashboard = By.xpath("//div[contains(@class, 'dashboardMenu')]//*[@id='topMenu_C019']/span/span");
-
+    //tego uzyje
     private By smallMenuIconDashboard = By.xpath("//div[contains(@class, 'dashboardMenu')]//*[@id='topMenu_C019']/div[1]/a");
 
 
@@ -158,6 +165,30 @@ public class TopMenu extends CommonMethods {
             }
         }
     }
+    //moja zmiana, wrzucić do LsuDashBoard i tutaj dodać nową, która wchodzi bezpośrednio z Quotations->SearchQuotation
+    public void pressSearchQuotation(){
+        waitForPageLoad(driver);
+        boolean pageStatus = false;
+        do {
+            if (isDashboard()) {
+                waitOnElementToBeClickable(searchQuotationHyperLinkDashboard);
+                click(searchQuotationHyperLinkDashboard);
+                pageStatus = true;
+            } else {
+                if (isSmallMenuDisplayed()) {
+                    pressSmallMenuIcon();
+                    waitOnElementToBeClickable(dashboardHyperLinkSmallMenu);
+                    click(dashboardHyperLinkSmallMenu);
+
+
+                } else {
+                    waitOnElementToBeClickable(dashboardHyperLink);
+                    click(dashboardHyperLink);
+                }
+            }
+        }while(!pageStatus);
+    }
+
 
 
     public void pressChangeUnitHyperlink(){
