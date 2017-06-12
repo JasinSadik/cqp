@@ -6,6 +6,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 /**
  * Created by PLJAHAS on 2017-06-07.
  */
@@ -15,70 +17,42 @@ public class Toasts extends Modals {
         super(driver);
     }
 
-    private By toastPath = By.xpath("//div[@class='toast-message']");
+    private By toastConatiner = By.xpath("//div[@id='toast-container']");
+    private String toastConatinerXpath = "//div[@id='toast-container']";
 
 
-    private boolean verifyIfElementWasDisplayed(String text) {
-        int counter = 0;
-        boolean elementStatus = false;
-        setTimeout(driver, 1);
-        while (!elementStatus && counter < 30) {
-            try {
-                element = driver.findElement(toastPath);
-                elementStatus = true;
-            } catch (NoSuchElementException | ElementNotFoundException e) {
-                counter++;
-            }
-        }
-        setTimeout(driver, 30);
-
-        if (elementStatus && element.getText().contains(text)) {
-            return true;
-        } else {
-            return false;
-        }
-
-    }
-
-    private boolean verifyIfElementWasDisplayedNotUsedForNow(String text) {
+    public boolean verifyIfElementWasDisplayed(String text) {
         int counter = 0;
         boolean elementStatus = true;
         setTimeout(driver, 1);
-        while (elementStatus && counter < 60) {
+        while (elementStatus && counter < 180) {
             try {
-
-                elements = driver.findElements(toastPath);
+                Thread.sleep(500);
+                elements = driver.findElements(toastConatiner);
                 if (elements != null) {
-                    elementStatus = false;
+                    elementStatus = elements.size() > 0? false:true;
                 }
             } catch (NoSuchElementException | ElementNotFoundException e) {
                 counter++;
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e1) {
-                    e1.printStackTrace();
-                }
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
             }
         }
-        boolean correctTextFound = false;
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        boolean textAppeared = false;
+        elements = driver.findElements(toastConatiner);
         setTimeout(driver, 30);
-
-        for (WebElement e : elements) {
-            if (element.getText().contains(text)) {
-                correctTextFound = true;
-                break;
+        String toastElements = null;
+        for (int i = 0; i < elements.size(); i++) {
+            if(driver.findElement(By.xpath(toastConatinerXpath + "/div[" + i+1 + "]/div")).getText().toLowerCase().contains(text.toLowerCase())){
+                textAppeared = true;
             }
         }
-
-        if (elementStatus) {
-            return false;
-        } else {
-            if (correctTextFound) {
-                return true;
-            } else {
-                return false;
-            }
-        }
+        return textAppeared;
     }
 
 
@@ -115,7 +89,7 @@ public class Toasts extends Modals {
         return verifyIfElementWasDisplayed("uccess");
     }
 
-    public boolean isSupportRequestAccepted (){
+    public boolean isSupportRequestAccepted() {
         return verifyIfElementWasDisplayed("Response action accepted");
     }
 }
