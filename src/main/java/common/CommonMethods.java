@@ -322,6 +322,8 @@ public class CommonMethods extends Page {
 
     protected int getElementIndexFromDropdownList(By by, String value) {
         elements = null;
+        int indexOfElementsCount=1;
+        String[] elementsToStringTable=null;
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -335,7 +337,7 @@ public class CommonMethods extends Page {
             elementsToStringTable[indexOfElementsCount] = e.getText().toString();
             indexOfElementsCount++;
         }
-        return elementsToStringTable;
+        return indexOfElementsCount;
     }
 
     protected void scrollToElement(By by) {
@@ -365,7 +367,7 @@ public class CommonMethods extends Page {
         }
         setTimeout(driver, 30);
         if (elements != null) {
-            new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOfAllElements(elements));
+            new WebDriverWait(driver, 30).until(ExpectedConditions.invisibilityOfAllElements(elements));
         }
     }
 
