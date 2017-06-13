@@ -29,7 +29,7 @@ public class SupportRequestCreationPage extends SupportRequestPage {
 
     public void setSpecificUser(String username) {
         waitOnElementToBeClickable(selectUserDropdownListExpandButton);
-        click(selectUserDropdownListExpandButton);
+        expandDrowdownList(selectUserDropdownListExpandButton);
         selectElementFromDropdownListByHtmlElement(username);
     }
 

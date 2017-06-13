@@ -40,7 +40,7 @@ public class SupportRequestMainActionPage extends SupportRequestPage {
         pressReplyAndCloseButton();
         insertComment(message);
         pressSendRequestButton();
-        waitOnLogOfAction("Final Reply", message);
+        //waitOnLogOfAction("Final Reply", message);
     }
 
     private void insertComment(String message) {
