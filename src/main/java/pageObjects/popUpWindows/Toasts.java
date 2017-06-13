@@ -27,7 +27,7 @@ public class Toasts extends Modals {
         String toastElements = null;
         boolean textAppeared = false;
         setTimeout(driver, 1);
-        while (!elementStatus && counter < 300) {
+        while (!elementStatus && counter < 1000) {
             try {
                 elements = driver.findElements(toastConatiner);
                 if (elements != null) {
@@ -35,6 +35,7 @@ public class Toasts extends Modals {
                         elements = driver.findElements(toastConatiner);
                         for (int i = 0; i < elements.size(); i++) {
                             if (driver.findElement(By.xpath(toastConatinerXpath + "/div[" + i + 1 + "]/div")).getText().toLowerCase().contains(text.toLowerCase())) {
+                                System.out.println(driver.findElement(By.xpath(toastConatinerXpath + "/div[" + i + 1 + "]/div")).getText());
                                 textAppeared = true;
                                 elementStatus = true;
                             }

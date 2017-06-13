@@ -2,6 +2,7 @@ package pageObjects.quotationTabs.fullCostAndFinalizationPage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import pageObjects.popUpWindows.Toasts;
 import pageObjects.popUpWindows.confirmationPopUp.DocumentGenerationModal;
 import pageObjects.quotationTabs.approvalRequestPage.ApprovalRequestPage;
 
@@ -30,6 +31,7 @@ public class DocumentGenerationSection extends FullCostAndFinalizationPage{
         pressOpenSectionButton();
         pressCreateNewRevisionButton();
         new DocumentGenerationModal(driver).pressConfirmButton();
+        new Toasts(driver).verifyIfElementWasDisplayed("Document");
         issueDocumentManually();
     }
 
