@@ -10,6 +10,7 @@ import pageObjects.mainPages.TopMenu;
 import pageObjects.popUpWindows.CreditLimitPopUp;
 import pageObjects.popUpWindows.Toasts;
 import pageObjects.quotationTabs.QuotationNavigationBar;
+import pageObjects.quotationTabs.approvalRequestPage.ApprovalRequestPuPage;
 import pageObjects.quotationTabs.productsAndPricesPage.ProductLine;
 import pageObjects.quotationTabs.productsAndPricesPage.ProductsAndPricesPage;
 import pageObjects.quotationTabs.quotationClassificationPage.AdditionalDataSection;
@@ -19,6 +20,7 @@ import pageObjects.quotationTabs.quotationClassificationPage.QuotationClassifica
 import pageObjects.quotationTabs.supportRequestPage.SupportRequestCreationPage;
 import pageObjects.quotationTabs.supportRequestPage.SupportRequestMainActionPage;
 import pageObjects.quotationTabs.supportRequestPage.SupportRequestPage;
+import pageObjects.quotationTabs.supportRequestPage.SupportRequestProductAndPricesPage;
 import scenarios.ScenarioSweden;
 
 import static org.junit.Assert.assertTrue;
@@ -30,7 +32,9 @@ public class SupportWorkflowTest extends ScenarioSweden {
 
     private final String PROJECT_NAME = new CommonMethods(driver).timestamp();
     private final String PU_USER = "asko.hokkanen@fi.abb.com";
+    private final String PU_APPROVER = "jari.toimela@fi.abb.com";
     private String quotationNumber = "";
+    private final String PU_DISCOUNT_ON_WHOLE_REQUEST = "10.00%";
 
     protected SupportWorkflowTest() throws Exception {
     }
@@ -66,7 +70,7 @@ public class SupportWorkflowTest extends ScenarioSweden {
         generalSection.setQuotationType(QUOTATION_TYPE);
         AdditionalDataSection additionalDataSection = new AdditionalDataSection(driver);
         generalSection.pressSaveAndCollapseButton();
-        additionalDataSection.setQuotationLanguage("Arabic");
+      //  additionalDataSection.setQuotationLanguage("Arabic");
         QuotationClassificationPage quotationClassificationPage = new QuotationClassificationPage(driver);
         quotationClassificationPage.pressCreateQuotationButton();
         //  sfdcSyncConfirmationModal.pressConfirmButton();
@@ -99,26 +103,57 @@ public class SupportWorkflowTest extends ScenarioSweden {
 
     @Test(priority = 6)
     public void shouldOpenSupportRequestFromDashboard() throws Exception {
-        new PuDashboard(driver).openSupportRequest(quotationNumber);
+        PuDashboard puDashboard = new PuDashboard(driver);
+        puDashboard.shouldShowListOfRequests();
+        puDashboard.openSupportRequest(quotationNumber);
     }
+    @Test (priority = 7)
+    public void shouldPuAddDiscountOnWholeRequest () {
+        new QuotationNavigationBar(driver).goToProductAndPriceTab();
+        SupportRequestProductAndPricesPage supportRequestProductAndPricesPage = new SupportRequestProductAndPricesPage(driver);
+        supportRequestProductAndPricesPage.insertDiscountOnWholeRequest(PU_DISCOUNT_ON_WHOLE_REQUEST);
+        supportRequestProductAndPricesPage.pressApplyDicountToWholeRequestButton();
+        assertTrue(PU_DISCOUNT_ON_WHOLE_REQUEST.equals(supportRequestProductAndPricesPage.getProductTpDiscountField(1)));
+        supportRequestProductAndPricesPage.pressBackToSupportRequestButton();
+    }
+
         /*
-    Tutaj powinno być jeszcze przejście do Product and Prices, zmiana cen
     Wykonanie innych akcji
      */
 
-    @Test(priority = 7)
+    @Test(priority = 8)
     public void shouldReplyAndCloseRequest() {
         new SupportRequestMainActionPage(driver).replyAndCloseRequest("Please find my final comment");
+    }
+
+    @Test(priority = 9)
+    public void shouldPuSendApproval() {
+        ApprovalRequestPuPage approvalRequestPuPage = new ApprovalRequestPuPage(driver);
+        approvalRequestPuPage.pressNextButton();
+        approvalRequestPuPage.pressSubmitForApprovalButton();
+    }
+
+    @Test(priority = 10)
+    public void shouldPuAcceptApproval() {
+        TopMenu topMenu = new TopMenu(driver);
+        topMenu.relogOnUser(PU_APPROVER);
+        PuDashboard puDashboard = new PuDashboard(driver);
+        puDashboard.shouldShowListOfRequests();
+        puDashboard.openSupportRequest(quotationNumber);
+        ApprovalRequestPuPage approvalRequestPuPage = new ApprovalRequestPuPage(driver);
+        approvalRequestPuPage.pressApproveButton();
+        approvalRequestPuPage.approveQuotation("OK");
+        approvalRequestPuPage.pressSendByPuApproverButton();
     }
     /*
       Dopisać w przyszłości sprawdzenie czy jest approval, przejście przez approval
        */
-    @Test(priority = 8)
+    @Test(priority = 11)
     public void shouldRelogOnLsuUser() {
         new TopMenu(driver).relogOnUser(USERNAME);
     }
 
-    @Test(priority = 9)
+    @Test(priority = 12)
     public void shouldLsuAcceptFinalResponseFromPu() {
         new LsuDashboard(driver).openQuotationFromQuickSearch(quotationNumber);
         new QuotationNavigationBar(driver).goToSupportRequestTab();
@@ -128,6 +163,9 @@ public class SupportWorkflowTest extends ScenarioSweden {
         supportRequestMainActionPage.pressAcceptResponseButton();
         assertTrue("Unable to close support request",  new Toasts(driver).isSupportRequestAccepted());
     }
+
 }
+
+
 
 

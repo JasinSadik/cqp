@@ -358,10 +358,13 @@ public class CommonMethods extends Page {
             try {
                 JavascriptExecutor executor = (JavascriptExecutor) driver;
                 executor.executeScript("arguments[0].click();", driver.findElement(by));
+                Thread.sleep(2000);
                 driver.findElement(By.xpath("//span[contains(@class, 'k-state-border')]"));
                 elementStatus = true;
             } catch (NoSuchElementException | ElementNotFoundException e) {
 
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
         setTimeout(driver, 30);
