@@ -49,28 +49,13 @@ public class Parser {
     }
 
 
-    public String parseOrderXml(String quotationNumber, String tagToRetrive) {
+    public String parseOrderXml(String quotationNumber, String tagToRetrive, boolean deleteFileFromTempDir, boolean retriveFile) {
         String filePathBackend1 = "////DE-S-0214369.de.abb.com//Avanade//CQPServices_SANDBOX//App_Data//Serializations//OrderXml";
         String filePathBackend2 = "////DE-S-0214370.de.abb.com//Avanade//CQPServices_SANDBOX//App_Data//Serializations//OrderXml";
         String newFileDirectory = "";
-        File[] files = new File(filePathBackend1).listFiles();
         String fileName = "";
-        for (File file : files) {
-            if (file.isFile()) {
-                if (file.getName().contains(quotationNumber) && file.getName().contains("_in_")) {
-                    fileName = file.getName();
-                    break;
-                }
-            }
-        }
-        try {
-            newFileDirectory = System.getProperty("user.dir") + "//" + fileName.substring(0, fileName.length() - 3) + "xml";
-            FileUtils.copyFile(new File(filePathBackend1 + "//" + fileName), new File(newFileDirectory));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        if (fileName == "") {
-            files = new File(filePathBackend2).listFiles();
+        if(retriveFile == true) {
+            File[] files = new File(filePathBackend1).listFiles();
             for (File file : files) {
                 if (file.isFile()) {
                     if (file.getName().contains(quotationNumber) && file.getName().contains("_in_")) {
@@ -81,18 +66,54 @@ public class Parser {
             }
             try {
                 newFileDirectory = System.getProperty("user.dir") + "//" + fileName.substring(0, fileName.length() - 3) + "xml";
-                FileUtils.copyFile(new File(filePathBackend2 + "//" + fileName), new File(newFileDirectory));
+                FileUtils.copyFile(new File(filePathBackend1 + "//" + fileName), new File(newFileDirectory));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (fileName == "") {
+                files = new File(filePathBackend2).listFiles();
+                for (File file : files) {
+                    if (file.isFile()) {
+                        if (file.getName().contains(quotationNumber) && file.getName().contains("_in_")) {
+                            fileName = file.getName();
+                            break;
+                        }
+                    }
+                }
+                try {
+                    newFileDirectory = System.getProperty("user.dir") + "//" + fileName.substring(0, fileName.length() - 3) + "xml";
+                    FileUtils.copyFile(new File(filePathBackend2 + "//" + fileName), new File(newFileDirectory));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }else{
+            File[] files = new File(System.getProperty("user.dir") + "//").listFiles();
+            for (File file : files) {
+                if (file.isFile()) {
+                    if (file.getName().contains(quotationNumber) && file.getName().contains("_in_")) {
+                        newFileDirectory = System.getProperty("user.dir") + "//" + file.getName();
+                        break;
+                    }
+                }
+            }
+
+        }
+
+
+        String retrivedTag = new Parser().parseXmlFile(tagToRetrive, newFileDirectory);
+        if(deleteFileFromTempDir == true) {
+            try {
+                FileUtils.forceDelete(new File(newFileDirectory));
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        String retrivedTag = new Parser().parseXmlFile(tagToRetrive, newFileDirectory);
-        try {
-            FileUtils.forceDelete(new File(newFileDirectory));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         return retrivedTag;
+    }
+
+    public String parseOrderXml(String quotationNumber, String tagToRetrive){
+        return  parseOrderXml(quotationNumber, tagToRetrive, true, true);
     }
 
 }
