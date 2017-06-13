@@ -1,13 +1,13 @@
 package testToBeUpdated;
 
 import common.CommonMethods;
+import common.Parser;
 import common.sqlMethods.Sql_ApprovalBehavior;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pageObjects.popUpWindows.CreditLimitPopUp;
 import pageObjects.popUpWindows.Toasts;
-import pageObjects.popUpWindows.confirmationPopUp.SfdcSyncConfirmationModal;
 import pageObjects.quotationTabs.CloseQuotationPage;
 import pageObjects.quotationTabs.fullCostAndFinalizationPage.DocumentGenerationSection;
 import pageObjects.mainPages.LoginPage;
@@ -19,7 +19,7 @@ import pageObjects.quotationTabs.quotationClassificationPage.AdditionalDataSecti
 import pageObjects.quotationTabs.quotationClassificationPage.CustomerDataSection;
 import pageObjects.quotationTabs.quotationClassificationPage.GeneralSection;
 import pageObjects.quotationTabs.quotationClassificationPage.QuotationClassificationPage;
-import scenarios.ScenarioSweden;
+import pageObjects.quotationTabs.supportRequestPage.SupportRequestCreationPage;
 import scenarios.ScenarionSuesmot;
 
 import static org.junit.Assert.assertEquals;
@@ -71,7 +71,7 @@ public class OrderToOmsTest extends ScenarionSuesmot {
         generalSection.pressBindingQuotationCategoryButton();
         AdditionalDataSection additionalDataSection = new AdditionalDataSection(driver);
         generalSection.pressSaveAndCollapseButton();
-        additionalDataSection.setQuotationLanguage(LANGUAGE);
+        //  additionalDataSection.setQuotationLanguage(LANGUAGE);
         QuotationClassificationPage quotationClassificationPage = new QuotationClassificationPage(driver);
         quotationClassificationPage.pressCreateQuotationButton();
         assertTrue(new Toasts(driver).isQuotationSavedSuccessfullyToatstrDisplayed());
@@ -80,11 +80,11 @@ public class OrderToOmsTest extends ScenarionSuesmot {
 
     @Test(priority = 3)
     public void shouldAddProducts(){
+        quotationNumber = new SupportRequestCreationPage(driver).getQuotationNumber();
         ProductsAndPricesPage productsAndPricesPage = new ProductsAndPricesPage(driver);
         productsAndPricesPage.addProductFromLvDrive(LV_DRIVE_PRODUCT_WITH_VC);
         ProductLine productLine = new ProductLine(driver);
         productLine.setApplication(1, LV_DRIVE_APPLICATION);
-
     }
 
     @Test(priority = 4)
@@ -93,6 +93,8 @@ public class OrderToOmsTest extends ScenarionSuesmot {
         DocumentGenerationSection documentGenerationSection = new DocumentGenerationSection(driver);
         quotationNavigationBar.goToFullCostAndFinalizationTab();
         documentGenerationSection.generateAndIssueDocumentManually();
+        assertTrue(new Toasts(driver).isDocumentCreatedToastDisplayed());
+        assertTrue(new Toasts(driver).isDocumentIssuedToastDisplayed());
     }
 
     @Test(priority = 5)
@@ -117,6 +119,18 @@ public class OrderToOmsTest extends ScenarionSuesmot {
         closeQuotationPage.pressSubmitOrderButton();
         assertTrue(new Toasts(driver).isOrderSentSuccessfully());
     }
+
+    @Test(priority = 8)
+    public void shouldConfirmCorrectDataSending(){
+        System.out.println(new Parser().parseOrderXml(quotationNumber,"LSUCode", false, true));
+        System.out.println(new Parser().parseOrderXml(quotationNumber,"CustomerCode", false, false));
+        System.out.println(new Parser().parseOrderXml(quotationNumber,"CustomerCountryCode", false, false));
+        System.out.println(new Parser().parseOrderXml(quotationNumber,"CustomerName", false, false));
+        System.out.println(new Parser().parseOrderXml(quotationNumber,"DomainOIS", true, false));
+    }
+
+
+
 
     @AfterTest
     public void after() {

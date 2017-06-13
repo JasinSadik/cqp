@@ -49,6 +49,7 @@ public class CreateSupportTest extends ScenarioSweden {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.logInToCqp(USERNAME, PASSWORD);
         assertTrue(true);
+        new TopMenu(driver).relogOnUser("lidia.kosiorowska@pl.abb.com");
     }
 
 
