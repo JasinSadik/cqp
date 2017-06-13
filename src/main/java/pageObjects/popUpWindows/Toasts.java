@@ -23,35 +23,31 @@ public class Toasts extends Modals {
 
     public boolean verifyIfElementWasDisplayed(String text) {
         int counter = 0;
-        boolean elementStatus = true;
+        boolean elementStatus = false;
+        String toastElements = null;
+        boolean textAppeared = false;
         setTimeout(driver, 1);
-        while (elementStatus && counter < 180) {
+        while (!elementStatus && counter < 300) {
             try {
-                Thread.sleep(500);
                 elements = driver.findElements(toastConatiner);
                 if (elements != null) {
-                    elementStatus = elements.size() > 0? false:true;
+                    if (elements.size() > 0) {
+                        elements = driver.findElements(toastConatiner);
+                        for (int i = 0; i < elements.size(); i++) {
+                            if (driver.findElement(By.xpath(toastConatinerXpath + "/div[" + i + 1 + "]/div")).getText().toLowerCase().contains(text.toLowerCase())) {
+                                textAppeared = true;
+                                elementStatus = true;
+                            }
+                        }
+                    }
+
                 }
             } catch (NoSuchElementException | ElementNotFoundException e) {
                 counter++;
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
             }
         }
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        boolean textAppeared = false;
-        elements = driver.findElements(toastConatiner);
         setTimeout(driver, 30);
-        String toastElements = null;
-        for (int i = 0; i < elements.size(); i++) {
-            if(driver.findElement(By.xpath(toastConatinerXpath + "/div[" + i+1 + "]/div")).getText().toLowerCase().contains(text.toLowerCase())){
-                textAppeared = true;
-            }
-        }
+
         return textAppeared;
     }
 
@@ -82,7 +78,7 @@ public class Toasts extends Modals {
 
 
     public boolean isPreOrderDataSectionSaved() {
-        return verifyIfElementWasDisplayed("Preorder Data saved");
+        return verifyIfElementWasDisplayed("Data saved");
     }
 
     public boolean isOrderSentSuccessfully() {
@@ -92,4 +88,13 @@ public class Toasts extends Modals {
     public boolean isSupportRequestAccepted() {
         return verifyIfElementWasDisplayed("Response action accepted");
     }
+
+    public boolean isDocumentIssuedToastDisplayed() {
+        return verifyIfElementWasDisplayed("issued");
+    }
+
+    public boolean isDocumentCreatedToastDisplayed() {
+        return verifyIfElementWasDisplayed("document");
+    }
+
 }
