@@ -1,7 +1,10 @@
 package pageObjects.popUpWindows.confirmationPopUp;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.popUpWindows.Modals;
 import pageObjects.quotationTabs.QuotationNavigationBar;
 import pageObjects.quotationTabs.productsAndPricesPage.ProductsAndPricesPage;
@@ -18,8 +21,12 @@ public class SfdcSyncConfirmationModal extends Modals {
     private By cancelButton = By.xpath("//div[@id='sharedConfirmationModal']//button[contains(text(),'Cancel')]");
 
     public void pressConfirmButton() {
-        waitOnButton(confirmButton);
-        click(confirmButton);
+        try{
+            new WebDriverWait(driver,2).until(ExpectedConditions.elementToBeClickable(confirmButton));
+            click(confirmButton);
+        }catch (TimeoutException e){
+
+        }
     }
 
     public void pressCancelButton() {

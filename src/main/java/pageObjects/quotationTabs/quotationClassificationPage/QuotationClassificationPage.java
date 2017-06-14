@@ -22,8 +22,7 @@ public class QuotationClassificationPage extends QuotationNavigationBar {
     public void pressCreateQuotationButton() {
         waitOnButton(createQuotationButton);
         click(createQuotationButton);
-
-
+        new SfdcSyncConfirmationModal(driver).pressConfirmButton();
     }
 
 

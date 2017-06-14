@@ -75,7 +75,6 @@ public class CreateSupportTest extends ScenarioSweden {
         additionalDataSection.setQuotationLanguage("Arabic");
         QuotationClassificationPage quotationClassificationPage = new QuotationClassificationPage(driver);
         quotationClassificationPage.pressCreateQuotationButton();
-        new SfdcSyncConfirmationModal(driver).pressConfirmButton();
     }
 
     @Test(priority = 3)
