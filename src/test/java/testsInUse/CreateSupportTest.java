@@ -1,4 +1,4 @@
-package testToBeUpdated;
+package testsInUse;
 
 import common.CommonMethods;
 import common.sqlMethods.Sql_QuoteHeader;
@@ -83,7 +83,7 @@ public class CreateSupportTest extends ScenarioSweden {
         ProductLine productLine = new ProductLine(driver);
         productsAndPricesPage.addProductFromLvDrive(LV_DRIVE_PRODUCT_WITH_VC);
         productLine.setApplication(1, LV_DRIVE_APPLICATION);
-    }
+     }
 
     @Test(priority = 4)
     public void shouldStartSupportRequest() throws InterruptedException {
