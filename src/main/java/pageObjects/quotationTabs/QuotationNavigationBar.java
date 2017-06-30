@@ -21,7 +21,7 @@ public class QuotationNavigationBar extends TopMenu {
     }
 
     private By quotationClassificationTab = By.xpath("//*[@id='quoteToolbar']//span[contains(text(),'Quotation classification')]/..");
-    private By productAndPricesTab = By.xpath("//*[@id='productsButtonHeader']");
+    private By productAndPricesTab = By.xpath("//*[@id='productsButtonHeader']//span[contains(text(),'Products and prices')]/..");
     private By supportRequestsTab = By.xpath("//*[@id='quoteToolbar']//span[contains(text(),'Support requests')]/..");
     private By attachmentsTab = By.xpath("//*[@id='quoteToolbar']//span[contains(text(),'Attachments')]/..");
     private By fullCostAndFinalizationTab = By.xpath("//span[contains(text(),'Full cost and finalization')]/..");
@@ -29,6 +29,7 @@ public class QuotationNavigationBar extends TopMenu {
     private By closeQuotationTab = By.xpath("//*[@id='teaserTiles']//span[contains(text(),'Close quotation')]/..");
     private By quotationNumberLabel = By.xpath("//div[@id='pageHeaderInfo']//span[contains(text(),'CQ')]");
     private By addStandaloneSupportRequestButton = By.xpath("//button[text() = 'Add stand alone support request']");
+
 
     public void goToQuotationClassificationTab() {
         openTab(quotationClassificationTab);

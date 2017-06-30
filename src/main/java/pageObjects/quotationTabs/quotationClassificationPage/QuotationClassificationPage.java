@@ -2,6 +2,7 @@ package pageObjects.quotationTabs.quotationClassificationPage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import pageObjects.popUpWindows.confirmationPopUp.DeleteQuotation;
 import pageObjects.popUpWindows.confirmationPopUp.SfdcSyncConfirmationModal;
 import pageObjects.quotationTabs.QuotationNavigationBar;
 
@@ -21,10 +22,14 @@ public class QuotationClassificationPage extends QuotationNavigationBar {
     public void pressCreateQuotationButton() {
         waitOnButton(createQuotationButton);
         click(createQuotationButton);
+        new SfdcSyncConfirmationModal(driver).pressConfirmButton();
     }
 
-    public void pressDeleteQuotationButton() {
+
+
+    public void deleteQuotation() {
         waitOnButton(deleteQuotationButton);
         click(deleteQuotationButton);
+        new DeleteQuotation(driver).pressConfirmButton();
     }
 }

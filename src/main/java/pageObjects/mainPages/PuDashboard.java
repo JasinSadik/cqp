@@ -12,15 +12,15 @@ public class PuDashboard extends TopMenu {
         super(driver);
     }
 
-    private By loadMoreRequestButton = By.xpath("//button[text()='Load more request']");
-
     private String quotationNumber = "";
+    private By loadMoreRequestButton = By.xpath("//button[text()='Load more request']");
+    private By viewSupportRequestButton = By.xpath("//td[text()='" + quotationNumber + "']/..//a");
+    private By listButton = By.xpath("//*[@id='thirdPanelGroup']//span[3]//button[contains (text(), 'List')]");
+
 
     private void setQuotationNumber(String quotationNumber) {
         viewSupportRequestButton = By.xpath("//td[text()='" + quotationNumber + "']/..//a");
     }
-
-    private By viewSupportRequestButton = By.xpath("//td[text()='" + quotationNumber + "']/..//a");
 
     public void openSupportRequest(String quotationNumber) {
         waitForPageLoad(driver);
@@ -30,6 +30,11 @@ public class PuDashboard extends TopMenu {
         setQuotationNumber(quotationNumber);
         waitOnElementToBeClickable(viewSupportRequestButton);
         click(viewSupportRequestButton);
+    }
+
+    public void shouldShowListOfRequests (){
+        waitOnButton(listButton);
+        click(listButton);
     }
 
 

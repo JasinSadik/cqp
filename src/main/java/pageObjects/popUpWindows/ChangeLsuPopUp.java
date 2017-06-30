@@ -12,11 +12,11 @@ public class ChangeLsuPopUp extends Modals {
         super(driver);
     }
 
-    private By lsuComboBox = By.xpath("//*[@id='headerLinks']/div[1]/div[2]/div/div/span[2]/span/span[2]/span");
     private By confirmButton = By.xpath("//*[@id='headerLinks']/div[1]/div[3]/button[2]");
-
+    private By expandChangeUnitDropdownList = By.xpath("//span[text()='Choose one...']/..//span[text()='select']");
     public void changeLsu(String LsuName){
-        waitOnButton(lsuComboBox);
+        waitOnButton(expandChangeUnitDropdownList);
+        expandChangeUnitDropdownList();
         selectElementFromDropdownListByHtmlElement(LsuName);
         pressConfirmButton();
     }
@@ -24,6 +24,11 @@ public class ChangeLsuPopUp extends Modals {
     public void pressConfirmButton(){
         waitOnButton(confirmButton);
         click(confirmButton);
+    }
+
+    public void expandChangeUnitDropdownList(){
+        waitOnElementToBeClickable(expandChangeUnitDropdownList);
+        expandDrowdownList(expandChangeUnitDropdownList);
     }
 
 

@@ -65,7 +65,7 @@ public class CommonMethods extends Page {
             try {
                 new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(element));
                 elementStatus = false;
-             } catch (TimeoutException e) {
+            } catch (TimeoutException e) {
                 System.out.println("Timeout - Element not found");
                 loopGoThroughCounter++;
             }
@@ -126,7 +126,7 @@ public class CommonMethods extends Page {
         wait.until(pageLoadCondition);
     }
 
-    protected void waitForFrameToLoad(){
+    protected void waitForFrameToLoad() {
         ExpectedCondition<Boolean> iframeLoadCondition = new
                 ExpectedCondition<Boolean>() {
                     public Boolean apply(WebDriver driver) {
@@ -136,6 +136,7 @@ public class CommonMethods extends Page {
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(iframeLoadCondition);
     }
+
     //..........................SeleniumMethods......................
     protected WebElement findElement(By by) {
         boolean elementStatus = true;
@@ -173,6 +174,11 @@ public class CommonMethods extends Page {
     protected void sendKeys(By by, String text) {
         element = findElement(by);
         element.sendKeys(text);
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         element.sendKeys(Keys.TAB);
 
     }
@@ -272,7 +278,7 @@ public class CommonMethods extends Page {
         return timestamp;
     }
 
-    protected void selectElementFromDropdownList(String comboBoxId, String value){
+    protected void selectElementFromDropdownList(String comboBoxId, String value) {
         int index = 1;
         By comboBoxButton = By.xpath("//input[contains(@id , '" + comboBoxId + "')]/..//span[contains(text(), 'select')]");
         By comboBoxList = By.xpath("//ul[contains(@id , '" + comboBoxId + "_listbox')]/li");
@@ -284,21 +290,11 @@ public class CommonMethods extends Page {
         }
 
         boolean elementStatus = false;
-        click(comboBoxButton);
-        while (!elementStatus){
-            try {
-                Thread.sleep(500);
-                driver.findElement(By.xpath("//ul[contains(@id , '" + comboBoxId + "_listbox')]/li[1]"));
-                elementStatus = true;
-            }catch (ElementNotFoundException | NoSuchElementException e) {
-                click(comboBoxButton);
-            }catch (InterruptedException x){
-            }
-        }
-        int indexOfElement= 1;
+        expandDrowdownList(comboBoxButton);
+        int indexOfElement = 1;
         elements = findElements(comboBoxList);
-        for (WebElement e: elements) {
-            if(e.getText().toLowerCase().contains(value.toLowerCase())){
+        for (WebElement e : elements) {
+            if (e.getText().toLowerCase().contains(value.toLowerCase())) {
                 break;
             }
             indexOfElement++;
@@ -316,29 +312,13 @@ public class CommonMethods extends Page {
 
     protected void selectElementFromDropdownListByHtmlElement(String value, String htmlElementType) {
         By by;
-        by = By.xpath("//" + htmlElementType + "[text() = '" + value + "']");
+        if (htmlElementType.equals("li")) {
+            by = By.xpath("//body/div[contains(@style, 'display: block')]//ul/" + htmlElementType + "[text() = '" + value + "']");
+        } else {
+            by = By.xpath("//" + htmlElementType + "[text() = '" + value + "']");
+        }
         waitOnPresenceOfElement(by);
         click(by);
-    }
-
-    protected int getElementIndexFromDropdownList(By by, String value) {
-        elements = null;
-        int indexOfElementsCount=1;
-        String[] elementsToStringTable=null;
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        while(elements == null) {
-            elements = findElements(by);
-        }
-        int indexOfElement = 1;
-        for (WebElement e : elements) {
-            elementsToStringTable[indexOfElementsCount] = e.getText().toString();
-            indexOfElementsCount++;
-        }
-        return indexOfElementsCount;
     }
 
     protected void scrollToElement(By by) {
@@ -355,7 +335,7 @@ public class CommonMethods extends Page {
         actions.moveToElement(findElement(by)).build().perform();
     }
 
-    protected void clickElementAction (By by){
+    protected void clickElementAction(By by) {
         Actions actions = new Actions(driver);
         actions.click(findElement(by)).build().perform();
     }
@@ -372,6 +352,24 @@ public class CommonMethods extends Page {
         }
     }
 
+    protected void expandDrowdownList(By by) {
+        boolean elementStatus = false;
+        setTimeout(driver, 1);
+        while (!elementStatus) {
+            try {
+                JavascriptExecutor executor = (JavascriptExecutor) driver;
+                executor.executeScript("arguments[0].click();", driver.findElement(by));
+                Thread.sleep(2000);
+                driver.findElement(By.xpath("//span[contains(@class, 'k-state-border')]"));
+                elementStatus = true;
+            } catch (NoSuchElementException | ElementNotFoundException e) {
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        setTimeout(driver, 30);
+    }
     public boolean isVisible(By by) {
         setTimeout(driver, 1);
         boolean elementStatus = false;

@@ -1,10 +1,10 @@
 browser: CHROME
-environment: CQP_TEST
-environment_url: https://de-s-0214371.de.abb.com/CQP_TEST/en-US/Login/Login
+environment: CQP_SANDBOX
+environment_url: https://de-s-0214371.de.abb.com/CQP_SANDBOX/en-US/Login/Login
 snapshot_path: C:/Users/pljahas/Desktop/Testy Auto tematyczne/Screenshots/
 timeout: 60 
 user: jasin-ridha.hassan@pl.abb.com
 password: a
 chrome_path: C:/Users/pljahas/Desktop/Testy Auto tematyczne/chromedriver.exe
-db_url : jdbc:sqlserver://10.51.34.54\\SQLEXPRESS:1433;databaseName=CQP_TEST;integratedSecurity=true
+db_url : jdbc:sqlserver://10.51.34.54\\SQLEXPRESS:1433;databaseName=CQP_SANDBOX;integratedSecurity=true
 class_db : com.microsoft.sqlserver.jdbc.SQLServerDriver
