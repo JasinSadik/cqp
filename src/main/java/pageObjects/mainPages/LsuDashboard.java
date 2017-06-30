@@ -45,3 +45,4 @@ public class LsuDashboard extends TopMenu {
         searchQuotationsPopUp.openQuotation();
     }
 }
+
