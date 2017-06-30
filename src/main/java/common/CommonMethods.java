@@ -3,6 +3,7 @@ package common;
 import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -15,7 +16,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.sql.*;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 /**
  * Created by PLJAHAS on 2016-12-16.
@@ -369,5 +370,22 @@ public class CommonMethods extends Page {
         }
         setTimeout(driver, 30);
     }
+    public boolean isVisible(By by) {
+        setTimeout(driver, 1);
+        boolean elementStatus = false;
+        int counter = 0;
+        while (!elementStatus && counter<2){
+            try {
+                driver.findElement(by);
+                elementStatus = true;
+            } catch (NoSuchElementException | ElementNotFoundException e) {
+                counter++;
+            }
+        }
+        setTimeout(driver, 1);
+
+        return elementStatus;
+    }
+
 
 }
