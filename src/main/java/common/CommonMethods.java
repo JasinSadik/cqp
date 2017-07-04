@@ -374,7 +374,7 @@ public class CommonMethods extends Page {
         setTimeout(driver, 1);
         boolean elementStatus = false;
         int counter = 0;
-        while (!elementStatus && counter<2){
+        while (!elementStatus && counter<30){
             try {
                 driver.findElement(by);
                 elementStatus = true;
@@ -382,8 +382,7 @@ public class CommonMethods extends Page {
                 counter++;
             }
         }
-        setTimeout(driver, 1);
-
+        setTimeout(driver, 30);
         return elementStatus;
     }
 

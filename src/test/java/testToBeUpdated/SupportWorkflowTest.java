@@ -32,7 +32,8 @@ public class SupportWorkflowTest extends ScenarioSweden {
 
     private final String PROJECT_NAME = new CommonMethods(driver).timestamp();
     private final String PU_USER = "asko.hokkanen@fi.abb.com";
-    private final String PU_APPROVER = "jari.toimela@fi.abb.com";
+    private final String PU_APPROVER = "adrian.heaton@my.abb.com";
+    //jari.toimela@fi.abb.com
     private String quotationNumber = "";
     private final String PU_DISCOUNT_ON_WHOLE_REQUEST = "10.00%";
 
@@ -109,6 +110,9 @@ public class SupportWorkflowTest extends ScenarioSweden {
     }
     @Test (priority = 7)
     public void shouldPuAddDiscountOnWholeRequest () {
+        new QuotationNavigationBar(driver).goToSupportRequestTab();
+        new SupportRequestPage(driver).pressViewRequestIcon(1);
+        SupportRequestMainActionPage supportRequestMainActionPage = new SupportRequestMainActionPage(driver);
         new QuotationNavigationBar(driver).goToProductAndPriceTab();
         SupportRequestProductAndPricesPage supportRequestProductAndPricesPage = new SupportRequestProductAndPricesPage(driver);
         supportRequestProductAndPricesPage.insertDiscountOnWholeRequest(PU_DISCOUNT_ON_WHOLE_REQUEST);
