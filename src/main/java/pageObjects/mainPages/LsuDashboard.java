@@ -19,6 +19,16 @@ public class LsuDashboard extends TopMenu {
      private By searchQuotationField = By.cssSelector("#firstClonePanelGroup input");
     private By searchAllQuotationsButton = By.xpath("//*[@id = 'firstClonePanelGroup']//input/../a");
 
+    // do search'a
+    private By dashboardHyperLink = By.xpath("//*[@id='menuDashboard']/a");
+    private By dashboardHyperLinkDashboard = By.xpath("//*[@id='menuDashboard']/a");
+    private By searchQuotationHyperLinkDashboard = By.xpath("//*[@id='firstNavTile']/span");
+    private By dashboardHyperLinkSmallMenu = By.xpath("//*[@id='topMenu_C019']/div[1]/ul/li[1]/a");
+    private By smallMenuIconDashboard = By.xpath("//div[contains(@class, 'dashboardMenu')]//*[@id='topMenu_C019']/div[1]/a");
+
+
+
+
     public CustomerDataSection pressNewQuotationButton() {
         waitOnButton(newQuotationButton);
         click(newQuotationButton);
@@ -43,6 +53,29 @@ public class LsuDashboard extends TopMenu {
         pressSearchAllQuotationsButton();
         SearchQuotationsPopUp searchQuotationsPopUp = new SearchQuotationsPopUp(driver);
         searchQuotationsPopUp.openQuotation();
+    }
+//go to dashboard and press search quotation
+    public void pressSearchQuotation(){
+        waitForPageLoad(driver);
+        boolean pageStatus = false;
+        do {
+            if (isDashboard()) {
+                waitOnElementToBeClickable(searchQuotationHyperLinkDashboard);
+                click(searchQuotationHyperLinkDashboard);
+                pageStatus = true;
+            } else {
+                if (isSmallMenuDisplayed()) {
+                    pressSmallMenuIcon();
+                    waitOnElementToBeClickable(dashboardHyperLinkSmallMenu);
+                    click(dashboardHyperLinkSmallMenu);
+
+
+                } else {
+                    waitOnElementToBeClickable(dashboardHyperLink);
+                    click(dashboardHyperLink);
+                }
+            }
+        }while(!pageStatus);
     }
 }
 
