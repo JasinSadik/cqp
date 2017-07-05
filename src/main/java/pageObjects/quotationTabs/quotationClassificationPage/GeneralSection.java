@@ -22,7 +22,6 @@ public class GeneralSection extends QuotationClassificationPage {
     private By saveAndCollapseButton= By.xpath("//div[@id='quotationOwner']//button[contains(text(), 'Save and collapse')]");
     private By BindingQuotationCategoryButton= By.xpath("//div[@id='generalEditSection']//button[text()='Binding']");
 
-
     private String quotationTypeComboboxId = "comboQuotationType";
 
 
