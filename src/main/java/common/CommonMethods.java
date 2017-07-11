@@ -223,6 +223,20 @@ public class CommonMethods extends Page {
         return findElement(by).getText();
     }
 
+
+    protected void setCheckboxState(By by, boolean expectedState) {
+        if (expectedState) {
+            if (!findElement(by).isSelected()) {
+                click(by);
+            }
+        } else {
+            if (findElement(by).isSelected()) {
+                click(by);
+            }
+        }
+    }
+
+
     //..........................ConfigParser......................
     public String getPropertyFromConfigurationFile(String key) throws Exception {
         boolean check = false;
@@ -370,11 +384,12 @@ public class CommonMethods extends Page {
         }
         setTimeout(driver, 30);
     }
+
     public boolean isVisible(By by) {
         setTimeout(driver, 1);
         boolean elementStatus = false;
         int counter = 0;
-        while (!elementStatus && counter<2){
+        while (!elementStatus && counter<30){
             try {
                 driver.findElement(by);
                 elementStatus = true;
@@ -382,10 +397,10 @@ public class CommonMethods extends Page {
                 counter++;
             }
         }
-        setTimeout(driver, 1);
-
+        setTimeout(driver, 30);
         return elementStatus;
     }
+
 
 
 }

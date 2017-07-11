@@ -22,7 +22,7 @@ public class TopMenu extends CommonMethods {
     private By currentlyLoggedUser = By.xpath("//div[contains(@class, 'classicQuotationMenu')]//*[@id='topMenu_C019']/span");
     private By currentlyLoggedUsersLsu = By.xpath("//div[contains(@class, 'classicQuotationMenu')]//*[@id='topMenu_C019']/span/span");
     //moja zmiana
-    private By dashboardHyperLink = By.xpath("//*[@id='menuDashboard']/a");
+    //private By dashboardHyperLink = By.xpath("//*[@id='menuDashboard']/a");
 
     //dashboard classic menu
     private By logoutHyperlinkDashboard = By.xpath("//div[contains(@class, 'classicMenu')]//a[text()='Logout']");
@@ -31,8 +31,8 @@ public class TopMenu extends CommonMethods {
     private By currentlyLoggedUserDashboard = By.xpath("//div[contains(@class, 'classicMenu')]//*[@id='topMenu_C019']/span");
     private By currentlyLoggedUsersLsuDashboard = By.xpath("//div[contains(@class, 'classicMenu')]//*[@id='topMenu_C019']/span/span");
     //moja zmiana
-    private By dashboardHyperLinkDashboard = By.xpath("//*[@id='menuDashboard']/a");
-    private By searchQuotationHyperLinkDashboard = By.xpath("//*[@id='firstNavTile']/span");
+    //private By dashboardHyperLinkDashboard = By.xpath("//*[@id='menuDashboard']/a");
+    //private By searchQuotationHyperLinkDashboard = By.xpath("//*[@id='firstNavTile']/span");
 
     //non dashboard small menu elements
     private By logoutHyperlinkSmallMenu = By.xpath("//div[contains(@class, 'quotationMenu')]//a[text()='Logout']");
@@ -43,7 +43,7 @@ public class TopMenu extends CommonMethods {
 
     private By smallMenuIcon = By.xpath("//div[contains(@class, 'quotationMenu')]//*[@id='topMenu_C019']/div[1]/a");
     //moja zmiana
-    private By dashboardHyperLinkSmallMenu = By.xpath("//*[@id='topMenu_C019']/div[1]/ul/li[1]/a");
+    //private By dashboardHyperLinkSmallMenu = By.xpath("//*[@id='topMenu_C019']/div[1]/ul/li[1]/a");
 
     //dashboard small menu elements
     private By logoutHyperlinkSmallMenuDashboard = By.xpath("//div[contains(@class, 'dashboardMenu')]//a[text()='Logout']");
@@ -165,8 +165,8 @@ public class TopMenu extends CommonMethods {
             }
         }
     }
-    //moja zmiana, wrzucić do LsuDashBoard i tutaj dodać nową, która wchodzi bezpośrednio z Quotations->SearchQuotation
-    public void pressSearchQuotation(){
+    //moja zmiana, wrzucić do LsuDashBoard i tutaj dodać nową, która wchodzi bezpośrednio z Quotations->SearchQuotationPage up1. wrzucone do lsu dboard
+   /* public void pressSearchQuotation(){
         waitForPageLoad(driver);
         boolean pageStatus = false;
         do {
@@ -188,7 +188,7 @@ public class TopMenu extends CommonMethods {
             }
         }while(!pageStatus);
     }
-
+*/
 
 
     public void pressChangeUnitHyperlink(){

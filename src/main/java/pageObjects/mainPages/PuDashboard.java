@@ -24,9 +24,17 @@ public class PuDashboard extends TopMenu {
 
     public void openSupportRequest(String quotationNumber) {
         waitForPageLoad(driver);
-        if (findElement(loadMoreRequestButton).isDisplayed()){
-            click(loadMoreRequestButton);
+        boolean elementstatus = false;
+        int count = 0;
+        setTimeout(driver,1);
+        while (!elementstatus && count<5){
+            if (driver.findElement(loadMoreRequestButton).isDisplayed()) {
+                click(loadMoreRequestButton);
+                elementstatus =true;
+            }
+            count++;
         }
+        setTimeout(driver,30);
         setQuotationNumber(quotationNumber);
         waitOnElementToBeClickable(viewSupportRequestButton);
         click(viewSupportRequestButton);
