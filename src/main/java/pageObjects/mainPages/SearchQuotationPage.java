@@ -7,6 +7,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.w3c.dom.html.HTMLElement;
 import pageObjects.popUpWindows.ChangeLsuPopUp;
 
 /**
@@ -57,8 +58,10 @@ public class SearchQuotationPage extends LsuDashboard {
     //fieldsAfterSearch
     private By referenceNumberSearchField = By.xpath("//*[@id='grid']/div[2]/table/tbody/tr/td[2]");
     private By numberOfHitsOnePage = By.xpath("//div[contains(@data-bind, 'visible : items().length > 0')]//span[contains(text(), 'Total number of hits')]");
-    private By numberOfHitsMoreThanOnePage = By.xpath("//div[contains(@data-bind, 'visible : kendoGridDisplay() == true && isResultPageVisible && (hasPreviousPage() || hasNextPage())')]//span[contains(text(), 'Total number of hits')]");
-    //private By numberOfHitsMoreThanOnePage1 = By.xpath("//*[@id='SearchQuotaPage']/div[10]/span");
+    //private By numberOfHitsMoreThanOnePage = By.xpath("//div[contains(@data-bind, 'visible : kendoGridDisplay() == true && isResultPageVisible && (hasPreviousPage() || hasNextPage())')]//span[contains(text(), 'Total number of hits')]");
+    private By numberOfHitsMoreThanOnePage = By.xpath("//*[@id='SearchQuotaPage']/div[9]/span");
+    private By numberOfHits = By.xpath("//div[contains(@data-bind,'visible' ) and not(contains(@style,'display: none'))]//span[contains(text(), 'Total number of hits')]");//dobre
+
     private By isMoreThanOnePage = By.xpath("//*[@id='SearchQuotaPage']/div[9]/ul/li[9]/a");
 
 //INSERTs
@@ -324,6 +327,49 @@ public class SearchQuotationPage extends LsuDashboard {
         setCheckboxState(holdingCheckbox,expectedStatus);
     }
 
+    private void extendCountries(String continent)
+    {
+        By by = By.xpath("//span[text()='"+continent+"']/.././descendant::span[@class='k-icon k-minus']");
+        //span[text()='Europe']/.././descendant::span[@class='k-icon k-minus']
+
+            waitOnElementToBeClickable(by);
+            click(by);
+
+
+
+    }
+
+    //span[text()='Poland']/../../../../div/span[text()='Europe']
+    //span[text()='Poland']/../../../../div/span[@class='k-state-selected k-in']
+    //span[text()='Poland']/../../../../div/span[1]
+    //By by = By.xpath("//span[text()='"+country+"']/../../../../div/span[1]"); // extend and roll będę używał do setCountryCheckbox
+    //span[text()='Poland']/../../../../ul
+
+/*
+    public void setCountryCheckbox(boolean expectedStatus,String country)
+    {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        By by = By.xpath("//span[text()='"+country+"']/../../../../ul");
+       // js.executeScript("arguments[0].setAttribute('style','display: block')", findElement(by));
+        by = By.xpath("//span[text()='"+country+"']/.././span/input");
+        setCheckboxState(by,expectedStatus);
+
+        /*by = By.xpath("//span[text()='"+country+"']/.././span/input");
+        setCheckboxState(by,expectedStatus);
+    }
+*/
+
+    public void setCountryCheckbox(boolean expectedStatus,String country)
+    {
+        By by = By.xpath("//span[text()='"+country+"']/../../../../div/span[1]");
+        click(by);
+        by = By.xpath("//span[text()='"+country+"']/.././span/input");
+        setCheckboxState(by,expectedStatus);
+        by = By.xpath("//span[text()='"+country+"']/../../../../div/span[1]");
+        click(by);
+
+    }
+
     //boxes REMOVE
     public void removeBox(String string)
     {
@@ -351,15 +397,13 @@ public class SearchQuotationPage extends LsuDashboard {
 
     public int getTotalNumberOfHits()
     {
-
+        waitForPageLoad(driver);
         String numberOfHitsS = "";
         if (isVisible(referenceNumberSearchField))
         {
-
             waitForPageLoad(driver);
-           // numberOfHitsS = driver.findElement(numberOfHitsOnePage).getText();
-            //System.out.print(numberOfHitsS+"pobrało ");
-                if(isVisible(isMoreThanOnePage))
+
+                if(isVisible(isMoreThanOnePage)) //do ulepszenia
                 {
                      numberOfHitsS = driver.findElement(numberOfHitsMoreThanOnePage).getText();
                 }
@@ -367,6 +411,7 @@ public class SearchQuotationPage extends LsuDashboard {
                 {
                     numberOfHitsS = driver.findElement(numberOfHitsOnePage).getText();
                 }
+
             return Integer.parseInt(numberOfHitsS.substring(0, numberOfHitsS.length() - 1).split(":")[1].trim());
 
         }
