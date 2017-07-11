@@ -97,7 +97,7 @@ public class SearchQuotationPage extends LsuDashboard {
     }
 
     public void insertAdditionalOwner(String additionalOwner) {
-
+        boolean i = true;
         waitOnPresenceOfElement(additionalOwnerField);
         clear(additionalOwnerField);
         sendKeys(additionalOwnerField, additionalOwner);
